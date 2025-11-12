@@ -1,194 +1,380 @@
 /**
- * JavaScript Array<T> implementation with sparse array support
+ * JavaScript Array static helper methods
+ * Operates on native .NET List<T> type
  */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Tsonic.Runtime
 {
     /// <summary>
-    /// Array<T> with JavaScript semantics including sparse arrays
+    /// Static helper class for JavaScript array operations on List&lt;T&gt;
     /// </summary>
-    public class Array<T> : IEnumerable<T>
+    public static class Array
     {
-        private Dictionary<int, T> _items;
-        private int _length;
+        // ==================== Index Access Methods ====================
 
         /// <summary>
-        /// Create empty array
+        /// Get element at index (safe, returns default for out-of-bounds)
         /// </summary>
-        public Array()
+        public static T get<T>(List<T> arr, int index)
         {
-            _items = new Dictionary<int, T>();
-            _length = 0;
+            if (index < 0 || index >= arr.Count)
+            {
+                return default(T)!;
+            }
+            return arr[index];
         }
 
         /// <summary>
-        /// Create array from items
+        /// Set element at index (fills gaps with default for sparse arrays)
         /// </summary>
-        public Array(params T[] items)
+        public static void set<T>(List<T> arr, int index, T value)
         {
-            _items = new Dictionary<int, T>();
-            _length = items.Length;
-
-            for (int i = 0; i < items.Length; i++)
+            if (index < 0)
             {
-                _items[i] = items[i];
+                throw new ArgumentException("Array index cannot be negative", nameof(index));
+            }
+
+            // Fill gaps with default(T) if index is beyond current length
+            while (arr.Count <= index)
+            {
+                arr.Add(default(T)!);
+            }
+
+            // Set the value
+            arr[index] = value;
+        }
+
+        /// <summary>
+        /// Get array length (JavaScript 'length' property)
+        /// </summary>
+        public static int length<T>(List<T> arr)
+        {
+            return arr.Count;
+        }
+
+        /// <summary>
+        /// Set array length (truncate or extend with defaults)
+        /// </summary>
+        public static void setLength<T>(List<T> arr, int newLength)
+        {
+            if (newLength < 0)
+            {
+                throw new ArgumentException("Invalid array length", nameof(newLength));
+            }
+
+            if (newLength < arr.Count)
+            {
+                // Truncate
+                arr.RemoveRange(newLength, arr.Count - newLength);
+            }
+            else if (newLength > arr.Count)
+            {
+                // Extend with default values
+                int toAdd = newLength - arr.Count;
+                for (int i = 0; i < toAdd; i++)
+                {
+                    arr.Add(default(T)!);
+                }
             }
         }
 
+        // ==================== Basic Mutation Methods ====================
+
         /// <summary>
-        /// Array length property
+        /// Add element to end of array
         /// </summary>
-        public int length
+        public static void push<T>(List<T> arr, T item)
         {
-            get => _length;
-            set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentException("Invalid array length");
-                }
-
-                if (value < _length)
-                {
-                    // Truncate - remove items beyond new length
-                    var keysToRemove = _items.Keys.Where(k => k >= value).ToList();
-                    foreach (var key in keysToRemove)
-                    {
-                        _items.Remove(key);
-                    }
-                }
-
-                _length = value;
-            }
+            arr.Add(item);
         }
 
         /// <summary>
-        /// Indexer - supports sparse arrays
+        /// Remove and return last element
         /// </summary>
-        public T this[int index]
+        public static T pop<T>(List<T> arr)
         {
-            get => _items.ContainsKey(index) ? _items[index] : default(T)!;
-            set
-            {
-                _items[index] = value;
-                if (index >= _length)
-                {
-                    _length = index + 1;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Add item to end of array
-        /// </summary>
-        public void push(T item)
-        {
-            _items[_length] = item;
-            _length++;
-        }
-
-        /// <summary>
-        /// Remove and return last item
-        /// </summary>
-        public T pop()
-        {
-            if (_length == 0)
+            if (arr.Count == 0)
             {
                 return default(T)!;
             }
 
-            _length--;
-            T item = _items.ContainsKey(_length) ? _items[_length] : default(T)!;
-            _items.Remove(_length);
+            T item = arr[arr.Count - 1];
+            arr.RemoveAt(arr.Count - 1);
             return item;
         }
 
         /// <summary>
-        /// Remove and return first item
+        /// Remove and return first element
         /// </summary>
-        public T shift()
+        public static T shift<T>(List<T> arr)
         {
-            if (_length == 0)
+            if (arr.Count == 0)
             {
                 return default(T)!;
             }
 
-            T item = _items.ContainsKey(0) ? _items[0] : default(T)!;
-
-            // Shift all items down
-            var newItems = new Dictionary<int, T>();
-            for (int i = 1; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    newItems[i - 1] = _items[i];
-                }
-            }
-
-            _items = newItems;
-            _length--;
+            T item = arr[0];
+            arr.RemoveAt(0);
             return item;
         }
 
         /// <summary>
-        /// Add item to beginning of array
+        /// Add element to beginning of array
         /// </summary>
-        public void unshift(T item)
+        public static void unshift<T>(List<T> arr, T item)
         {
-            // Shift all items up
-            var newItems = new Dictionary<int, T>();
-            newItems[0] = item;
-
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    newItems[i + 1] = _items[i];
-                }
-            }
-
-            _items = newItems;
-            _length++;
+            arr.Insert(0, item);
         }
+
+        // ==================== Slicing Methods ====================
 
         /// <summary>
         /// Return shallow copy of portion of array
         /// </summary>
-        public Array<T> slice(int start = 0, int? end = null)
+        public static List<T> slice<T>(List<T> arr, int start = 0, int? end = null)
         {
-            int actualStart = start < 0 ? System.Math.Max(0, _length + start) : start;
+            int actualStart = start < 0 ? System.Math.Max(0, arr.Count + start) : start;
             int actualEnd = end.HasValue
-                ? (end.Value < 0 ? System.Math.Max(0, _length + end.Value) : end.Value)
-                : _length;
+                ? (end.Value < 0 ? System.Math.Max(0, arr.Count + end.Value) : end.Value)
+                : arr.Count;
 
-            var result = new Array<T>();
-            int resultIndex = 0;
+            actualStart = System.Math.Min(actualStart, arr.Count);
+            actualEnd = System.Math.Min(actualEnd, arr.Count);
 
-            for (int i = actualStart; i < actualEnd && i < _length; i++)
+            if (actualStart >= actualEnd)
             {
-                if (_items.ContainsKey(i))
-                {
-                    result[resultIndex] = _items[i];
-                }
-                resultIndex++;
+                return new List<T>();
             }
 
+            return arr.GetRange(actualStart, actualEnd - actualStart);
+        }
+
+        /// <summary>
+        /// Add/remove elements at position
+        /// </summary>
+        public static List<T> splice<T>(List<T> arr, int start, int? deleteCount = null, params T[] items)
+        {
+            int actualStart = start < 0 ? System.Math.Max(0, arr.Count + start) : System.Math.Min(start, arr.Count);
+            int actualDeleteCount = deleteCount ?? (arr.Count - actualStart);
+            actualDeleteCount = System.Math.Max(0, System.Math.Min(actualDeleteCount, arr.Count - actualStart));
+
+            // Extract deleted elements
+            var deleted = new List<T>();
+            for (int i = 0; i < actualDeleteCount; i++)
+            {
+                deleted.Add(arr[actualStart]);
+                arr.RemoveAt(actualStart);
+            }
+
+            // Insert new items
+            for (int i = 0; i < items.Length; i++)
+            {
+                arr.Insert(actualStart + i, items[i]);
+            }
+
+            return deleted;
+        }
+
+        // ==================== Higher-Order Functions ====================
+
+        /// <summary>
+        /// Map array elements to new array
+        /// </summary>
+        public static List<TResult> map<T, TResult>(List<T> arr, Func<T, int, List<T>, TResult> callback)
+        {
+            var result = new List<TResult>(arr.Count);
+            for (int i = 0; i < arr.Count; i++)
+            {
+                result.Add(callback(arr[i], i, arr));
+            }
             return result;
         }
 
         /// <summary>
-        /// Find index of element
+        /// Filter array elements
         /// </summary>
-        public int indexOf(T searchElement, int fromIndex = 0)
+        public static List<T> filter<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
         {
-            for (int i = fromIndex; i < _length; i++)
+            var result = new List<T>();
+            for (int i = 0; i < arr.Count; i++)
             {
-                if (_items.ContainsKey(i) && EqualityComparer<T>.Default.Equals(_items[i], searchElement))
+                if (callback(arr[i], i, arr))
+                {
+                    result.Add(arr[i]);
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// Reduce array to single value (with initial value)
+        /// </summary>
+        public static TResult reduce<T, TResult>(List<T> arr, Func<TResult, T, int, List<T>, TResult> callback, TResult initialValue)
+        {
+            TResult accumulator = initialValue;
+            for (int i = 0; i < arr.Count; i++)
+            {
+                accumulator = callback(accumulator, arr[i], i, arr);
+            }
+            return accumulator;
+        }
+
+        /// <summary>
+        /// Reduce array to single value (no initial value)
+        /// </summary>
+        public static T reduce<T>(List<T> arr, Func<T, T, int, List<T>, T> callback)
+        {
+            if (arr.Count == 0)
+            {
+                throw new InvalidOperationException("Reduce of empty array with no initial value");
+            }
+
+            T accumulator = arr[0];
+            for (int i = 1; i < arr.Count; i++)
+            {
+                accumulator = callback(accumulator, arr[i], i, arr);
+            }
+            return accumulator;
+        }
+
+        /// <summary>
+        /// Reduce array from right to left (with initial value)
+        /// </summary>
+        public static TResult reduceRight<T, TResult>(List<T> arr, Func<TResult, T, int, List<T>, TResult> callback, TResult initialValue)
+        {
+            TResult accumulator = initialValue;
+            for (int i = arr.Count - 1; i >= 0; i--)
+            {
+                accumulator = callback(accumulator, arr[i], i, arr);
+            }
+            return accumulator;
+        }
+
+        /// <summary>
+        /// Reduce array from right to left (no initial value)
+        /// </summary>
+        public static T reduceRight<T>(List<T> arr, Func<T, T, int, List<T>, T> callback)
+        {
+            if (arr.Count == 0)
+            {
+                throw new InvalidOperationException("Reduce of empty array with no initial value");
+            }
+
+            T accumulator = arr[arr.Count - 1];
+            for (int i = arr.Count - 2; i >= 0; i--)
+            {
+                accumulator = callback(accumulator, arr[i], i, arr);
+            }
+            return accumulator;
+        }
+
+        /// <summary>
+        /// Execute callback for each element
+        /// </summary>
+        public static void forEach<T>(List<T> arr, Action<T, int, List<T>> callback)
+        {
+            for (int i = 0; i < arr.Count; i++)
+            {
+                callback(arr[i], i, arr);
+            }
+        }
+
+        // ==================== Search Methods ====================
+
+        /// <summary>
+        /// Find first element matching predicate
+        /// </summary>
+        public static T find<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
+        {
+            for (int i = 0; i < arr.Count; i++)
+            {
+                if (callback(arr[i], i, arr))
+                {
+                    return arr[i];
+                }
+            }
+            return default(T)!;
+        }
+
+        /// <summary>
+        /// Find index of first element matching predicate
+        /// </summary>
+        public static int findIndex<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
+        {
+            for (int i = 0; i < arr.Count; i++)
+            {
+                if (callback(arr[i], i, arr))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Find last element matching predicate
+        /// </summary>
+        public static T findLast<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
+        {
+            for (int i = arr.Count - 1; i >= 0; i--)
+            {
+                if (callback(arr[i], i, arr))
+                {
+                    return arr[i];
+                }
+            }
+            return default(T)!;
+        }
+
+        /// <summary>
+        /// Find index of last element matching predicate
+        /// </summary>
+        public static int findLastIndex<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
+        {
+            for (int i = arr.Count - 1; i >= 0; i--)
+            {
+                if (callback(arr[i], i, arr))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Find first index of element
+        /// </summary>
+        public static int indexOf<T>(List<T> arr, T searchElement, int fromIndex = 0)
+        {
+            for (int i = fromIndex; i < arr.Count; i++)
+            {
+                if (EqualityComparer<T>.Default.Equals(arr[i], searchElement))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Find last index of element
+        /// </summary>
+        public static int lastIndexOf<T>(List<T> arr, T searchElement, int? fromIndex = null)
+        {
+            int startIndex = fromIndex ?? arr.Count - 1;
+            if (startIndex < 0)
+            {
+                startIndex = arr.Count + startIndex;
+            }
+            startIndex = System.Math.Min(startIndex, arr.Count - 1);
+
+            for (int i = startIndex; i >= 0; i--)
+            {
+                if (EqualityComparer<T>.Default.Equals(arr[i], searchElement))
                 {
                     return i;
                 }
@@ -199,356 +385,21 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Check if array includes element
         /// </summary>
-        public bool includes(T searchElement)
+        public static bool includes<T>(List<T> arr, T searchElement)
         {
-            return indexOf(searchElement) >= 0;
+            return indexOf(arr, searchElement) >= 0;
         }
 
         /// <summary>
-        /// Join array elements into string
+        /// Test if every element matches predicate
         /// </summary>
-        public string join(string separator = ",")
+        public static bool every<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
         {
-            var parts = new List<string>();
-            for (int i = 0; i < _length; i++)
+            for (int i = 0; i < arr.Count; i++)
             {
-                if (_items.ContainsKey(i))
+                if (!callback(arr[i], i, arr))
                 {
-                    parts.Add(_items[i]?.ToString() ?? "");
-                }
-                else
-                {
-                    parts.Add(""); // Sparse array hole
-                }
-            }
-            return string.Join(separator, parts);
-        }
-
-        /// <summary>
-        /// Reverse array in place
-        /// </summary>
-        public void reverse()
-        {
-            var temp = new Dictionary<int, T>();
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    temp[_length - 1 - i] = _items[i];
-                }
-            }
-            _items = temp;
-        }
-
-        /// <summary>
-        /// Map array elements to new array
-        /// </summary>
-        public Array<TResult> map<TResult>(Func<T, int, Array<T>, TResult> callback)
-        {
-            var result = new Array<TResult>();
-            for (int i = 0; i < _length; i++)
-            {
-                T value = _items.ContainsKey(i) ? _items[i] : default(T)!;
-                result[i] = callback(value, i, this);
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// Filter array elements
-        /// </summary>
-        public Array<T> filter(Func<T, int, Array<T>, bool> callback)
-        {
-            var result = new Array<T>();
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    T value = _items[i];
-                    if (callback(value, i, this))
-                    {
-                        result.push(value);
-                    }
-                }
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// Reduce array to single value
-        /// </summary>
-        public TResult reduce<TResult>(Func<TResult, T, int, Array<T>, TResult> callback, TResult initialValue)
-        {
-            TResult accumulator = initialValue;
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    accumulator = callback(accumulator, _items[i], i, this);
-                }
-            }
-            return accumulator;
-        }
-
-        /// <summary>
-        /// Reduce array to single value (no initial value)
-        /// </summary>
-        public T reduce(Func<T, T, int, Array<T>, T> callback)
-        {
-            if (_length == 0)
-            {
-                throw new InvalidOperationException("Reduce of empty array with no initial value");
-            }
-
-            T accumulator = this[0];
-            for (int i = 1; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    accumulator = callback(accumulator, _items[i], i, this);
-                }
-            }
-            return accumulator;
-        }
-
-        /// <summary>
-        /// Reduce array from right to left
-        /// </summary>
-        public TResult reduceRight<TResult>(Func<TResult, T, int, Array<T>, TResult> callback, TResult initialValue)
-        {
-            TResult accumulator = initialValue;
-            for (int i = _length - 1; i >= 0; i--)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    accumulator = callback(accumulator, _items[i], i, this);
-                }
-            }
-            return accumulator;
-        }
-
-        /// <summary>
-        /// Reduce array from right to left (no initial value)
-        /// </summary>
-        public T reduceRight(Func<T, T, int, Array<T>, T> callback)
-        {
-            if (_length == 0)
-            {
-                throw new InvalidOperationException("Reduce of empty array with no initial value");
-            }
-
-            T accumulator = this[_length - 1];
-            for (int i = _length - 2; i >= 0; i--)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    accumulator = callback(accumulator, _items[i], i, this);
-                }
-            }
-            return accumulator;
-        }
-
-        /// <summary>
-        /// Execute callback for each element
-        /// </summary>
-        public void forEach(Action<T, int, Array<T>> callback)
-        {
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    callback(_items[i], i, this);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Add/remove elements at position
-        /// </summary>
-        public Array<T> splice(int start, int? deleteCount = null, params T[] items)
-        {
-            int actualStart = start < 0 ? System.Math.Max(0, _length + start) : System.Math.Min(start, _length);
-            int actualDeleteCount = deleteCount ?? (_length - actualStart);
-            actualDeleteCount = System.Math.Max(0, System.Math.Min(actualDeleteCount, _length - actualStart));
-
-            // Extract deleted elements
-            var deleted = new Array<T>();
-            for (int i = 0; i < actualDeleteCount; i++)
-            {
-                int index = actualStart + i;
-                if (_items.ContainsKey(index))
-                {
-                    deleted.push(_items[index]);
-                }
-                else
-                {
-                    deleted.push(default(T)!);
-                }
-            }
-
-            // Calculate new length
-            int itemsToAdd = items.Length;
-            int newLength = _length - actualDeleteCount + itemsToAdd;
-
-            // Create new dictionary
-            var newItems = new Dictionary<int, T>();
-
-            // Copy elements before start
-            for (int i = 0; i < actualStart; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    newItems[i] = _items[i];
-                }
-            }
-
-            // Insert new items
-            for (int i = 0; i < itemsToAdd; i++)
-            {
-                newItems[actualStart + i] = items[i];
-            }
-
-            // Copy remaining elements
-            for (int i = actualStart + actualDeleteCount; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    newItems[i - actualDeleteCount + itemsToAdd] = _items[i];
-                }
-            }
-
-            _items = newItems;
-            _length = newLength;
-
-            return deleted;
-        }
-
-        /// <summary>
-        /// Concatenate arrays
-        /// </summary>
-        public Array<T> concat(params object[] items)
-        {
-            var result = new Array<T>();
-
-            // Copy this array
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    result.push(_items[i]);
-                }
-                else
-                {
-                    result.push(default(T)!);
-                }
-            }
-
-            // Add items
-            foreach (var item in items)
-            {
-                if (item is Array<T> arr)
-                {
-                    for (int i = 0; i < arr.length; i++)
-                    {
-                        result.push(arr[i]);
-                    }
-                }
-                else if (item is T value)
-                {
-                    result.push(value);
-                }
-            }
-
-            return result;
-        }
-
-        /// <summary>
-        /// Find first element matching predicate
-        /// </summary>
-        public T find(Func<T, int, Array<T>, bool> callback)
-        {
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    T value = _items[i];
-                    if (callback(value, i, this))
-                    {
-                        return value;
-                    }
-                }
-            }
-            return default(T)!;
-        }
-
-        /// <summary>
-        /// Find index of first element matching predicate
-        /// </summary>
-        public int findIndex(Func<T, int, Array<T>, bool> callback)
-        {
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    if (callback(_items[i], i, this))
-                    {
-                        return i;
-                    }
-                }
-            }
-            return -1;
-        }
-
-        /// <summary>
-        /// Find last element matching predicate
-        /// </summary>
-        public T findLast(Func<T, int, Array<T>, bool> callback)
-        {
-            for (int i = _length - 1; i >= 0; i--)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    T value = _items[i];
-                    if (callback(value, i, this))
-                    {
-                        return value;
-                    }
-                }
-            }
-            return default(T)!;
-        }
-
-        /// <summary>
-        /// Find index of last element matching predicate
-        /// </summary>
-        public int findLastIndex(Func<T, int, Array<T>, bool> callback)
-        {
-            for (int i = _length - 1; i >= 0; i--)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    if (callback(_items[i], i, this))
-                    {
-                        return i;
-                    }
-                }
-            }
-            return -1;
-        }
-
-        /// <summary>
-        /// Test if all elements match predicate
-        /// </summary>
-        public bool every(Func<T, int, Array<T>, bool> callback)
-        {
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    if (!callback(_items[i], i, this))
-                    {
-                        return false;
-                    }
+                    return false;
                 }
             }
             return true;
@@ -557,230 +408,124 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Test if any element matches predicate
         /// </summary>
-        public bool some(Func<T, int, Array<T>, bool> callback)
+        public static bool some<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
         {
-            for (int i = 0; i < _length; i++)
+            for (int i = 0; i < arr.Count; i++)
             {
-                if (_items.ContainsKey(i))
+                if (callback(arr[i], i, arr))
                 {
-                    if (callback(_items[i], i, this))
-                    {
-                        return true;
-                    }
+                    return true;
                 }
             }
             return false;
         }
 
-        /// <summary>
-        /// Find last index of element
-        /// </summary>
-        public int lastIndexOf(T searchElement, int? fromIndex = null)
-        {
-            int startIndex = fromIndex ?? _length - 1;
-            if (startIndex < 0)
-            {
-                startIndex = _length + startIndex;
-            }
-            startIndex = System.Math.Min(startIndex, _length - 1);
-
-            for (int i = startIndex; i >= 0; i--)
-            {
-                if (_items.ContainsKey(i) && EqualityComparer<T>.Default.Equals(_items[i], searchElement))
-                {
-                    return i;
-                }
-            }
-            return -1;
-        }
+        // ==================== Sorting Methods ====================
 
         /// <summary>
         /// Sort array in place
         /// </summary>
-        public void sort(Func<T, T, double>? compareFunc = null)
+        public static void sort<T>(List<T> arr, Func<T, T, double>? compareFunc = null)
         {
-            var nonSparseItems = new List<(int index, T value)>();
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    nonSparseItems.Add((i, _items[i]));
-                }
-            }
-
             if (compareFunc != null)
             {
-                nonSparseItems.Sort((a, b) =>
+                arr.Sort((a, b) =>
                 {
-                    double result = compareFunc(a.value, b.value);
+                    double result = compareFunc(a, b);
                     return result < 0 ? -1 : result > 0 ? 1 : 0;
                 });
             }
             else
             {
-                nonSparseItems.Sort((a, b) =>
+                arr.Sort((a, b) =>
                 {
-                    string aStr = a.value?.ToString() ?? "";
-                    string bStr = b.value?.ToString() ?? "";
+                    string aStr = a?.ToString() ?? "";
+                    string bStr = b?.ToString() ?? "";
                     return string.Compare(aStr, bStr, StringComparison.Ordinal);
                 });
             }
-
-            _items.Clear();
-            for (int i = 0; i < nonSparseItems.Count; i++)
-            {
-                _items[i] = nonSparseItems[i].value;
-            }
         }
 
         /// <summary>
-        /// Get element at index (supports negative indices)
+        /// Reverse array in place
         /// </summary>
-        public T at(int index)
+        public static void reverse<T>(List<T> arr)
         {
-            int actualIndex = index < 0 ? _length + index : index;
-            if (actualIndex < 0 || actualIndex >= _length)
+            arr.Reverse();
+        }
+
+        // ==================== Conversion Methods ====================
+
+        /// <summary>
+        /// Join array elements into string
+        /// </summary>
+        public static string join<T>(List<T> arr, string separator = ",")
+        {
+            var parts = new List<string>();
+            for (int i = 0; i < arr.Count; i++)
             {
-                return default(T)!;
+                parts.Add(arr[i]?.ToString() ?? "");
             }
-            return _items.ContainsKey(actualIndex) ? _items[actualIndex] : default(T)!;
+            return string.Join(separator, parts);
         }
 
         /// <summary>
-        /// Flatten nested arrays by specified depth
+        /// Convert to string
         /// </summary>
-        public Array<object> flat(int depth = 1)
+        public static string toString<T>(List<T> arr)
         {
-            var result = new Array<object>();
-            FlattenHelper(this, result, depth);
+            return join(arr, ",");
+        }
+
+        /// <summary>
+        /// Convert to locale string
+        /// </summary>
+        public static string toLocaleString<T>(List<T> arr)
+        {
+            return join(arr, ",");
+        }
+
+        /// <summary>
+        /// Concatenate arrays
+        /// </summary>
+        public static List<T> concat<T>(List<T> arr, params object[] items)
+        {
+            var result = new List<T>(arr);
+
+            foreach (var item in items)
+            {
+                if (item is List<T> list)
+                {
+                    result.AddRange(list);
+                }
+                else if (item is T value)
+                {
+                    result.Add(value);
+                }
+            }
+
             return result;
         }
 
-        private static void FlattenHelper(object arr, Array<object> result, int depth)
-        {
-            if (arr is Array<T> typedArr)
-            {
-                for (int i = 0; i < typedArr.length; i++)
-                {
-                    if (typedArr._items.ContainsKey(i))
-                    {
-                        var item = typedArr._items[i];
-                        if (depth > 0 && item != null && item.GetType().IsGenericType &&
-                            item.GetType().GetGenericTypeDefinition() == typeof(Array<>))
-                        {
-                            FlattenHelper(item, result, depth - 1);
-                        }
-                        else
-                        {
-                            result.push(item!);
-                        }
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Map then flatten result
-        /// </summary>
-        public Array<TResult> flatMap<TResult>(Func<T, int, Array<T>, object> callback)
-        {
-            var result = new Array<TResult>();
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    T value = _items[i];
-                    var mapped = callback(value, i, this);
-
-                    if (mapped is Array<TResult> arr)
-                    {
-                        for (int j = 0; j < arr.length; j++)
-                        {
-                            result.push(arr[j]);
-                        }
-                    }
-                    else if (mapped is TResult singleValue)
-                    {
-                        result.push(singleValue);
-                    }
-                }
-            }
-            return result;
-        }
-
-        /// <summary>
-        /// Fill array with value
-        /// </summary>
-        public Array<T> fill(T value, int start = 0, int? end = null)
-        {
-            int actualStart = start < 0 ? System.Math.Max(0, _length + start) : start;
-            int actualEnd = end.HasValue
-                ? (end.Value < 0 ? _length + end.Value : end.Value)
-                : _length;
-
-            for (int i = actualStart; i < actualEnd && i < _length; i++)
-            {
-                _items[i] = value;
-            }
-            return this;
-        }
-
-        /// <summary>
-        /// Copy array section to another location
-        /// </summary>
-        public Array<T> copyWithin(int target, int start = 0, int? end = null)
-        {
-            int actualTarget = target < 0 ? System.Math.Max(0, _length + target) : target;
-            int actualStart = start < 0 ? System.Math.Max(0, _length + start) : start;
-            int actualEnd = end.HasValue
-                ? (end.Value < 0 ? _length + end.Value : end.Value)
-                : _length;
-
-            int count = System.Math.Min(actualEnd - actualStart, _length - actualTarget);
-
-            var temp = new Dictionary<int, T>();
-            for (int i = 0; i < count; i++)
-            {
-                int srcIndex = actualStart + i;
-                if (_items.ContainsKey(srcIndex))
-                {
-                    temp[i] = _items[srcIndex];
-                }
-            }
-
-            for (int i = 0; i < count; i++)
-            {
-                int destIndex = actualTarget + i;
-                if (temp.ContainsKey(i))
-                {
-                    _items[destIndex] = temp[i];
-                }
-                else
-                {
-                    _items.Remove(destIndex);
-                }
-            }
-
-            return this;
-        }
+        // ==================== Iterator Methods ====================
 
         /// <summary>
         /// Get iterator for [index, value] pairs
         /// </summary>
-        public IEnumerable<(int index, T value)> entries()
+        public static IEnumerable<(int index, T value)> entries<T>(List<T> arr)
         {
-            for (int i = 0; i < _length; i++)
+            for (int i = 0; i < arr.Count; i++)
             {
-                yield return (i, _items.ContainsKey(i) ? _items[i] : default(T)!);
+                yield return (i, arr[i]);
             }
         }
 
         /// <summary>
         /// Get iterator for keys (indices)
         /// </summary>
-        public IEnumerable<int> keys()
+        public static IEnumerable<int> keys<T>(List<T> arr)
         {
-            for (int i = 0; i < _length; i++)
+            for (int i = 0; i < arr.Count; i++)
             {
                 yield return i;
             }
@@ -789,178 +534,216 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get iterator for values
         /// </summary>
-        public IEnumerable<T> values()
+        public static IEnumerable<T> values<T>(List<T> arr)
         {
-            for (int i = 0; i < _length; i++)
+            for (int i = 0; i < arr.Count; i++)
             {
-                yield return _items.ContainsKey(i) ? _items[i] : default(T)!;
+                yield return arr[i];
+            }
+        }
+
+        // ==================== Advanced Methods ====================
+
+        /// <summary>
+        /// Get element at index (supports negative indices)
+        /// </summary>
+        public static T at<T>(List<T> arr, int index)
+        {
+            int actualIndex = index < 0 ? arr.Count + index : index;
+            if (actualIndex < 0 || actualIndex >= arr.Count)
+            {
+                return default(T)!;
+            }
+            return arr[actualIndex];
+        }
+
+        /// <summary>
+        /// Flatten nested arrays by specified depth
+        /// </summary>
+        public static List<object> flat<T>(List<T> arr, int depth = 1)
+        {
+            var result = new List<object>();
+            FlattenHelper(arr, result, depth);
+            return result;
+        }
+
+        private static void FlattenHelper<T>(List<T> arr, List<object> result, int depth)
+        {
+            for (int i = 0; i < arr.Count; i++)
+            {
+                var item = arr[i];
+                if (depth > 0 && item != null && item is System.Collections.IEnumerable enumerable && !(item is string))
+                {
+                    // Recursive flatten for nested enumerables
+                    foreach (var nestedItem in enumerable)
+                    {
+                        var tempList = new List<object> { nestedItem };
+                        FlattenHelper(tempList, result, depth - 1);
+                    }
+                }
+                else
+                {
+                    result.Add(item!);
+                }
             }
         }
 
         /// <summary>
-        /// Convert to string
+        /// Map then flatten result
         /// </summary>
-        public override string ToString()
+        public static List<TResult> flatMap<T, TResult>(List<T> arr, Func<T, int, List<T>, object> callback)
         {
-            return join(",");
+            var result = new List<TResult>();
+            for (int i = 0; i < arr.Count; i++)
+            {
+                var mapped = callback(arr[i], i, arr);
+
+                if (mapped is List<TResult> list)
+                {
+                    result.AddRange(list);
+                }
+                else if (mapped is TResult singleValue)
+                {
+                    result.Add(singleValue);
+                }
+            }
+            return result;
         }
 
         /// <summary>
-        /// Convert to locale string
+        /// Fill array with value
         /// </summary>
-        public string toLocaleString()
+        public static List<T> fill<T>(List<T> arr, T value, int start = 0, int? end = null)
         {
-            return join(",");
+            int actualStart = start < 0 ? System.Math.Max(0, arr.Count + start) : start;
+            int actualEnd = end.HasValue
+                ? (end.Value < 0 ? arr.Count + end.Value : end.Value)
+                : arr.Count;
+
+            for (int i = actualStart; i < actualEnd && i < arr.Count; i++)
+            {
+                arr[i] = value;
+            }
+            return arr;
         }
+
+        /// <summary>
+        /// Copy array section to another location
+        /// </summary>
+        public static List<T> copyWithin<T>(List<T> arr, int target, int start = 0, int? end = null)
+        {
+            int actualTarget = target < 0 ? System.Math.Max(0, arr.Count + target) : target;
+            int actualStart = start < 0 ? System.Math.Max(0, arr.Count + start) : start;
+            int actualEnd = end.HasValue
+                ? (end.Value < 0 ? arr.Count + end.Value : end.Value)
+                : arr.Count;
+
+            int count = System.Math.Min(actualEnd - actualStart, arr.Count - actualTarget);
+
+            // Copy to temporary list to handle overlapping ranges
+            var temp = new List<T>();
+            for (int i = 0; i < count; i++)
+            {
+                temp.Add(arr[actualStart + i]);
+            }
+
+            // Copy back to target location
+            for (int i = 0; i < count; i++)
+            {
+                arr[actualTarget + i] = temp[i];
+            }
+
+            return arr;
+        }
+
+        // ==================== Immutable Variants ====================
 
         /// <summary>
         /// Create new array with element replaced (immutable)
         /// </summary>
-        public Array<T> @with(int index, T value)
+        public static List<T> @with<T>(List<T> arr, int index, T value)
         {
-            int actualIndex = index < 0 ? _length + index : index;
-            if (actualIndex < 0 || actualIndex >= _length)
+            int actualIndex = index < 0 ? arr.Count + index : index;
+            if (actualIndex < 0 || actualIndex >= arr.Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(index));
             }
 
-            var result = new Array<T>();
-            for (int i = 0; i < _length; i++)
-            {
-                if (i == actualIndex)
-                {
-                    result[i] = value;
-                }
-                else if (_items.ContainsKey(i))
-                {
-                    result[i] = _items[i];
-                }
-            }
+            var result = new List<T>(arr);
+            result[actualIndex] = value;
             return result;
         }
 
         /// <summary>
         /// Create new reversed array (immutable)
         /// </summary>
-        public Array<T> toReversed()
+        public static List<T> toReversed<T>(List<T> arr)
         {
-            var result = new Array<T>();
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    result[_length - 1 - i] = _items[i];
-                }
-            }
+            var result = new List<T>(arr);
+            result.Reverse();
             return result;
         }
 
         /// <summary>
         /// Create new sorted array (immutable)
         /// </summary>
-        public Array<T> toSorted(Func<T, T, double>? compareFunc = null)
+        public static List<T> toSorted<T>(List<T> arr, Func<T, T, double>? compareFunc = null)
         {
-            var result = new Array<T>();
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    result[i] = _items[i];
-                }
-            }
-            result.sort(compareFunc);
+            var result = new List<T>(arr);
+            sort(result, compareFunc);
             return result;
         }
 
         /// <summary>
         /// Create new spliced array (immutable)
         /// </summary>
-        public Array<T> toSpliced(int start, int? deleteCount = null, params T[] items)
+        public static List<T> toSpliced<T>(List<T> arr, int start, int? deleteCount = null, params T[] items)
         {
-            var result = new Array<T>();
-            for (int i = 0; i < _length; i++)
-            {
-                if (_items.ContainsKey(i))
-                {
-                    result[i] = _items[i];
-                }
-            }
-            result.splice(start, deleteCount, items);
+            var result = new List<T>(arr);
+            splice(result, start, deleteCount, items);
             return result;
         }
 
-        /// <summary>
-        /// Convert to native C# array
-        /// </summary>
-        public T[] ToArray()
-        {
-            var result = new T[_length];
-            for (int i = 0; i < _length; i++)
-            {
-                result[i] = _items.ContainsKey(i) ? _items[i] : default(T)!;
-            }
-            return result;
-        }
+        // ==================== Static Factory Methods ====================
 
         /// <summary>
-        /// IEnumerable<T> implementation for foreach and LINQ
-        /// </summary>
-        public IEnumerator<T> GetEnumerator()
-        {
-            for (int i = 0; i < _length; i++)
-            {
-                yield return _items.ContainsKey(i) ? _items[i] : default(T)!;
-            }
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        /// <summary>
-        /// Static method: Check if value is an array
+        /// Check if value is an array
         /// </summary>
         public static bool isArray(object? value)
         {
             if (value == null) return false;
             Type type = value.GetType();
-            return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Array<>);
+            return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(List<>);
         }
 
         /// <summary>
-        /// Static method: Create array from iterable
+        /// Create array from iterable
         /// </summary>
-        public static Array<T> from(IEnumerable<T> iterable)
+        public static List<T> from<T>(IEnumerable<T> iterable)
         {
-            var result = new Array<T>();
-            foreach (var item in iterable)
-            {
-                result.push(item);
-            }
-            return result;
+            return new List<T>(iterable);
         }
 
         /// <summary>
-        /// Static method: Create array from iterable with map function
+        /// Create array from iterable with map function
         /// </summary>
-        public static Array<TResult> from<TSource, TResult>(IEnumerable<TSource> iterable, Func<TSource, int, TResult> mapFunc)
+        public static List<TResult> from<TSource, TResult>(IEnumerable<TSource> iterable, Func<TSource, int, TResult> mapFunc)
         {
-            var result = new Array<TResult>();
+            var result = new List<TResult>();
             int index = 0;
             foreach (var item in iterable)
             {
-                result.push(mapFunc(item, index++));
+                result.Add(mapFunc(item, index++));
             }
             return result;
         }
 
         /// <summary>
-        /// Static method: Create array from arguments
+        /// Create array from arguments
         /// </summary>
-        public static Array<T> of(params T[] items)
+        public static List<T> of<T>(params T[] items)
         {
-            return new Array<T>(items);
+            return new List<T>(items);
         }
     }
 }

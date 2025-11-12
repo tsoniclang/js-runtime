@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Xunit;
 
 namespace Tsonic.Runtime.Tests
@@ -146,7 +147,7 @@ namespace Tsonic.Runtime.Tests
         public void split_SplitsString()
         {
             var result = String.split("a,b,c", ",");
-            Assert.Equal(3, result.length);
+            Assert.Equal(3, result.Count);
             Assert.Equal("a", result[0]);
             Assert.Equal("b", result[1]);
             Assert.Equal("c", result[2]);
@@ -156,7 +157,7 @@ namespace Tsonic.Runtime.Tests
         public void split_WithLimit_LimitsResults()
         {
             var result = String.split("a,b,c,d", ",", 2);
-            Assert.Equal(2, result.length);
+            Assert.Equal(2, result.Count);
             Assert.Equal("a", result[0]);
             Assert.Equal("b", result[1]);
         }
@@ -225,7 +226,7 @@ namespace Tsonic.Runtime.Tests
         public void matchAll_FindsAllMatches()
         {
             var result = String.matchAll("test test test", "test");
-            Assert.Equal(3, result.length);
+            Assert.Equal(3, result.Count);
         }
 
         [Fact]
@@ -336,7 +337,7 @@ namespace Tsonic.Runtime.Tests
         [Fact]
         public void raw_CreatesRawTemplateString()
         {
-            var template = new Array<string>("Hello ", " world", "!");
+            var template = new List<string> { "Hello ", " world", "!" };
             Assert.Equal("Hello X world!", String.raw(template, "X"));
         }
     }

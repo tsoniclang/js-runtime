@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Tsonic.Runtime.Tests
@@ -91,7 +92,7 @@ namespace Tsonic.Runtime.Tests
         [Fact]
         public void typeof_Array_ReturnsObject()
         {
-            var arr = new Array<int>();
+            var arr = new List<int>();
             Assert.Equal("object", Operators.@typeof(arr));
         }
 
@@ -118,14 +119,14 @@ namespace Tsonic.Runtime.Tests
         [Fact]
         public void instanceof_SubclassType_ReturnsTrue()
         {
-            var arr = new Array<int>();
-            Assert.True(Operators.instanceof(arr, typeof(Array<int>)));
+            var arr = new List<int>();
+            Assert.True(Operators.instanceof(arr, typeof(List<int>)));
         }
 
         [Fact]
         public void instanceof_BaseType_ReturnsTrue()
         {
-            var arr = new Array<int>();
+            var arr = new List<int>();
             Assert.True(Operators.instanceof(arr, typeof(object)));
         }
 
