@@ -4,6 +4,7 @@
  */
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Tsonic.Runtime
@@ -170,7 +171,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Split string into array
         /// </summary>
-        public static Array<string> split(string str, string separator, int? limit = null)
+        public static List<string> split(string str, string separator, int? limit = null)
         {
             string[] parts = str.Split(new[] { separator }, StringSplitOptions.None);
 
@@ -178,10 +179,10 @@ namespace Tsonic.Runtime
             {
                 string[] limited = new string[limit.Value];
                 System.Array.Copy(parts, limited, limit.Value);
-                return new Array<string>(limited);
+                return new List<string>(limited);
             }
 
-            return new Array<string>(parts);
+            return new List<string>(parts);
         }
 
         /// <summary>
@@ -236,7 +237,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Match string against regex pattern
         /// </summary>
-        public static Array<string>? match(string str, string pattern)
+        public static List<string>? match(string str, string pattern)
         {
             var regex = new System.Text.RegularExpressions.Regex(pattern);
             var match = regex.Match(str);
@@ -246,12 +247,12 @@ namespace Tsonic.Runtime
                 return null;
             }
 
-            var result = new Array<string>();
-            result.push(match.Value);
+            var result = new List<string>();
+            result.Add(match.Value);
 
             for (int i = 1; i < match.Groups.Count; i++)
             {
-                result.push(match.Groups[i].Value);
+                result.Add(match.Groups[i].Value);
             }
 
             return result;
@@ -260,23 +261,23 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Match all occurrences against regex pattern
         /// </summary>
-        public static Array<Array<string>> matchAll(string str, string pattern)
+        public static List<List<string>> matchAll(string str, string pattern)
         {
-            var result = new Array<Array<string>>();
+            var result = new List<List<string>>();
             var regex = new System.Text.RegularExpressions.Regex(pattern);
             var matches = regex.Matches(str);
 
             foreach (System.Text.RegularExpressions.Match match in matches)
             {
-                var matchArray = new Array<string>();
-                matchArray.push(match.Value);
+                var matchArray = new List<string>();
+                matchArray.Add(match.Value);
 
                 for (int i = 1; i < match.Groups.Count; i++)
                 {
-                    matchArray.push(match.Groups[i].Value);
+                    matchArray.Add(match.Groups[i].Value);
                 }
 
-                result.push(matchArray);
+                result.Add(matchArray);
             }
 
             return result;
@@ -477,10 +478,10 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Static method: Get raw template string
         /// </summary>
-        public static string raw(Array<string> template, params object[] substitutions)
+        public static string raw(List<string> template, params object[] substitutions)
         {
             var result = new System.Text.StringBuilder();
-            for (int i = 0; i < template.length; i++)
+            for (int i = 0; i < template.Count; i++)
             {
                 result.Append(template[i]);
                 if (i < substitutions.Length)

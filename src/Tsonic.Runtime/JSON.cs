@@ -76,12 +76,7 @@ namespace Tsonic.Runtime
             {
                 items.Add(ConvertJsonElement(item));
             }
-            var array = new Array<object?>();
-            for (var i = 0; i < items.Count; i++)
-            {
-                array[i] = items[i];
-            }
-            return array;
+            return items;
         }
 
         /// <summary>

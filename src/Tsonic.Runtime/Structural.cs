@@ -39,12 +39,12 @@ public static class Structural
         {
             // Try to find corresponding property in source
             // Suppress IL2075: source object comes from user code, can't be annotated
-            #pragma warning disable IL2075
+#pragma warning disable IL2075
             var sourceProp = sourceType.GetProperty(
                 targetProp.Name,
                 BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase
             );
-            #pragma warning restore IL2075
+#pragma warning restore IL2075
 
             if (sourceProp != null && sourceProp.CanRead)
             {
@@ -128,9 +128,9 @@ public static class Structural
 
         var sourceType = source.GetType();
         // Suppress IL2075: source object comes from user code, can't be annotated
-        #pragma warning disable IL2075
+#pragma warning disable IL2075
         var properties = sourceType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-        #pragma warning restore IL2075
+#pragma warning restore IL2075
 
         foreach (var prop in properties)
         {
@@ -188,13 +188,13 @@ public static class Structural
             {
                 // Suppress IL2071/IL3050: This reflection is required for structural typing,
                 // targetType comes from runtime Clone<T> call and can't be statically determined
-                #pragma warning disable IL2071, IL3050
+#pragma warning disable IL2071, IL3050
                 var cloneMethod = typeof(Structural)
                     .GetMethod(nameof(Clone))
                     ?.MakeGenericMethod(underlyingType);
 
                 return cloneMethod?.Invoke(null, new[] { value });
-                #pragma warning restore IL2071, IL3050
+#pragma warning restore IL2071, IL3050
             }
 
             return null;
