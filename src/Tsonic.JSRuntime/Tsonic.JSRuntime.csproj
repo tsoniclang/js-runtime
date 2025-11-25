@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <!-- NuGet Package Properties -->
-    <PackageId>Tsonic.Runtime</PackageId>
+    <PackageId>Tsonic.JSRuntime</PackageId>
     <Authors>Tsonic Project</Authors>
     <Description>JavaScript/TypeScript runtime implementation for Tsonic compiler - provides exact JavaScript semantics in C#</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/tsoniclang/tsonic-runtime</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/tsoniclang/tsonic-runtime.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/tsoniclang/js-runtime</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tsoniclang/js-runtime.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>typescript;csharp;compiler;runtime;native-aot</PackageTags>
 
@@ -19,5 +19,9 @@
     <!-- CS8981: lowercase type names (e.g., 'console' matches JS) - required for JS semantics -->
     <NoWarn>$(NoWarn);CS8981</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\runtime\src\Tsonic.Runtime\Tsonic.Runtime.csproj" />
+  </ItemGroup>
 
 </Project>

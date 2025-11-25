@@ -9,8 +9,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Text;
 using System.Text.Json;
+using Tsonic.Runtime;
 
-namespace Tsonic.Runtime
+namespace Tsonic.JSRuntime
 {
     /// <summary>
     /// JSON parsing and stringification (AOT-friendly, no reflection)

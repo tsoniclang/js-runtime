@@ -2,7 +2,7 @@ using Xunit;
 using System;
 using System.IO;
 
-namespace Tsonic.Runtime.Tests
+namespace Tsonic.JSRuntime.Tests
 {
     public class ConsoleTests
     {

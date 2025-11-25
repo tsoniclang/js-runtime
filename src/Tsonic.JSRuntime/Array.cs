@@ -1,5 +1,5 @@
 /**
- * JavaScript Array static helper methods
+ * JavaScript Array extension methods
  * Operates on native .NET List<T> type
  */
 
@@ -7,10 +7,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Tsonic.Runtime
+namespace Tsonic.JSRuntime
 {
     /// <summary>
-    /// Static helper class for JavaScript array operations on List&lt;T&gt;
+    /// Extension methods for JavaScript array operations on List&lt;T&gt;
     /// </summary>
     public static class Array
     {
@@ -19,7 +19,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get element at index (safe, returns default for out-of-bounds)
         /// </summary>
-        public static T get<T>(List<T> arr, int index)
+        public static T get<T>(this List<T> arr, int index)
         {
             if (index < 0 || index >= arr.Count)
             {
@@ -31,7 +31,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Set element at index (fills gaps with default for sparse arrays)
         /// </summary>
-        public static void set<T>(List<T> arr, int index, T value)
+        public static void set<T>(this List<T> arr, int index, T value)
         {
             if (index < 0)
             {
@@ -51,7 +51,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get array length (JavaScript 'length' property)
         /// </summary>
-        public static int length<T>(List<T> arr)
+        public static int length<T>(this List<T> arr)
         {
             return arr.Count;
         }
@@ -59,7 +59,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Set array length (truncate or extend with defaults)
         /// </summary>
-        public static void setLength<T>(List<T> arr, int newLength)
+        public static void setLength<T>(this List<T> arr, int newLength)
         {
             if (newLength < 0)
             {
@@ -87,7 +87,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Add element to end of array
         /// </summary>
-        public static void push<T>(List<T> arr, T item)
+        public static void push<T>(this List<T> arr, T item)
         {
             arr.Add(item);
         }
@@ -95,7 +95,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Remove and return last element
         /// </summary>
-        public static T pop<T>(List<T> arr)
+        public static T pop<T>(this List<T> arr)
         {
             if (arr.Count == 0)
             {
@@ -110,7 +110,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Remove and return first element
         /// </summary>
-        public static T shift<T>(List<T> arr)
+        public static T shift<T>(this List<T> arr)
         {
             if (arr.Count == 0)
             {
@@ -125,7 +125,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Add element to beginning of array
         /// </summary>
-        public static void unshift<T>(List<T> arr, T item)
+        public static void unshift<T>(this List<T> arr, T item)
         {
             arr.Insert(0, item);
         }
@@ -135,7 +135,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Return shallow copy of portion of array
         /// </summary>
-        public static List<T> slice<T>(List<T> arr, int start = 0, int? end = null)
+        public static List<T> slice<T>(this List<T> arr, int start = 0, int? end = null)
         {
             int actualStart = start < 0 ? System.Math.Max(0, arr.Count + start) : start;
             int actualEnd = end.HasValue
@@ -156,7 +156,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Add/remove elements at position
         /// </summary>
-        public static List<T> splice<T>(List<T> arr, int start, int? deleteCount = null, params T[] items)
+        public static List<T> splice<T>(this List<T> arr, int start, int? deleteCount = null, params T[] items)
         {
             int actualStart = start < 0 ? System.Math.Max(0, arr.Count + start) : System.Math.Min(start, arr.Count);
             int actualDeleteCount = deleteCount ?? (arr.Count - actualStart);
@@ -184,7 +184,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Map array elements to new array
         /// </summary>
-        public static List<TResult> map<T, TResult>(List<T> arr, Func<T, int, List<T>, TResult> callback)
+        public static List<TResult> map<T, TResult>(this List<T> arr, Func<T, int, List<T>, TResult> callback)
         {
             var result = new List<TResult>(arr.Count);
             for (int i = 0; i < arr.Count; i++)
@@ -197,7 +197,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Filter array elements
         /// </summary>
-        public static List<T> filter<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
+        public static List<T> filter<T>(this List<T> arr, Func<T, int, List<T>, bool> callback)
         {
             var result = new List<T>();
             for (int i = 0; i < arr.Count; i++)
@@ -213,7 +213,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Reduce array to single value (with initial value)
         /// </summary>
-        public static TResult reduce<T, TResult>(List<T> arr, Func<TResult, T, int, List<T>, TResult> callback, TResult initialValue)
+        public static TResult reduce<T, TResult>(this List<T> arr, Func<TResult, T, int, List<T>, TResult> callback, TResult initialValue)
         {
             TResult accumulator = initialValue;
             for (int i = 0; i < arr.Count; i++)
@@ -226,7 +226,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Reduce array to single value (no initial value)
         /// </summary>
-        public static T reduce<T>(List<T> arr, Func<T, T, int, List<T>, T> callback)
+        public static T reduce<T>(this List<T> arr, Func<T, T, int, List<T>, T> callback)
         {
             if (arr.Count == 0)
             {
@@ -244,7 +244,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Reduce array from right to left (with initial value)
         /// </summary>
-        public static TResult reduceRight<T, TResult>(List<T> arr, Func<TResult, T, int, List<T>, TResult> callback, TResult initialValue)
+        public static TResult reduceRight<T, TResult>(this List<T> arr, Func<TResult, T, int, List<T>, TResult> callback, TResult initialValue)
         {
             TResult accumulator = initialValue;
             for (int i = arr.Count - 1; i >= 0; i--)
@@ -257,7 +257,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Reduce array from right to left (no initial value)
         /// </summary>
-        public static T reduceRight<T>(List<T> arr, Func<T, T, int, List<T>, T> callback)
+        public static T reduceRight<T>(this List<T> arr, Func<T, T, int, List<T>, T> callback)
         {
             if (arr.Count == 0)
             {
@@ -275,7 +275,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Execute callback for each element
         /// </summary>
-        public static void forEach<T>(List<T> arr, Action<T, int, List<T>> callback)
+        public static void forEach<T>(this List<T> arr, Action<T, int, List<T>> callback)
         {
             for (int i = 0; i < arr.Count; i++)
             {
@@ -288,7 +288,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Find first element matching predicate
         /// </summary>
-        public static T find<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
+        public static T find<T>(this List<T> arr, Func<T, int, List<T>, bool> callback)
         {
             for (int i = 0; i < arr.Count; i++)
             {
@@ -303,7 +303,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Find index of first element matching predicate
         /// </summary>
-        public static int findIndex<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
+        public static int findIndex<T>(this List<T> arr, Func<T, int, List<T>, bool> callback)
         {
             for (int i = 0; i < arr.Count; i++)
             {
@@ -318,7 +318,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Find last element matching predicate
         /// </summary>
-        public static T findLast<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
+        public static T findLast<T>(this List<T> arr, Func<T, int, List<T>, bool> callback)
         {
             for (int i = arr.Count - 1; i >= 0; i--)
             {
@@ -333,7 +333,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Find index of last element matching predicate
         /// </summary>
-        public static int findLastIndex<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
+        public static int findLastIndex<T>(this List<T> arr, Func<T, int, List<T>, bool> callback)
         {
             for (int i = arr.Count - 1; i >= 0; i--)
             {
@@ -348,7 +348,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Find first index of element
         /// </summary>
-        public static int indexOf<T>(List<T> arr, T searchElement, int fromIndex = 0)
+        public static int indexOf<T>(this List<T> arr, T searchElement, int fromIndex = 0)
         {
             for (int i = fromIndex; i < arr.Count; i++)
             {
@@ -363,7 +363,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Find last index of element
         /// </summary>
-        public static int lastIndexOf<T>(List<T> arr, T searchElement, int? fromIndex = null)
+        public static int lastIndexOf<T>(this List<T> arr, T searchElement, int? fromIndex = null)
         {
             int startIndex = fromIndex ?? arr.Count - 1;
             if (startIndex < 0)
@@ -385,15 +385,15 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Check if array includes element
         /// </summary>
-        public static bool includes<T>(List<T> arr, T searchElement)
+        public static bool includes<T>(this List<T> arr, T searchElement)
         {
-            return indexOf(arr, searchElement) >= 0;
+            return arr.indexOf(searchElement) >= 0;
         }
 
         /// <summary>
         /// Test if every element matches predicate
         /// </summary>
-        public static bool every<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
+        public static bool every<T>(this List<T> arr, Func<T, int, List<T>, bool> callback)
         {
             for (int i = 0; i < arr.Count; i++)
             {
@@ -408,7 +408,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Test if any element matches predicate
         /// </summary>
-        public static bool some<T>(List<T> arr, Func<T, int, List<T>, bool> callback)
+        public static bool some<T>(this List<T> arr, Func<T, int, List<T>, bool> callback)
         {
             for (int i = 0; i < arr.Count; i++)
             {
@@ -425,7 +425,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Sort array in place and return the array (matches JavaScript behavior)
         /// </summary>
-        public static List<T> sort<T>(List<T> arr, Func<T, T, double>? compareFunc = null)
+        public static List<T> sort<T>(this List<T> arr, Func<T, T, double>? compareFunc = null)
         {
             if (compareFunc != null)
             {
@@ -450,7 +450,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Reverse array in place and return the array (matches JavaScript behavior)
         /// </summary>
-        public static List<T> reverse<T>(List<T> arr)
+        public static List<T> reverse<T>(this List<T> arr)
         {
             arr.Reverse();
             return arr;
@@ -461,7 +461,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Join array elements into string
         /// </summary>
-        public static string join<T>(List<T> arr, string separator = ",")
+        public static string join<T>(this List<T> arr, string separator = ",")
         {
             var parts = new List<string>();
             for (int i = 0; i < arr.Count; i++)
@@ -474,23 +474,23 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Convert to string
         /// </summary>
-        public static string toString<T>(List<T> arr)
+        public static string toString<T>(this List<T> arr)
         {
-            return join(arr, ",");
+            return arr.join(",");
         }
 
         /// <summary>
         /// Convert to locale string
         /// </summary>
-        public static string toLocaleString<T>(List<T> arr)
+        public static string toLocaleString<T>(this List<T> arr)
         {
-            return join(arr, ",");
+            return arr.join(",");
         }
 
         /// <summary>
         /// Concatenate arrays
         /// </summary>
-        public static List<T> concat<T>(List<T> arr, params object[] items)
+        public static List<T> concat<T>(this List<T> arr, params object[] items)
         {
             var result = new List<T>(arr);
 
@@ -514,7 +514,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get iterator for [index, value] pairs
         /// </summary>
-        public static IEnumerable<(int index, T value)> entries<T>(List<T> arr)
+        public static IEnumerable<(int index, T value)> entries<T>(this List<T> arr)
         {
             for (int i = 0; i < arr.Count; i++)
             {
@@ -525,7 +525,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get iterator for keys (indices)
         /// </summary>
-        public static IEnumerable<int> keys<T>(List<T> arr)
+        public static IEnumerable<int> keys<T>(this List<T> arr)
         {
             for (int i = 0; i < arr.Count; i++)
             {
@@ -536,7 +536,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get iterator for values
         /// </summary>
-        public static IEnumerable<T> values<T>(List<T> arr)
+        public static IEnumerable<T> values<T>(this List<T> arr)
         {
             for (int i = 0; i < arr.Count; i++)
             {
@@ -549,7 +549,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get element at index (supports negative indices)
         /// </summary>
-        public static T at<T>(List<T> arr, int index)
+        public static T at<T>(this List<T> arr, int index)
         {
             int actualIndex = index < 0 ? arr.Count + index : index;
             if (actualIndex < 0 || actualIndex >= arr.Count)
@@ -562,7 +562,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Flatten nested arrays by specified depth
         /// </summary>
-        public static List<object> flat<T>(List<T> arr, int depth = 1)
+        public static List<object> flat<T>(this List<T> arr, int depth = 1)
         {
             var result = new List<object>();
             FlattenHelper(arr, result, depth);
@@ -593,7 +593,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Map then flatten result
         /// </summary>
-        public static List<TResult> flatMap<T, TResult>(List<T> arr, Func<T, int, List<T>, object> callback)
+        public static List<TResult> flatMap<T, TResult>(this List<T> arr, Func<T, int, List<T>, object> callback)
         {
             var result = new List<TResult>();
             for (int i = 0; i < arr.Count; i++)
@@ -615,7 +615,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Fill array with value
         /// </summary>
-        public static List<T> fill<T>(List<T> arr, T value, int start = 0, int? end = null)
+        public static List<T> fill<T>(this List<T> arr, T value, int start = 0, int? end = null)
         {
             int actualStart = start < 0 ? System.Math.Max(0, arr.Count + start) : start;
             int actualEnd = end.HasValue
@@ -632,7 +632,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Copy array section to another location
         /// </summary>
-        public static List<T> copyWithin<T>(List<T> arr, int target, int start = 0, int? end = null)
+        public static List<T> copyWithin<T>(this List<T> arr, int target, int start = 0, int? end = null)
         {
             int actualTarget = target < 0 ? System.Math.Max(0, arr.Count + target) : target;
             int actualStart = start < 0 ? System.Math.Max(0, arr.Count + start) : start;
@@ -663,7 +663,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Create new array with element replaced (immutable)
         /// </summary>
-        public static List<T> @with<T>(List<T> arr, int index, T value)
+        public static List<T> @with<T>(this List<T> arr, int index, T value)
         {
             int actualIndex = index < 0 ? arr.Count + index : index;
             if (actualIndex < 0 || actualIndex >= arr.Count)
@@ -679,7 +679,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Create new reversed array (immutable)
         /// </summary>
-        public static List<T> toReversed<T>(List<T> arr)
+        public static List<T> toReversed<T>(this List<T> arr)
         {
             var result = new List<T>(arr);
             result.Reverse();
@@ -689,20 +689,20 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Create new sorted array (immutable)
         /// </summary>
-        public static List<T> toSorted<T>(List<T> arr, Func<T, T, double>? compareFunc = null)
+        public static List<T> toSorted<T>(this List<T> arr, Func<T, T, double>? compareFunc = null)
         {
             var result = new List<T>(arr);
-            sort(result, compareFunc);
+            result.sort(compareFunc);
             return result;
         }
 
         /// <summary>
         /// Create new spliced array (immutable)
         /// </summary>
-        public static List<T> toSpliced<T>(List<T> arr, int start, int? deleteCount = null, params T[] items)
+        public static List<T> toSpliced<T>(this List<T> arr, int start, int? deleteCount = null, params T[] items)
         {
             var result = new List<T>(arr);
-            splice(result, start, deleteCount, items);
+            result.splice(start, deleteCount, items);
             return result;
         }
 

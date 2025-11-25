@@ -1,152 +1,153 @@
 using System.Collections.Generic;
+using Tsonic.JSRuntime;
 using Xunit;
 
-namespace Tsonic.Runtime.Tests
+namespace Tsonic.JSRuntime.Tests
 {
     public class StringTests
     {
         [Fact]
         public void toUpperCase_ConvertsToUpperCase()
         {
-            Assert.Equal("HELLO", String.toUpperCase("hello"));
-            Assert.Equal("WORLD123", String.toUpperCase("world123"));
+            Assert.Equal("HELLO", "hello".toUpperCase());
+            Assert.Equal("WORLD123", "world123".toUpperCase());
         }
 
         [Fact]
         public void toLowerCase_ConvertsToLowerCase()
         {
-            Assert.Equal("hello", String.toLowerCase("HELLO"));
-            Assert.Equal("world123", String.toLowerCase("WORLD123"));
+            Assert.Equal("hello", "HELLO".toLowerCase());
+            Assert.Equal("world123", "WORLD123".toLowerCase());
         }
 
         [Fact]
         public void trim_RemovesWhitespace()
         {
-            Assert.Equal("hello", String.trim("  hello  "));
-            Assert.Equal("hello", String.trim("\thello\n"));
+            Assert.Equal("hello", "  hello  ".trim());
+            Assert.Equal("hello", "\thello\n".trim());
         }
 
         [Fact]
         public void trimStart_RemovesLeadingWhitespace()
         {
-            Assert.Equal("hello  ", String.trimStart("  hello  "));
+            Assert.Equal("hello  ", "  hello  ".trimStart());
         }
 
         [Fact]
         public void trimEnd_RemovesTrailingWhitespace()
         {
-            Assert.Equal("  hello", String.trimEnd("  hello  "));
+            Assert.Equal("  hello", "  hello  ".trimEnd());
         }
 
         [Fact]
         public void substring_ExtractsSubstring()
         {
-            Assert.Equal("llo", String.substring("hello", 2));
-            Assert.Equal("ll", String.substring("hello", 2, 4));
+            Assert.Equal("llo", "hello".substring(2));
+            Assert.Equal("ll", "hello".substring(2, 4));
         }
 
         [Fact]
         public void slice_ExtractsSlice()
         {
-            Assert.Equal("llo", String.slice("hello", 2));
-            Assert.Equal("ll", String.slice("hello", 2, 4));
+            Assert.Equal("llo", "hello".slice(2));
+            Assert.Equal("ll", "hello".slice(2, 4));
         }
 
         [Fact]
         public void slice_NegativeIndices_CountsFromEnd()
         {
-            Assert.Equal("lo", String.slice("hello", -2));
-            Assert.Equal("ell", String.slice("hello", 1, -1));
+            Assert.Equal("lo", "hello".slice(-2));
+            Assert.Equal("ell", "hello".slice(1, -1));
         }
 
         [Fact]
         public void indexOf_FindsFirstOccurrence()
         {
-            Assert.Equal(1, String.indexOf("hello", "e"));
-            Assert.Equal(2, String.indexOf("hello", "ll"));
-            Assert.Equal(-1, String.indexOf("hello", "x"));
+            Assert.Equal(1, "hello".indexOf("e"));
+            Assert.Equal(2, "hello".indexOf("ll"));
+            Assert.Equal(-1, "hello".indexOf("x"));
         }
 
         [Fact]
         public void indexOf_WithPosition_StartsSearch()
         {
-            Assert.Equal(4, String.indexOf("hello hello", "o", 3));
+            Assert.Equal(4, "hello hello".indexOf("o", 3));
         }
 
         [Fact]
         public void lastIndexOf_FindsLastOccurrence()
         {
-            Assert.Equal(10, String.lastIndexOf("hello hello", "o"));
-            Assert.Equal(4, String.lastIndexOf("hello", "o"));
+            Assert.Equal(10, "hello hello".lastIndexOf("o"));
+            Assert.Equal(4, "hello".lastIndexOf("o"));
         }
 
         [Fact]
         public void startsWith_ChecksPrefix()
         {
-            Assert.True(String.startsWith("hello", "hel"));
-            Assert.False(String.startsWith("hello", "llo"));
+            Assert.True("hello".startsWith("hel"));
+            Assert.False("hello".startsWith("llo"));
         }
 
         [Fact]
         public void endsWith_ChecksSuffix()
         {
-            Assert.True(String.endsWith("hello", "llo"));
-            Assert.False(String.endsWith("hello", "hel"));
+            Assert.True("hello".endsWith("llo"));
+            Assert.False("hello".endsWith("hel"));
         }
 
         [Fact]
         public void includes_ChecksContains()
         {
-            Assert.True(String.includes("hello world", "world"));
-            Assert.False(String.includes("hello world", "goodbye"));
+            Assert.True("hello world".includes("world"));
+            Assert.False("hello world".includes("goodbye"));
         }
 
         [Fact]
         public void replace_ReplacesOccurrences()
         {
-            Assert.Equal("hi world", String.replace("hello world", "hello", "hi"));
-            Assert.Equal("hxllo", String.replace("hello", "e", "x"));
+            Assert.Equal("hi world", "hello world".replace("hello", "hi"));
+            Assert.Equal("hxllo", "hello".replace("e", "x"));
         }
 
         [Fact]
         public void repeat_RepeatsString()
         {
-            Assert.Equal("lalala", String.repeat("la", 3));
-            Assert.Equal("", String.repeat("x", 0));
+            Assert.Equal("lalala", "la".repeat(3));
+            Assert.Equal("", "x".repeat(0));
         }
 
         [Fact]
         public void padStart_PadsAtStart()
         {
-            Assert.Equal("  hi", String.padStart("hi", 4));
-            Assert.Equal("xxhi", String.padStart("hi", 4, "x"));
+            Assert.Equal("  hi", "hi".padStart(4));
+            Assert.Equal("xxhi", "hi".padStart(4, "x"));
         }
 
         [Fact]
         public void padEnd_PadsAtEnd()
         {
-            Assert.Equal("hi  ", String.padEnd("hi", 4));
-            Assert.Equal("hixx", String.padEnd("hi", 4, "x"));
+            Assert.Equal("hi  ", "hi".padEnd(4));
+            Assert.Equal("hixx", "hi".padEnd(4, "x"));
         }
 
         [Fact]
         public void charAt_GetsCharacter()
         {
-            Assert.Equal("e", String.charAt("hello", 1));
-            Assert.Equal("", String.charAt("hello", 10));
+            Assert.Equal("e", "hello".charAt(1));
+            Assert.Equal("", "hello".charAt(10));
         }
 
         [Fact]
         public void charCodeAt_GetsCharCode()
         {
-            Assert.Equal(101.0, String.charCodeAt("hello", 1)); // 'e'
-            Assert.True(double.IsNaN(String.charCodeAt("hello", 10)));
+            Assert.Equal(101.0, "hello".charCodeAt(1)); // 'e'
+            Assert.True(double.IsNaN("hello".charCodeAt(10)));
         }
 
         [Fact]
         public void split_SplitsString()
         {
-            var result = String.split("a,b,c", ",");
+            var result = "a,b,c".split(",");
             Assert.Equal(3, result.Count);
             Assert.Equal("a", result[0]);
             Assert.Equal("b", result[1]);
@@ -156,7 +157,7 @@ namespace Tsonic.Runtime.Tests
         [Fact]
         public void split_WithLimit_LimitsResults()
         {
-            var result = String.split("a,b,c,d", ",", 2);
+            var result = "a,b,c,d".split(",", 2);
             Assert.Equal(2, result.Count);
             Assert.Equal("a", result[0]);
             Assert.Equal("b", result[1]);
@@ -165,8 +166,8 @@ namespace Tsonic.Runtime.Tests
         [Fact]
         public void length_ReturnsStringLength()
         {
-            Assert.Equal(5, String.length("hello"));
-            Assert.Equal(0, String.length(""));
+            Assert.Equal(5, "hello".length());
+            Assert.Equal(0, "".length());
         }
 
         // New method tests
@@ -174,43 +175,43 @@ namespace Tsonic.Runtime.Tests
         [Fact]
         public void at_PositiveIndex_ReturnsCharacter()
         {
-            Assert.Equal("e", String.at("hello", 1));
-            Assert.Equal("o", String.at("hello", 4));
+            Assert.Equal("e", "hello".at(1));
+            Assert.Equal("o", "hello".at(4));
         }
 
         [Fact]
         public void at_NegativeIndex_CountsFromEnd()
         {
-            Assert.Equal("o", String.at("hello", -1));
-            Assert.Equal("l", String.at("hello", -2));
+            Assert.Equal("o", "hello".at(-1));
+            Assert.Equal("l", "hello".at(-2));
         }
 
         [Fact]
         public void codePointAt_ReturnsCodePoint()
         {
-            Assert.Equal(104, String.codePointAt("hello", 0)); // 'h'
-            Assert.Equal(101, String.codePointAt("hello", 1)); // 'e'
+            Assert.Equal(104, "hello".codePointAt(0)); // 'h'
+            Assert.Equal(101, "hello".codePointAt(1)); // 'e'
         }
 
         [Fact]
         public void concat_ConcatenatesStrings()
         {
-            Assert.Equal("helloworld", String.concat("hello", "world"));
-            Assert.Equal("abc", String.concat("a", "b", "c"));
+            Assert.Equal("helloworld", "hello".concat("world"));
+            Assert.Equal("abc", "a".concat("b", "c"));
         }
 
         [Fact]
         public void localeCompare_ComparesStrings()
         {
-            Assert.True(String.localeCompare("a", "b") < 0);
-            Assert.True(String.localeCompare("b", "a") > 0);
-            Assert.Equal(0, String.localeCompare("a", "a"));
+            Assert.True("a".localeCompare("b") < 0);
+            Assert.True("b".localeCompare("a") > 0);
+            Assert.Equal(0, "a".localeCompare("a"));
         }
 
         [Fact]
         public void match_FindsPattern()
         {
-            var result = String.match("hello world", "wor");
+            var result = "hello world".match("wor");
             Assert.NotNull(result);
             Assert.Equal("wor", result[0]);
         }
@@ -218,79 +219,79 @@ namespace Tsonic.Runtime.Tests
         [Fact]
         public void match_NoMatch_ReturnsNull()
         {
-            var result = String.match("hello", "xyz");
+            var result = "hello".match("xyz");
             Assert.Null(result);
         }
 
         [Fact]
         public void matchAll_FindsAllMatches()
         {
-            var result = String.matchAll("test test test", "test");
+            var result = "test test test".matchAll("test");
             Assert.Equal(3, result.Count);
         }
 
         [Fact]
         public void search_FindsPatternIndex()
         {
-            Assert.Equal(6, String.search("hello world", "world"));
-            Assert.Equal(-1, String.search("hello", "xyz"));
+            Assert.Equal(6, "hello world".search("world"));
+            Assert.Equal(-1, "hello".search("xyz"));
         }
 
         [Fact]
         public void replaceAll_ReplacesAllOccurrences()
         {
-            Assert.Equal("hi hi hi", String.replaceAll("hello hello hello", "hello", "hi"));
+            Assert.Equal("hi hi hi", "hello hello hello".replaceAll("hello", "hi"));
         }
 
         [Fact]
         public void normalize_NormalizesUnicode()
         {
             var str = "\u00e9"; // é
-            var normalized = String.normalize(str, "NFC");
+            var normalized = str.normalize("NFC");
             Assert.NotNull(normalized);
         }
 
         [Fact]
         public void substr_ExtractsSubstring()
         {
-            Assert.Equal("llo", String.substr("hello", 2));
-            Assert.Equal("ll", String.substr("hello", 2, 2));
+            Assert.Equal("llo", "hello".substr(2));
+            Assert.Equal("ll", "hello".substr(2, 2));
         }
 
         [Fact]
         public void substr_NegativeStart_CountsFromEnd()
         {
-            Assert.Equal("lo", String.substr("hello", -2));
+            Assert.Equal("lo", "hello".substr(-2));
         }
 
         [Fact]
         public void toLocaleLowerCase_ConvertsToLowerCase()
         {
-            Assert.Equal("hello", String.toLocaleLowerCase("HELLO"));
+            Assert.Equal("hello", "HELLO".toLocaleLowerCase());
         }
 
         [Fact]
         public void toLocaleUpperCase_ConvertsToUpperCase()
         {
-            Assert.Equal("HELLO", String.toLocaleUpperCase("hello"));
+            Assert.Equal("HELLO", "hello".toLocaleUpperCase());
         }
 
         [Fact]
         public void toString_ReturnsString()
         {
-            Assert.Equal("hello", String.toString("hello"));
+            Assert.Equal("hello", "hello".toString());
         }
 
         [Fact]
         public void valueOf_ReturnsString()
         {
-            Assert.Equal("hello", String.valueOf("hello"));
+            Assert.Equal("hello", "hello".valueOf());
         }
 
         [Fact]
         public void isWellFormed_WellFormedString_ReturnsTrue()
         {
-            Assert.True(String.isWellFormed("hello"));
+            Assert.True("hello".isWellFormed());
         }
 
         [Fact]
@@ -298,28 +299,28 @@ namespace Tsonic.Runtime.Tests
         {
             // High surrogate without low surrogate
             var illFormed = "\ud800";
-            Assert.False(String.isWellFormed(illFormed));
+            Assert.False(illFormed.isWellFormed());
         }
 
         [Fact]
         public void toWellFormed_FixesIllFormedString()
         {
             var illFormed = "\ud800"; // High surrogate alone
-            var wellFormed = String.toWellFormed(illFormed);
+            var wellFormed = illFormed.toWellFormed();
             Assert.NotEqual(illFormed, wellFormed);
-            Assert.True(String.isWellFormed(wellFormed));
+            Assert.True(wellFormed.isWellFormed());
         }
 
         [Fact]
         public void trimLeft_RemovesLeadingWhitespace()
         {
-            Assert.Equal("hello  ", String.trimLeft("  hello  "));
+            Assert.Equal("hello  ", "  hello  ".trimLeft());
         }
 
         [Fact]
         public void trimRight_RemovesTrailingWhitespace()
         {
-            Assert.Equal("  hello", String.trimRight("  hello  "));
+            Assert.Equal("  hello", "  hello  ".trimRight());
         }
 
         [Fact]

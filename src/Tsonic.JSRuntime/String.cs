@@ -1,5 +1,5 @@
 /**
- * JavaScript String static helper methods
+ * JavaScript String extension methods
  * Operates on native C# string type
  */
 
@@ -7,17 +7,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Tsonic.Runtime
+namespace Tsonic.JSRuntime
 {
     /// <summary>
-    /// Static helper class for JavaScript string operations
+    /// Extension methods for JavaScript string operations
     /// </summary>
     public static class String
     {
         /// <summary>
         /// Convert string to upper case
         /// </summary>
-        public static string toUpperCase(string str)
+        public static string toUpperCase(this string str)
         {
             return str.ToUpper();
         }
@@ -25,7 +25,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Convert string to lower case
         /// </summary>
-        public static string toLowerCase(string str)
+        public static string toLowerCase(this string str)
         {
             return str.ToLower();
         }
@@ -33,7 +33,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Remove whitespace from both ends
         /// </summary>
-        public static string trim(string str)
+        public static string trim(this string str)
         {
             return str.Trim();
         }
@@ -41,7 +41,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Remove whitespace from start
         /// </summary>
-        public static string trimStart(string str)
+        public static string trimStart(this string str)
         {
             return str.TrimStart();
         }
@@ -49,7 +49,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Remove whitespace from end
         /// </summary>
-        public static string trimEnd(string str)
+        public static string trimEnd(this string str)
         {
             return str.TrimEnd();
         }
@@ -57,7 +57,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get substring from start to end
         /// </summary>
-        public static string substring(string str, int start, int? end = null)
+        public static string substring(this string str, int start, int? end = null)
         {
             int actualEnd = end ?? str.Length;
             int length = System.Math.Max(0, actualEnd - start);
@@ -67,7 +67,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get slice of string (supports negative indices)
         /// </summary>
-        public static string slice(string str, int start, int? end = null)
+        public static string slice(this string str, int start, int? end = null)
         {
             int len = str.Length;
             int actualStart = start < 0 ? System.Math.Max(0, len + start) : System.Math.Min(start, len);
@@ -81,7 +81,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Find first occurrence of substring
         /// </summary>
-        public static int indexOf(string str, string searchString, int position = 0)
+        public static int indexOf(this string str, string searchString, int position = 0)
         {
             return str.IndexOf(searchString, position);
         }
@@ -89,7 +89,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Find last occurrence of substring
         /// </summary>
-        public static int lastIndexOf(string str, string searchString, int? position = null)
+        public static int lastIndexOf(this string str, string searchString, int? position = null)
         {
             return position.HasValue
                 ? str.LastIndexOf(searchString, position.Value)
@@ -99,7 +99,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Check if string starts with substring
         /// </summary>
-        public static bool startsWith(string str, string searchString)
+        public static bool startsWith(this string str, string searchString)
         {
             return str.StartsWith(searchString);
         }
@@ -107,7 +107,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Check if string ends with substring
         /// </summary>
-        public static bool endsWith(string str, string searchString)
+        public static bool endsWith(this string str, string searchString)
         {
             return str.EndsWith(searchString);
         }
@@ -115,7 +115,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Check if string contains substring
         /// </summary>
-        public static bool includes(string str, string searchString)
+        public static bool includes(this string str, string searchString)
         {
             return str.Contains(searchString);
         }
@@ -123,7 +123,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Replace first occurrence of search with replacement
         /// </summary>
-        public static string replace(string str, string search, string replacement)
+        public static string replace(this string str, string search, string replacement)
         {
             return str.Replace(search, replacement);
         }
@@ -131,7 +131,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Repeat string count times
         /// </summary>
-        public static string repeat(string str, int count)
+        public static string repeat(this string str, int count)
         {
             return string.Concat(Enumerable.Repeat(str, count));
         }
@@ -139,7 +139,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Pad string at start to target length
         /// </summary>
-        public static string padStart(string str, int targetLength, string padString = " ")
+        public static string padStart(this string str, int targetLength, string padString = " ")
         {
             return str.PadLeft(targetLength, padString[0]);
         }
@@ -147,7 +147,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Pad string at end to target length
         /// </summary>
-        public static string padEnd(string str, int targetLength, string padString = " ")
+        public static string padEnd(this string str, int targetLength, string padString = " ")
         {
             return str.PadRight(targetLength, padString[0]);
         }
@@ -155,7 +155,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get character at index
         /// </summary>
-        public static string charAt(string str, int index)
+        public static string charAt(this string str, int index)
         {
             return index >= 0 && index < str.Length ? str[index].ToString() : "";
         }
@@ -163,7 +163,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get character code at index
         /// </summary>
-        public static double charCodeAt(string str, int index)
+        public static double charCodeAt(this string str, int index)
         {
             return index >= 0 && index < str.Length ? (double)str[index] : double.NaN;
         }
@@ -171,7 +171,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Split string into array
         /// </summary>
-        public static List<string> split(string str, string separator, int? limit = null)
+        public static List<string> split(this string str, string separator, int? limit = null)
         {
             string[] parts = str.Split(new[] { separator }, StringSplitOptions.None);
 
@@ -188,7 +188,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get string length
         /// </summary>
-        public static int length(string str)
+        public static int length(this string str)
         {
             return str.Length;
         }
@@ -196,7 +196,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get character at index (supports negative indices)
         /// </summary>
-        public static string at(string str, int index)
+        public static string at(this string str, int index)
         {
             int actualIndex = index < 0 ? str.Length + index : index;
             if (actualIndex < 0 || actualIndex >= str.Length)
@@ -209,7 +209,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get Unicode code point at index
         /// </summary>
-        public static int codePointAt(string str, int index)
+        public static int codePointAt(this string str, int index)
         {
             if (index < 0 || index >= str.Length)
             {
@@ -219,17 +219,17 @@ namespace Tsonic.Runtime
         }
 
         /// <summary>
-        /// Concatenate strings
+        /// Concatenate strings (instance method version)
         /// </summary>
-        public static string concat(params string[] strings)
+        public static string concat(this string str, params string[] strings)
         {
-            return string.Concat(strings);
+            return str + string.Concat(strings);
         }
 
         /// <summary>
         /// Locale-aware string comparison
         /// </summary>
-        public static int localeCompare(string str, string compareString)
+        public static int localeCompare(this string str, string compareString)
         {
             return string.Compare(str, compareString, System.Globalization.CultureInfo.CurrentCulture, System.Globalization.CompareOptions.None);
         }
@@ -237,7 +237,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Match string against regex pattern
         /// </summary>
-        public static List<string>? match(string str, string pattern)
+        public static List<string>? match(this string str, string pattern)
         {
             var regex = new System.Text.RegularExpressions.Regex(pattern);
             var match = regex.Match(str);
@@ -261,7 +261,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Match all occurrences against regex pattern
         /// </summary>
-        public static List<List<string>> matchAll(string str, string pattern)
+        public static List<List<string>> matchAll(this string str, string pattern)
         {
             var result = new List<List<string>>();
             var regex = new System.Text.RegularExpressions.Regex(pattern);
@@ -286,7 +286,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Search for regex pattern and return index
         /// </summary>
-        public static int search(string str, string pattern)
+        public static int search(this string str, string pattern)
         {
             var regex = new System.Text.RegularExpressions.Regex(pattern);
             var match = regex.Match(str);
@@ -296,7 +296,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Replace all occurrences of search with replacement
         /// </summary>
-        public static string replaceAll(string str, string search, string replacement)
+        public static string replaceAll(this string str, string search, string replacement)
         {
             return str.Replace(search, replacement);
         }
@@ -304,7 +304,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Normalize Unicode string
         /// </summary>
-        public static string normalize(string str, string form = "NFC")
+        public static string normalize(this string str, string form = "NFC")
         {
             System.Text.NormalizationForm normForm = form switch
             {
@@ -319,7 +319,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get substring from start (deprecated but still used)
         /// </summary>
-        public static string substr(string str, int start, int? length = null)
+        public static string substr(this string str, int start, int? length = null)
         {
             int actualStart = start < 0 ? System.Math.Max(0, str.Length + start) : start;
             if (actualStart >= str.Length)
@@ -336,7 +336,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Convert to lowercase using locale
         /// </summary>
-        public static string toLocaleLowerCase(string str)
+        public static string toLocaleLowerCase(this string str)
         {
             return str.ToLower(System.Globalization.CultureInfo.CurrentCulture);
         }
@@ -344,7 +344,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Convert to uppercase using locale
         /// </summary>
-        public static string toLocaleUpperCase(string str)
+        public static string toLocaleUpperCase(this string str)
         {
             return str.ToUpper(System.Globalization.CultureInfo.CurrentCulture);
         }
@@ -352,7 +352,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Convert to string
         /// </summary>
-        public static string toString(string str)
+        public static string toString(this string str)
         {
             return str;
         }
@@ -360,7 +360,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Get primitive value
         /// </summary>
-        public static string valueOf(string str)
+        public static string valueOf(this string str)
         {
             return str;
         }
@@ -368,7 +368,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Check if string is well-formed Unicode
         /// </summary>
-        public static bool isWellFormed(string str)
+        public static bool isWellFormed(this string str)
         {
             for (int i = 0; i < str.Length; i++)
             {
@@ -395,7 +395,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Ensure string is well-formed Unicode
         /// </summary>
-        public static string toWellFormed(string str)
+        public static string toWellFormed(this string str)
         {
             var result = new System.Text.StringBuilder();
             for (int i = 0; i < str.Length; i++)
@@ -432,7 +432,7 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Trim whitespace from start (alias for trimStart)
         /// </summary>
-        public static string trimLeft(string str)
+        public static string trimLeft(this string str)
         {
             return str.TrimStart();
         }
@@ -440,10 +440,12 @@ namespace Tsonic.Runtime
         /// <summary>
         /// Trim whitespace from end (alias for trimEnd)
         /// </summary>
-        public static string trimRight(string str)
+        public static string trimRight(this string str)
         {
             return str.TrimEnd();
         }
+
+        // ==================== Static Factory Methods ====================
 
         /// <summary>
         /// Static method: Create string from character codes

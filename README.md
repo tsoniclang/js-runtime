@@ -1,10 +1,10 @@
-# Tsonic.Runtime
+# Tsonic.JSRuntime
 
 JavaScript/TypeScript runtime implementation for the Tsonic compiler - provides exact JavaScript semantics in C#.
 
 ## Overview
 
-Tsonic.Runtime is a C# library that implements JavaScript semantics, enabling TypeScript code compiled by Tsonic to behave exactly like it would in a JavaScript runtime. This includes:
+Tsonic.JSRuntime is a C# library that implements JavaScript semantics, enabling TypeScript code compiled by Tsonic to behave exactly like it would in a JavaScript runtime. This includes:
 
 - **JavaScript Arrays** - Sparse arrays with JS semantics (length, holes, etc.)
 - **String manipulation** - JS string methods and behavior
@@ -34,7 +34,7 @@ This library is fully compatible with .NET NativeAOT, enabling TypeScript code t
 
 ## Package
 
-Published as `Tsonic.Runtime` on NuGet.
+Published as `Tsonic.JSRuntime` on NuGet.
 
 ## License
 
