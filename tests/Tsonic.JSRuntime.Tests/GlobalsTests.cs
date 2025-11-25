@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace Tsonic.Runtime.Tests
+namespace Tsonic.JSRuntime.Tests
 {
     public class GlobalsTests
     {

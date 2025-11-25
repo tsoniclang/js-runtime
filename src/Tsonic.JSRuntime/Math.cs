@@ -5,7 +5,7 @@
 using System;
 using System.Linq;
 
-namespace Tsonic.Runtime
+namespace Tsonic.JSRuntime
 {
     /// <summary>
     /// Math namespace with JavaScript constants and functions

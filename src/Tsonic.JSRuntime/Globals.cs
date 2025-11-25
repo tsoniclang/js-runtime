@@ -1,12 +1,12 @@
 /**
- * Global functions available at Tsonic.Runtime root level
+ * Global functions available at Tsonic.JSRuntime root level
  */
 
 using System;
 using System.Globalization;
 using System.Text;
 
-namespace Tsonic.Runtime
+namespace Tsonic.JSRuntime
 {
     /// <summary>
     /// Global functions (parseInt, parseFloat, encoding, etc.)

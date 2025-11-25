@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code when working with the Tsonic Runtime project.
+This file provides guidance to Claude Code when working with the Tsonic.JSRuntime project.
 
 ## Critical Guidelines
 
@@ -128,7 +128,7 @@ mkdir -p .analysis
 When you begin working on this project, you MUST:
 
 1. **Read this entire CLAUDE.md file** to understand the project conventions
-2. **Review the bindings manifest** (`src/Tsonic.Runtime/types/Tsonic.Runtime.bindings.json`)
+2. **Review the bindings manifest** (`src/Tsonic.JSRuntime/types/Tsonic.JSRuntime.bindings.json`)
 3. **Check JavaScript specification** as source of truth for runtime behavior
 4. **Review existing implementations** (Array.cs, String.cs, etc.) to understand patterns
 
@@ -136,7 +136,7 @@ Only after reading these documents should you proceed with implementation tasks.
 
 ## Project Overview
 
-**Tsonic Runtime** is a C# implementation of JavaScript/TypeScript runtime semantics for the Tsonic compiler. It enables TypeScript code compiled to C# to behave exactly like it would in a JavaScript runtime. This includes:
+**Tsonic.JSRuntime** is a C# implementation of JavaScript/TypeScript runtime semantics for the Tsonic compiler. It enables TypeScript code compiled to C# to behave exactly like it would in a JavaScript runtime. This includes:
 
 - **JavaScript Arrays** - Sparse arrays with JS semantics (length, holes, etc.)
 - **String manipulation** - JS string methods and behavior
@@ -151,20 +151,20 @@ Only after reading these documents should you proceed with implementation tasks.
 
 ### Bindings Manifest
 
-The runtime uses a single bindings file at `src/Tsonic.Runtime/types/Tsonic.Runtime.bindings.json` that maps JavaScript globals to C# types:
+The runtime uses a single bindings file at `src/Tsonic.JSRuntime/types/Tsonic.JSRuntime.bindings.json` that maps JavaScript globals to C# types:
 
 ```json
 {
   "bindings": {
     "console": {
       "kind": "global",
-      "assembly": "Tsonic.Runtime",
-      "type": "Tsonic.Runtime.console"
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.console"
     },
     "Math": {
       "kind": "global",
-      "assembly": "Tsonic.Runtime",
-      "type": "Tsonic.Runtime.Math"
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Math"
     }
   }
 }
@@ -173,18 +173,18 @@ The runtime uses a single bindings file at `src/Tsonic.Runtime/types/Tsonic.Runt
 ### Code Organization
 
 ```
-src/Tsonic.Runtime/              # C# implementation
-├── Array.cs                      # JavaScript Array semantics
-├── String.cs                     # JavaScript String methods
-├── console.cs                    # Console API (static class)
-├── Math.cs                       # Math object (static class)
-├── JSON.cs                       # JSON.stringify/parse (static class)
-├── Operators.cs                  # Type coercion and operators
-├── Structural.cs                 # Structural typing support
+src/Tsonic.JSRuntime/              # C# implementation
+├── Array.cs                        # JavaScript Array semantics
+├── String.cs                       # JavaScript String methods
+├── console.cs                      # Console API (static class)
+├── Math.cs                         # Math object (static class)
+├── JSON.cs                         # JSON.stringify/parse (static class)
+├── Operators.cs                    # Type coercion and operators
+├── Structural.cs                   # Structural typing support
 └── types/
-    └── Tsonic.Runtime.bindings.json  # Global bindings
+    └── Tsonic.JSRuntime.bindings.json  # Global bindings
 
-tests/Tsonic.Runtime.Tests/      # xUnit tests
+tests/Tsonic.JSRuntime.Tests/      # xUnit tests
 ├── ArrayTests.cs
 ├── StringTests.cs
 ├── ConsoleTests.cs
@@ -235,9 +235,9 @@ tests/Tsonic.Runtime.Tests/      # xUnit tests
 ### Adding a New Runtime Feature
 
 1. Research JavaScript specification and behavior
-2. Create or modify C# implementation in `src/Tsonic.Runtime/<feature>.cs`
-3. Add binding to `src/Tsonic.Runtime/types/Tsonic.Runtime.bindings.json` if it's a global
-4. Create comprehensive tests in `tests/Tsonic.Runtime.Tests/<Feature>Tests.cs`
+2. Create or modify C# implementation in `src/Tsonic.JSRuntime/<feature>.cs`
+3. Add binding to `src/Tsonic.JSRuntime/types/Tsonic.JSRuntime.bindings.json` if it's a global
+4. Create comprehensive tests in `tests/Tsonic.JSRuntime.Tests/<Feature>Tests.cs`
 5. Verify behavior matches JavaScript exactly (use Node.js REPL to test)
 6. Update README.md if adding major functionality
 

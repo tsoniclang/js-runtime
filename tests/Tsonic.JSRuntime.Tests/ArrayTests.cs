@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
+using Tsonic.JSRuntime;
 using Xunit;
 
-namespace Tsonic.Runtime.Tests
+namespace Tsonic.JSRuntime.Tests
 {
     public class ArrayTests
     {
@@ -27,7 +28,7 @@ namespace Tsonic.Runtime.Tests
         public void Indexer_SparseArray_SupportsHoles()
         {
             var arr = new List<int>();
-            Array.set(arr, 10, 42);
+            arr.set(10, 42);
 
             Assert.Equal(11, arr.Count);
             Assert.Equal(0, arr[0]); // Hole returns default
@@ -38,7 +39,7 @@ namespace Tsonic.Runtime.Tests
         public void length_SetToSmallerValue_TruncatesArray()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            Array.setLength(arr, 3);
+            arr.setLength(3);
 
             Assert.Equal(3, arr.Count);
         }
@@ -47,7 +48,7 @@ namespace Tsonic.Runtime.Tests
         public void length_SetToLargerValue_ExtendsArray()
         {
             var arr = new List<int> { 1, 2, 3 };
-            Array.setLength(arr, 5);
+            arr.setLength(5);
 
             Assert.Equal(5, arr.Count);
             Assert.Equal(0, arr[4]); // New slots filled with default
@@ -57,7 +58,7 @@ namespace Tsonic.Runtime.Tests
         public void push_AddsItemToEnd()
         {
             var arr = new List<string> { "a", "b" };
-            Array.push(arr, "c");
+            arr.push("c");
 
             Assert.Equal(3, arr.Count);
             Assert.Equal("c", arr[2]);
@@ -67,7 +68,7 @@ namespace Tsonic.Runtime.Tests
         public void pop_RemovesAndReturnsLastItem()
         {
             var arr = new List<string> { "a", "b", "c" };
-            var result = Array.pop(arr);
+            var result = arr.pop();
 
             Assert.Equal("c", result);
             Assert.Equal(2, arr.Count);
@@ -77,7 +78,7 @@ namespace Tsonic.Runtime.Tests
         public void pop_EmptyArray_ReturnsDefault()
         {
             var arr = new List<string>();
-            var result = Array.pop(arr);
+            var result = arr.pop();
 
             Assert.Null(result);
             Assert.Empty(arr);
@@ -87,7 +88,7 @@ namespace Tsonic.Runtime.Tests
         public void shift_RemovesAndReturnsFirstItem()
         {
             var arr = new List<string> { "a", "b", "c" };
-            var result = Array.shift(arr);
+            var result = arr.shift();
 
             Assert.Equal("a", result);
             Assert.Equal(2, arr.Count);
@@ -99,7 +100,7 @@ namespace Tsonic.Runtime.Tests
         public void shift_EmptyArray_ReturnsDefault()
         {
             var arr = new List<string>();
-            var result = Array.shift(arr);
+            var result = arr.shift();
 
             Assert.Null(result);
             Assert.Empty(arr);
@@ -109,7 +110,7 @@ namespace Tsonic.Runtime.Tests
         public void unshift_AddsItemToBeginning()
         {
             var arr = new List<string> { "b", "c" };
-            Array.unshift(arr, "a");
+            arr.unshift("a");
 
             Assert.Equal(3, arr.Count);
             Assert.Equal("a", arr[0]);
@@ -121,7 +122,7 @@ namespace Tsonic.Runtime.Tests
         public void slice_NoArguments_CopiesEntireArray()
         {
             var arr = new List<int> { 1, 2, 3 };
-            var result = Array.slice(arr);
+            var result = arr.slice();
 
             Assert.Equal(3, result.Count);
             Assert.Equal(1, result[0]);
@@ -133,7 +134,7 @@ namespace Tsonic.Runtime.Tests
         public void slice_WithStart_CopiesFromStart()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            var result = Array.slice(arr, 2);
+            var result = arr.slice(2);
 
             Assert.Equal(3, result.Count);
             Assert.Equal(3, result[0]);
@@ -145,7 +146,7 @@ namespace Tsonic.Runtime.Tests
         public void slice_WithStartAndEnd_CopiesRange()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            var result = Array.slice(arr, 1, 4);
+            var result = arr.slice(1, 4);
 
             Assert.Equal(3, result.Count);
             Assert.Equal(2, result[0]);
@@ -157,7 +158,7 @@ namespace Tsonic.Runtime.Tests
         public void slice_NegativeIndices_CountsFromEnd()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            var result = Array.slice(arr, -3, -1);
+            var result = arr.slice(-3, -1);
 
             Assert.Equal(2, result.Count);
             Assert.Equal(3, result[0]);
@@ -168,66 +169,66 @@ namespace Tsonic.Runtime.Tests
         public void indexOf_ItemExists_ReturnsIndex()
         {
             var arr = new List<string> { "a", "b", "c" };
-            Assert.Equal(1, Array.indexOf(arr, "b"));
+            Assert.Equal(1, arr.indexOf("b"));
         }
 
         [Fact]
         public void indexOf_ItemNotFound_ReturnsNegativeOne()
         {
             var arr = new List<string> { "a", "b", "c" };
-            Assert.Equal(-1, Array.indexOf(arr, "d"));
+            Assert.Equal(-1, arr.indexOf("d"));
         }
 
         [Fact]
         public void indexOf_WithFromIndex_StartsSearch()
         {
             var arr = new List<string> { "a", "b", "c", "b" };
-            Assert.Equal(3, Array.indexOf(arr, "b", 2));
+            Assert.Equal(3, arr.indexOf("b", 2));
         }
 
         [Fact]
         public void includes_ItemExists_ReturnsTrue()
         {
             var arr = new List<string> { "a", "b", "c" };
-            Assert.True(Array.includes(arr, "b"));
+            Assert.True(arr.includes("b"));
         }
 
         [Fact]
         public void includes_ItemNotFound_ReturnsFalse()
         {
             var arr = new List<string> { "a", "b", "c" };
-            Assert.False(Array.includes(arr, "d"));
+            Assert.False(arr.includes("d"));
         }
 
         [Fact]
         public void join_DefaultSeparator_UsesComma()
         {
             var arr = new List<string> { "a", "b", "c" };
-            Assert.Equal("a,b,c", Array.join(arr));
+            Assert.Equal("a,b,c", arr.join());
         }
 
         [Fact]
         public void join_CustomSeparator_UsesProvided()
         {
             var arr = new List<string> { "a", "b", "c" };
-            Assert.Equal("a-b-c", Array.join(arr, "-"));
+            Assert.Equal("a-b-c", arr.join("-"));
         }
 
         [Fact]
         public void join_SparseArray_HandlesHoles()
         {
             var arr = new List<string>();
-            Array.set(arr, 0, "a");
-            Array.set(arr, 2, "c");
+            arr.set(0, "a");
+            arr.set(2, "c");
 
-            Assert.Equal("a,,c", Array.join(arr, ","));
+            Assert.Equal("a,,c", arr.join(","));
         }
 
         [Fact]
         public void reverse_ReversesArrayInPlace()
         {
             var arr = new List<int> { 1, 2, 3 };
-            Array.reverse(arr);
+            arr.reverse();
 
             Assert.Equal(3, arr[0]);
             Assert.Equal(2, arr[1]);
@@ -250,8 +251,8 @@ namespace Tsonic.Runtime.Tests
         public void ToArray_SparseArray_FillsHolesWithDefault()
         {
             var arr = new List<int>();
-            Array.set(arr, 0, 1);
-            Array.set(arr, 2, 3);
+            arr.set(0, 1);
+            arr.set(2, 3);
 
             var native = arr.ToArray();
             Assert.Equal(3, native.Length);
@@ -278,8 +279,8 @@ namespace Tsonic.Runtime.Tests
         public void GetEnumerator_SparseArray_IncludesDefaultForHoles()
         {
             var arr = new List<int>();
-            Array.set(arr, 0, 1);
-            Array.set(arr, 2, 3);
+            arr.set(0, 1);
+            arr.set(2, 3);
 
             var items = arr.ToList();
             Assert.Equal(3, items.Count);
@@ -294,7 +295,7 @@ namespace Tsonic.Runtime.Tests
         public void map_TransformsElements()
         {
             var arr = new List<int> { 1, 2, 3 };
-            var result = Array.map(arr, (x, i, a) => x * 2);
+            var result = arr.map((x, i, a) => x * 2);
 
             Assert.Equal(3, result.Count);
             Assert.Equal(2, result[0]);
@@ -306,7 +307,7 @@ namespace Tsonic.Runtime.Tests
         public void filter_FiltersElements()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            var result = Array.filter(arr, (x, i, a) => x % 2 == 0);
+            var result = arr.filter((x, i, a) => x % 2 == 0);
 
             Assert.Equal(2, result.Count);
             Assert.Equal(2, result[0]);
@@ -317,7 +318,7 @@ namespace Tsonic.Runtime.Tests
         public void reduce_WithInitialValue_ReducesToSum()
         {
             var arr = new List<int> { 1, 2, 3, 4 };
-            var result = Array.reduce(arr, (acc, x, i, a) => acc + x, 0);
+            var result = arr.reduce((acc, x, i, a) => acc + x, 0);
 
             Assert.Equal(10, result);
         }
@@ -326,7 +327,7 @@ namespace Tsonic.Runtime.Tests
         public void reduce_NoInitialValue_ReducesToSum()
         {
             var arr = new List<int> { 1, 2, 3, 4 };
-            var result = Array.reduce(arr, (acc, x, i, a) => acc + x);
+            var result = arr.reduce((acc, x, i, a) => acc + x);
 
             Assert.Equal(10, result);
         }
@@ -335,7 +336,7 @@ namespace Tsonic.Runtime.Tests
         public void reduceRight_WithInitialValue_ReducesFromRight()
         {
             var arr = new List<string> { "a", "b", "c" };
-            var result = Array.reduceRight(arr, (acc, x, i, a) => acc + x, "");
+            var result = arr.reduceRight((acc, x, i, a) => acc + x, "");
 
             Assert.Equal("cba", result);
         }
@@ -345,7 +346,7 @@ namespace Tsonic.Runtime.Tests
         {
             var arr = new List<int> { 1, 2, 3 };
             var sum = 0;
-            Array.forEach(arr, (x, i, a) => { sum += x; });
+            arr.forEach((x, i, a) => { sum += x; });
 
             Assert.Equal(6, sum);
         }
@@ -354,7 +355,7 @@ namespace Tsonic.Runtime.Tests
         public void splice_RemovesAndInsertsElements()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            var deleted = Array.splice(arr, 2, 2, 99, 100);
+            var deleted = arr.splice(2, 2, 99, 100);
 
             Assert.Equal(2, deleted.Count);
             Assert.Equal(3, deleted[0]);
@@ -373,7 +374,7 @@ namespace Tsonic.Runtime.Tests
         {
             var arr1 = new List<int> { 1, 2 };
             var arr2 = new List<int> { 3, 4 };
-            var result = Array.concat(arr1, arr2, 5);
+            var result = arr1.concat(arr2, 5);
 
             Assert.Equal(5, result.Count);
             Assert.Equal(1, result[0]);
@@ -387,7 +388,7 @@ namespace Tsonic.Runtime.Tests
         public void find_FindsFirstMatch()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            var result = Array.find(arr, (x, i, a) => x > 3);
+            var result = arr.find((x, i, a) => x > 3);
 
             Assert.Equal(4, result);
         }
@@ -396,7 +397,7 @@ namespace Tsonic.Runtime.Tests
         public void findIndex_FindsFirstMatchIndex()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            var result = Array.findIndex(arr, (x, i, a) => x > 3);
+            var result = arr.findIndex((x, i, a) => x > 3);
 
             Assert.Equal(3, result);
         }
@@ -405,7 +406,7 @@ namespace Tsonic.Runtime.Tests
         public void findLast_FindsLastMatch()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            var result = Array.findLast(arr, (x, i, a) => x > 3);
+            var result = arr.findLast((x, i, a) => x > 3);
 
             Assert.Equal(5, result);
         }
@@ -414,7 +415,7 @@ namespace Tsonic.Runtime.Tests
         public void findLastIndex_FindsLastMatchIndex()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            var result = Array.findLastIndex(arr, (x, i, a) => x > 3);
+            var result = arr.findLastIndex((x, i, a) => x > 3);
 
             Assert.Equal(4, result);
         }
@@ -423,7 +424,7 @@ namespace Tsonic.Runtime.Tests
         public void every_AllMatch_ReturnsTrue()
         {
             var arr = new List<int> { 2, 4, 6 };
-            var result = Array.every(arr, (x, i, a) => x % 2 == 0);
+            var result = arr.every((x, i, a) => x % 2 == 0);
 
             Assert.True(result);
         }
@@ -432,7 +433,7 @@ namespace Tsonic.Runtime.Tests
         public void every_NotAllMatch_ReturnsFalse()
         {
             var arr = new List<int> { 2, 3, 6 };
-            var result = Array.every(arr, (x, i, a) => x % 2 == 0);
+            var result = arr.every((x, i, a) => x % 2 == 0);
 
             Assert.False(result);
         }
@@ -441,7 +442,7 @@ namespace Tsonic.Runtime.Tests
         public void some_AnyMatch_ReturnsTrue()
         {
             var arr = new List<int> { 1, 3, 4 };
-            var result = Array.some(arr, (x, i, a) => x % 2 == 0);
+            var result = arr.some((x, i, a) => x % 2 == 0);
 
             Assert.True(result);
         }
@@ -450,7 +451,7 @@ namespace Tsonic.Runtime.Tests
         public void some_NoneMatch_ReturnsFalse()
         {
             var arr = new List<int> { 1, 3, 5 };
-            var result = Array.some(arr, (x, i, a) => x % 2 == 0);
+            var result = arr.some((x, i, a) => x % 2 == 0);
 
             Assert.False(result);
         }
@@ -459,7 +460,7 @@ namespace Tsonic.Runtime.Tests
         public void lastIndexOf_FindsLastOccurrence()
         {
             var arr = new List<int> { 1, 2, 3, 2, 1 };
-            var result = Array.lastIndexOf(arr, 2);
+            var result = arr.lastIndexOf(2);
 
             Assert.Equal(3, result);
         }
@@ -468,7 +469,7 @@ namespace Tsonic.Runtime.Tests
         public void lastIndexOf_WithFromIndex_SearchesFromPosition()
         {
             var arr = new List<int> { 1, 2, 3, 2, 1 };
-            var result = Array.lastIndexOf(arr, 2, 2);
+            var result = arr.lastIndexOf(2, 2);
 
             Assert.Equal(1, result);
         }
@@ -477,7 +478,7 @@ namespace Tsonic.Runtime.Tests
         public void sort_WithoutCompare_SortsLexicographically()
         {
             var arr = new List<int> { 3, 1, 4, 1, 5 };
-            Array.sort(arr);
+            arr.sort();
 
             Assert.Equal(1, arr[0]);
             Assert.Equal(1, arr[1]);
@@ -490,7 +491,7 @@ namespace Tsonic.Runtime.Tests
         public void sort_WithCompare_SortsNumerically()
         {
             var arr = new List<int> { 10, 2, 30, 4 };
-            Array.sort(arr, (a, b) => a - b);
+            arr.sort((a, b) => a - b);
 
             Assert.Equal(2, arr[0]);
             Assert.Equal(4, arr[1]);
@@ -502,15 +503,15 @@ namespace Tsonic.Runtime.Tests
         public void at_PositiveIndex_ReturnsElement()
         {
             var arr = new List<int> { 1, 2, 3 };
-            Assert.Equal(2, Array.at(arr, 1));
+            Assert.Equal(2, arr.at(1));
         }
 
         [Fact]
         public void at_NegativeIndex_CountsFromEnd()
         {
             var arr = new List<int> { 1, 2, 3 };
-            Assert.Equal(3, Array.at(arr, -1));
-            Assert.Equal(2, Array.at(arr, -2));
+            Assert.Equal(3, arr.at(-1));
+            Assert.Equal(2, arr.at(-2));
         }
 
         [Fact]
@@ -519,7 +520,7 @@ namespace Tsonic.Runtime.Tests
             // Test that flat works - just verify it doesn't throw
             // Complex generic nested array flattening is tested in actual usage
             var arr = new List<object> { 1, 2, 3 };
-            var result = Array.flat(arr, 1);
+            var result = arr.flat(1);
 
             Assert.Equal(3, result.Count);
         }
@@ -528,7 +529,7 @@ namespace Tsonic.Runtime.Tests
         public void flatMap_MapsAndFlattens()
         {
             var arr = new List<int> { 1, 2, 3 };
-            var result = Array.flatMap<int, int>(arr, (x, i, a) => new List<int> { x, x * 2 });
+            var result = arr.flatMap<int, int>((x, i, a) => new List<int> { x, x * 2 });
 
             Assert.Equal(6, result.Count);
             Assert.Equal(1, result[0]);
@@ -541,7 +542,7 @@ namespace Tsonic.Runtime.Tests
         public void fill_FillsWithValue()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            Array.fill(arr, 0, 1, 4);
+            arr.fill(0, 1, 4);
 
             Assert.Equal(1, arr[0]);
             Assert.Equal(0, arr[1]);
@@ -554,7 +555,7 @@ namespace Tsonic.Runtime.Tests
         public void copyWithin_CopiesSection()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            Array.copyWithin(arr, 0, 3, 5);
+            arr.copyWithin(0, 3, 5);
 
             Assert.Equal(4, arr[0]);
             Assert.Equal(5, arr[1]);
@@ -567,7 +568,7 @@ namespace Tsonic.Runtime.Tests
         public void entries_ReturnsIndexValuePairs()
         {
             var arr = new List<string> { "a", "b", "c" };
-            var entries = Array.entries(arr).ToList();
+            var entries = arr.entries().ToList();
 
             Assert.Equal(3, entries.Count);
             Assert.Equal((0, "a"), entries[0]);
@@ -579,7 +580,7 @@ namespace Tsonic.Runtime.Tests
         public void keys_ReturnsIndices()
         {
             var arr = new List<int> { 10, 20, 30 };
-            var keys = Array.keys(arr).ToList();
+            var keys = arr.keys().ToList();
 
             Assert.Equal(3, keys.Count);
             Assert.Equal(0, keys[0]);
@@ -591,7 +592,7 @@ namespace Tsonic.Runtime.Tests
         public void values_ReturnsValues()
         {
             var arr = new List<int> { 10, 20, 30 };
-            var values = Array.values(arr).ToList();
+            var values = arr.values().ToList();
 
             Assert.Equal(3, values.Count);
             Assert.Equal(10, values[0]);
@@ -603,21 +604,21 @@ namespace Tsonic.Runtime.Tests
         public void toString_ReturnsCommaSeparatedString()
         {
             var arr = new List<int> { 1, 2, 3 };
-            Assert.Equal("1,2,3", Array.toString(arr));
+            Assert.Equal("1,2,3", arr.toString());
         }
 
         [Fact]
         public void toLocaleString_ReturnsCommaSeparatedString()
         {
             var arr = new List<int> { 1, 2, 3 };
-            Assert.Equal("1,2,3", Array.toLocaleString(arr));
+            Assert.Equal("1,2,3", arr.toLocaleString());
         }
 
         [Fact]
         public void with_ReplacesElement_Immutably()
         {
             var arr = new List<int> { 1, 2, 3 };
-            var result = Array.@with(arr, 1, 99);
+            var result = arr.@with(1, 99);
 
             Assert.Equal(3, result.Count);
             Assert.Equal(1, result[0]);
@@ -632,7 +633,7 @@ namespace Tsonic.Runtime.Tests
         public void toReversed_ReversesImmutably()
         {
             var arr = new List<int> { 1, 2, 3 };
-            var result = Array.toReversed(arr);
+            var result = arr.toReversed();
 
             Assert.Equal(3, result[0]);
             Assert.Equal(2, result[1]);
@@ -646,7 +647,7 @@ namespace Tsonic.Runtime.Tests
         public void toSorted_SortsImmutably()
         {
             var arr = new List<int> { 3, 1, 2 };
-            var result = Array.toSorted(arr, (a, b) => a - b);
+            var result = arr.toSorted((a, b) => a - b);
 
             Assert.Equal(1, result[0]);
             Assert.Equal(2, result[1]);
@@ -660,7 +661,7 @@ namespace Tsonic.Runtime.Tests
         public void toSpliced_SplicesImmutably()
         {
             var arr = new List<int> { 1, 2, 3, 4 };
-            var result = Array.toSpliced(arr, 1, 2, 99);
+            var result = arr.toSpliced(1, 2, 99);
 
             Assert.Equal(3, result.Count);
             Assert.Equal(1, result[0]);
@@ -725,7 +726,7 @@ namespace Tsonic.Runtime.Tests
         public void setLength_Truncates()
         {
             var arr = new List<int> { 1, 2, 3, 4, 5 };
-            Array.setLength(arr, 3);
+            arr.setLength(3);
 
             Assert.Equal(3, arr.Count);
             Assert.Equal(1, arr[0]);

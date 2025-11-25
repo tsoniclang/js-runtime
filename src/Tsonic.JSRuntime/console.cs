@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Tsonic.Runtime
+namespace Tsonic.JSRuntime
 {
     /// <summary>
     /// Console logging functions (lowercase class name to match JavaScript)
