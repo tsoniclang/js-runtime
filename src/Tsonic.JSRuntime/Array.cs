@@ -85,11 +85,12 @@ namespace Tsonic.JSRuntime
         // ==================== Basic Mutation Methods ====================
 
         /// <summary>
-        /// Add element to end of array
+        /// Add element to end of array and return new length
         /// </summary>
-        public static void push<T>(this List<T> arr, T item)
+        public static int push<T>(this List<T> arr, T item)
         {
             arr.Add(item);
+            return arr.Count;
         }
 
         /// <summary>
@@ -123,11 +124,12 @@ namespace Tsonic.JSRuntime
         }
 
         /// <summary>
-        /// Add element to beginning of array
+        /// Add element to beginning of array and return new length
         /// </summary>
-        public static void unshift<T>(this List<T> arr, T item)
+        public static int unshift<T>(this List<T> arr, T item)
         {
             arr.Insert(0, item);
+            return arr.Count;
         }
 
         // ==================== Slicing Methods ====================

@@ -80,7 +80,7 @@ namespace Tsonic.JSRuntime
         /// <summary>
         /// Returns current time in milliseconds since epoch
         /// </summary>
-        public static double now() => (DateTimeOffset.UtcNow - Epoch).TotalMilliseconds;
+        public static long now() => (long)(DateTimeOffset.UtcNow - Epoch).TotalMilliseconds;
 
         /// <summary>
         /// Parse date string and return milliseconds since epoch
@@ -116,7 +116,7 @@ namespace Tsonic.JSRuntime
         /// <summary>
         /// Get milliseconds since epoch
         /// </summary>
-        public double getTime() => (_value - Epoch).TotalMilliseconds;
+        public long getTime() => (long)(_value - Epoch).TotalMilliseconds;
 
         /// <summary>
         /// Get full year (4 digits)
@@ -430,6 +430,6 @@ namespace Tsonic.JSRuntime
         /// <summary>
         /// Get primitive value (milliseconds since epoch)
         /// </summary>
-        public double valueOf() => getTime();
+        public long valueOf() => getTime();
     }
 }

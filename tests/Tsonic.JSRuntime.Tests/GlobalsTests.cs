@@ -5,13 +5,13 @@ namespace Tsonic.JSRuntime.Tests
     public class GlobalsTests
     {
         [Theory]
-        [InlineData("42", null, 42)]
-        [InlineData("42", 10, 42)]
-        [InlineData("101", 2, 5)]
-        [InlineData("FF", 16, 255)]
-        [InlineData("77", 8, 63)]
-        [InlineData("  42  ", 10, 42)]
-        public void parseInt_ValidInput_ReturnsCorrectValue(string input, int? radix, double expected)
+        [InlineData("42", null, 42L)]
+        [InlineData("42", 10, 42L)]
+        [InlineData("101", 2, 5L)]
+        [InlineData("FF", 16, 255L)]
+        [InlineData("77", 8, 63L)]
+        [InlineData("  42  ", 10, 42L)]
+        public void parseInt_ValidInput_ReturnsCorrectValue(string input, int? radix, long expected)
         {
             var result = Globals.parseInt(input, radix);
             Assert.Equal(expected, result);
@@ -23,10 +23,10 @@ namespace Tsonic.JSRuntime.Tests
         [InlineData("abc", 10)]
         [InlineData("123", 1)]  // Invalid radix
         [InlineData("123", 37)] // Invalid radix
-        public void parseInt_InvalidInput_ReturnsNaN(string input, int? radix)
+        public void parseInt_InvalidInput_ReturnsNull(string input, int? radix)
         {
             var result = Globals.parseInt(input, radix);
-            Assert.True(double.IsNaN(result));
+            Assert.Null(result);
         }
 
         [Theory]

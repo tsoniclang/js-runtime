@@ -19,13 +19,14 @@ namespace Tsonic.JSRuntime
         public static readonly object? undefined = null;
 
         /// <summary>
-        /// Parse string to integer with optional radix
+        /// Parse string to integer with optional radix.
+        /// Returns null if parsing fails.
         /// </summary>
-        public static double parseInt(string str, int? radix = null)
+        public static long? parseInt(string str, int? radix = null)
         {
             if (string.IsNullOrWhiteSpace(str))
             {
-                return double.NaN;
+                return null;
             }
 
             str = str.Trim();
@@ -33,16 +34,16 @@ namespace Tsonic.JSRuntime
 
             if (actualRadix < 2 || actualRadix > 36)
             {
-                return double.NaN;
+                return null;
             }
 
             try
             {
-                return Convert.ToInt32(str, actualRadix);
+                return Convert.ToInt64(str, actualRadix);
             }
             catch
             {
-                return double.NaN;
+                return null;
             }
         }
 
