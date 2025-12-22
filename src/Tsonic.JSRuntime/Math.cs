@@ -24,9 +24,27 @@ namespace Tsonic.JSRuntime
 
         // Common mathematical functions
         public static double abs(double x) => System.Math.Abs(x);
-        public static double ceil(double x) => System.Math.Ceiling(x);
-        public static double floor(double x) => System.Math.Floor(x);
-        public static double round(double x) => System.Math.Round(x);
+        public static long ceil(double x)
+        {
+            if (double.IsPositiveInfinity(x)) return long.MaxValue;
+            if (double.IsNegativeInfinity(x)) return long.MinValue;
+            if (double.IsNaN(x)) return 0;
+            return (long)System.Math.Ceiling(x);
+        }
+        public static long floor(double x)
+        {
+            if (double.IsPositiveInfinity(x)) return long.MaxValue;
+            if (double.IsNegativeInfinity(x)) return long.MinValue;
+            if (double.IsNaN(x)) return 0;
+            return (long)System.Math.Floor(x);
+        }
+        public static long round(double x)
+        {
+            if (double.IsPositiveInfinity(x)) return long.MaxValue;
+            if (double.IsNegativeInfinity(x)) return long.MinValue;
+            if (double.IsNaN(x)) return 0;
+            return (long)System.Math.Round(x);
+        }
         public static double sqrt(double x) => System.Math.Sqrt(x);
         public static double pow(double x, double y) => System.Math.Pow(x, y);
 
@@ -54,8 +72,14 @@ namespace Tsonic.JSRuntime
         public static double random() => _random.NextDouble();
 
         // Sign and truncation
-        public static double sign(double x) => System.Math.Sign(x);
-        public static double trunc(double x) => System.Math.Truncate(x);
+        public static int sign(double x) => System.Math.Sign(x);
+        public static long trunc(double x)
+        {
+            if (double.IsPositiveInfinity(x)) return long.MaxValue;
+            if (double.IsNegativeInfinity(x)) return long.MinValue;
+            if (double.IsNaN(x)) return 0;
+            return (long)System.Math.Truncate(x);
+        }
 
         // Hyperbolic functions
         public static double sinh(double x) => System.Math.Sinh(x);

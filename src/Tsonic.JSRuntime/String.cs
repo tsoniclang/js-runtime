@@ -161,11 +161,16 @@ namespace Tsonic.JSRuntime
         }
 
         /// <summary>
-        /// Get character code at index
+        /// Get character code at index.
+        /// Throws ArgumentOutOfRangeException if index is out of bounds.
         /// </summary>
-        public static double charCodeAt(this string str, int index)
+        public static int charCodeAt(this string str, int index)
         {
-            return index >= 0 && index < str.Length ? (double)str[index] : double.NaN;
+            if (index < 0 || index >= str.Length)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index), "Index out of range");
+            }
+            return str[index];
         }
 
         /// <summary>
