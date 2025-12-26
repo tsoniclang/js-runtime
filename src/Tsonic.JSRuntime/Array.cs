@@ -492,7 +492,37 @@ namespace Tsonic.JSRuntime
         // ==================== Search Methods ====================
 
         /// <summary>
-        /// Find first element matching predicate
+        /// Find first element matching predicate (value only)
+        /// </summary>
+        public static T find<T>(this List<T> arr, Func<T, bool> callback)
+        {
+            for (int i = 0; i < arr.Count; i++)
+            {
+                if (callback(arr[i]))
+                {
+                    return arr[i];
+                }
+            }
+            return default(T)!;
+        }
+
+        /// <summary>
+        /// Find first element matching predicate (value, index)
+        /// </summary>
+        public static T find<T>(this List<T> arr, Func<T, int, bool> callback)
+        {
+            for (int i = 0; i < arr.Count; i++)
+            {
+                if (callback(arr[i], i))
+                {
+                    return arr[i];
+                }
+            }
+            return default(T)!;
+        }
+
+        /// <summary>
+        /// Find first element matching predicate (value, index, array)
         /// </summary>
         public static T find<T>(this List<T> arr, Func<T, int, List<T>, bool> callback)
         {
@@ -507,7 +537,37 @@ namespace Tsonic.JSRuntime
         }
 
         /// <summary>
-        /// Find index of first element matching predicate
+        /// Find index of first element matching predicate (value only)
+        /// </summary>
+        public static int findIndex<T>(this List<T> arr, Func<T, bool> callback)
+        {
+            for (int i = 0; i < arr.Count; i++)
+            {
+                if (callback(arr[i]))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Find index of first element matching predicate (value, index)
+        /// </summary>
+        public static int findIndex<T>(this List<T> arr, Func<T, int, bool> callback)
+        {
+            for (int i = 0; i < arr.Count; i++)
+            {
+                if (callback(arr[i], i))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Find index of first element matching predicate (value, index, array)
         /// </summary>
         public static int findIndex<T>(this List<T> arr, Func<T, int, List<T>, bool> callback)
         {
@@ -522,7 +582,37 @@ namespace Tsonic.JSRuntime
         }
 
         /// <summary>
-        /// Find last element matching predicate
+        /// Find last element matching predicate (value only)
+        /// </summary>
+        public static T findLast<T>(this List<T> arr, Func<T, bool> callback)
+        {
+            for (int i = arr.Count - 1; i >= 0; i--)
+            {
+                if (callback(arr[i]))
+                {
+                    return arr[i];
+                }
+            }
+            return default(T)!;
+        }
+
+        /// <summary>
+        /// Find last element matching predicate (value, index)
+        /// </summary>
+        public static T findLast<T>(this List<T> arr, Func<T, int, bool> callback)
+        {
+            for (int i = arr.Count - 1; i >= 0; i--)
+            {
+                if (callback(arr[i], i))
+                {
+                    return arr[i];
+                }
+            }
+            return default(T)!;
+        }
+
+        /// <summary>
+        /// Find last element matching predicate (value, index, array)
         /// </summary>
         public static T findLast<T>(this List<T> arr, Func<T, int, List<T>, bool> callback)
         {
@@ -537,7 +627,37 @@ namespace Tsonic.JSRuntime
         }
 
         /// <summary>
-        /// Find index of last element matching predicate
+        /// Find index of last element matching predicate (value only)
+        /// </summary>
+        public static int findLastIndex<T>(this List<T> arr, Func<T, bool> callback)
+        {
+            for (int i = arr.Count - 1; i >= 0; i--)
+            {
+                if (callback(arr[i]))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Find index of last element matching predicate (value, index)
+        /// </summary>
+        public static int findLastIndex<T>(this List<T> arr, Func<T, int, bool> callback)
+        {
+            for (int i = arr.Count - 1; i >= 0; i--)
+            {
+                if (callback(arr[i], i))
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        /// <summary>
+        /// Find index of last element matching predicate (value, index, array)
         /// </summary>
         public static int findLastIndex<T>(this List<T> arr, Func<T, int, List<T>, bool> callback)
         {
