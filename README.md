@@ -21,6 +21,34 @@ Tsonic.JSRuntime is a C# library that implements JavaScript semantics, enabling 
 - **Date** - Date object with timezone support
 - **RegExp** - Regular expression support with JavaScript flags
 
+## For Tsonic Users
+
+Install and enable the bindings package:
+
+```bash
+# new project
+tsonic project init --js
+
+# existing project
+tsonic add js
+```
+
+Then import JS runtime APIs from `@tsonic/js/index.js`:
+
+```ts
+import { console, JSON } from "@tsonic/js/index.js";
+
+export function main(): void {
+  const value = JSON.parse<{ x: number }>('{"x": 1}');
+  console.log(JSON.stringify(value));
+}
+```
+
+Documentation:
+
+- `docs/README.md`
+- https://tsonic.org/js/
+
 ## Building
 
 ```bash
