@@ -18,3 +18,15 @@ export function main(): void {
 }
 ```
 
+## API Reference
+
+<!-- API:START -->
+### `JSON`
+
+```ts
+export declare const JSON: {
+  parse<T>(text: string): T;
+  stringify(value: unknown): string;
+};
+```
+<!-- API:END -->
