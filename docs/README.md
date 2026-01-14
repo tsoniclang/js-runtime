@@ -13,18 +13,18 @@ This is **not** Node.js. It’s a JS-semantics runtime implemented in .NET so Ty
 
 ### APIs
 
-3. [`console`](modules/console.md)
-4. [`JSON`](modules/json.md)
-5. [`Math`](modules/math.md)
-6. [`Timers`](modules/timers.md)
-7. [`Globals`](modules/globals.md) (global functions like `parseInt`)
-8. [`JSArray`](modules/jsarray.md)
-9. [`Map`/`Set`/`WeakMap`/`WeakSet`](modules/collections.md)
-10. [`ArrayBuffer` + Typed Arrays](modules/typed-arrays.md)
-11. [`Date`](modules/date.md)
-12. [`RegExp`](modules/regexp.md)
-13. [`Number`](modules/number.md)
-14. [`String`](modules/string.md)
+3. [console](modules/console.md)
+4. [JSON](modules/json.md)
+5. [Math](modules/math.md)
+6. [Timers](modules/timers.md)
+7. [Globals](modules/globals.md) (global functions like `parseInt`)
+8. [JSArray](modules/jsarray.md)
+9. [Map/Set/WeakMap/WeakSet](modules/collections.md)
+10. [ArrayBuffer + Typed Arrays](modules/typed-arrays.md)
+11. [Date](modules/date.md)
+12. [RegExp](modules/regexp.md)
+13. [Number](modules/number.md)
+14. [String](modules/string.md)
 
 ## Overview
 
@@ -45,4 +45,3 @@ export function main(): void {
 - `@tsonic/nodejs` provides Node-style APIs (fs/path/http/crypto/process, etc.) implemented on .NET.
 
 You can enable either or both in a project.
-
