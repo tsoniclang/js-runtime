@@ -17,3 +17,47 @@ export function main(): void {
 }
 ```
 
+## API Reference
+
+<!-- API:START -->
+### `RegExp`
+
+```ts
+export interface RegExp {
+    readonly dotAll: boolean;
+    readonly flags: string;
+    readonly global: boolean;
+    readonly ignoreCase: boolean;
+    lastIndex: int;
+    readonly multiline: boolean;
+    readonly source: string;
+    readonly sticky: boolean;
+    readonly unicode: boolean;
+    exec(str: string): RegExpMatchResult | undefined;
+    test(str: string): boolean;
+    toString(): string;
+}
+
+export const RegExp: {
+    new(pattern: string): RegExp;
+    new(pattern: string, flags: string): RegExp;
+};
+```
+
+### `RegExpMatchResult`
+
+```ts
+export interface RegExpMatchResult {
+    readonly groups: (string | undefined)[];
+    readonly index: int;
+    readonly input: string;
+    readonly item: string;
+    readonly length: int;
+    readonly value: string;
+}
+
+export const RegExpMatchResult: {
+    new(value: string, index: int, input: string, groups: string[]): RegExpMatchResult;
+};
+```
+<!-- API:END -->

@@ -18,3 +18,19 @@ export function main(): void {
 }
 ```
 
+## API Reference
+
+<!-- API:START -->
+### `Timers`
+
+```ts
+export declare const Timers: {
+  clearInterval(id: int): void;
+  clearTimeout(id: int): void;
+  setInterval<T>(callback: Action<T>, intervalMs: int, arg: T): int;
+  setInterval(callback: Action, intervalMs: int): int;
+  setTimeout<T>(callback: Action<T>, delayMs: int, arg: T): int;
+  setTimeout(callback: Action, delayMs?: int): int;
+};
+```
+<!-- API:END -->
