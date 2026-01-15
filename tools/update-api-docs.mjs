@@ -373,5 +373,45 @@ for (const pageName of pageSymbols.keys()) {
   injectApiIntoDoc(docPath, apiMarkdown);
 }
 
-console.log(`Updated API reference sections for ${pageSymbols.size} pages.`);
+const collectAliasedGenericNames = (exportMap) => {
+  const aliased = [];
+  for (const [publicName, internalName] of exportMap.entries()) {
+    if (publicName === internalName) continue;
+    if (!/_\d+$/.test(internalName)) continue;
+    aliased.push({ publicName, internalName });
+  }
+  return aliased;
+};
 
+const assertDocsHideAliasedGenerics = (docPaths, aliasedGenericNames) => {
+  if (aliasedGenericNames.length === 0) return;
+
+  const escaped = aliasedGenericNames
+    .map(({ internalName }) => escapeRegExp(internalName))
+    .join("|");
+  const needle = new RegExp(`\\b(?:${escaped})\\b`, "g");
+
+  const failures = [];
+  for (const docPath of docPaths) {
+    const contents = readText(docPath);
+    const matches = contents.match(needle);
+    if (matches?.length) {
+      failures.push({ docPath, matches: Array.from(new Set(matches)).sort() });
+    }
+  }
+
+  if (failures.length) {
+    console.error("Docs leaked internal generic-arity names (expected facade names instead):");
+    for (const failure of failures) {
+      console.error(`  - ${path.relative(repoRoot, failure.docPath)}: ${failure.matches.join(", ")}`);
+    }
+    process.exit(1);
+  }
+};
+
+assertDocsHideAliasedGenerics(
+  Array.from(pageSymbols.keys()).map((pageName) => path.resolve(docsModulesDir, `${pageName}.md`)),
+  collectAliasedGenericNames(exportsMap),
+);
+
+console.log(`Updated API reference sections for ${pageSymbols.size} pages.`);

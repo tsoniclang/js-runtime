@@ -13,16 +13,14 @@ import { console, Map, Set } from "@tsonic/js/index.js";
 
 export function main(): void {
   const m = new Map<string, number>();
-  m.set_("a", 1);
-  console.log(m.get_("a"));
+  m.set("a", 1);
+  console.log(m.get("a"));
 
   const s = new Set<number>();
   s.add(1);
   console.log(s.has(1));
 }
 ```
-
-Note: some methods are suffixed with `_` (example: `set_`, `get_`, `delete_`) to avoid clashes with reserved words and runtime naming rules.
 
 ## API Reference
 
@@ -33,16 +31,16 @@ Note: some methods are suffixed with `_` (example: `set_`, `get_`, `delete_`) to
 export interface Map<K, V> {
     readonly size: int;
     clear(): void;
-    delete_(key: K): boolean;
+    delete(key: K): boolean;
     entries(): IEnumerable__System_Collections_Generic<ValueTuple<K, V>>;
     forEach(callback: Action<V, K, Map<K, V>>): void;
     forEach(callback: Action<V, K>): void;
     forEach(callback: Action<V>): void;
-    get_(key: K): V | undefined;
+    get(key: K): V | undefined;
     getEnumerator(): IEnumerator<KeyValuePair<K, V>>;
     has(key: K): boolean;
     keys(): IEnumerable__System_Collections_Generic<K>;
-    set_(key: K, value: V): Map<K, V>;
+    set(key: K, value: V): Map<K, V>;
     values(): IEnumerable__System_Collections_Generic<V>;
 }
 
@@ -59,7 +57,7 @@ export interface Set<T> {
     readonly size: int;
     add(value: T): Set<T>;
     clear(): void;
-    delete_(value: T): boolean;
+    delete(value: T): boolean;
     difference(other: Set<T>): Set<T>;
     entries(): IEnumerable__System_Collections_Generic<ValueTuple<T, T>>;
     forEach(callback: Action<T, T, Set<T>>): void;
@@ -87,10 +85,10 @@ export const Set: {
 
 ```ts
 export interface WeakMap<K, V> {
-    delete_(key: K): boolean;
-    get_(key: K): V | undefined;
+    delete(key: K): boolean;
+    get(key: K): V | undefined;
     has(key: K): boolean;
-    set_(key: K, value: V): WeakMap<K, V>;
+    set(key: K, value: V): WeakMap<K, V>;
 }
 
 export const WeakMap: {
@@ -103,7 +101,7 @@ export const WeakMap: {
 ```ts
 export interface WeakSet<T> {
     add(value: T): WeakSet<T>;
-    delete_(value: T): boolean;
+    delete(value: T): boolean;
     has(value: T): boolean;
 }
 
