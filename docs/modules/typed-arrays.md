@@ -50,7 +50,7 @@ export interface Int8Array {
     indexOf(value: sbyte, fromIndex?: int): int;
     join(separator?: string): string;
     reverse(): Int8Array;
-    set_(array: IEnumerable__System_Collections_Generic<System_Internal.SByte>, offset?: int): void;
+    set(array: IEnumerable__System_Collections_Generic<System_Internal.SByte>, offset?: int): void;
     slice(begin?: int, end?: Nullable<System_Internal.Int32>): Int8Array;
     sort(compareFn?: Comparison<System_Internal.SByte>): Int8Array;
     subarray(begin?: int, end?: Nullable<System_Internal.Int32>): Int8Array;
@@ -78,7 +78,7 @@ export interface Uint8Array {
     indexOf(value: byte, fromIndex?: int): int;
     join(separator?: string): string;
     reverse(): Uint8Array;
-    set_(array: IEnumerable__System_Collections_Generic<System_Internal.Byte>, offset?: int): void;
+    set(array: IEnumerable__System_Collections_Generic<System_Internal.Byte>, offset?: int): void;
     slice(begin?: int, end?: Nullable<System_Internal.Int32>): Uint8Array;
     sort(compareFn?: Comparison<System_Internal.Byte>): Uint8Array;
     subarray(begin?: int, end?: Nullable<System_Internal.Int32>): Uint8Array;
@@ -106,7 +106,7 @@ export interface Uint8ClampedArray {
     indexOf(value: byte, fromIndex?: int): int;
     join(separator?: string): string;
     reverse(): Uint8ClampedArray;
-    set_(array: IEnumerable__System_Collections_Generic<System_Internal.Byte>, offset?: int): void;
+    set(array: IEnumerable__System_Collections_Generic<System_Internal.Byte>, offset?: int): void;
     setClamped(index: int, value: int): void;
     slice(begin?: int, end?: Nullable<System_Internal.Int32>): Uint8ClampedArray;
     sort(compareFn?: Comparison<System_Internal.Byte>): Uint8ClampedArray;
@@ -135,7 +135,7 @@ export interface Int16Array {
     indexOf(value: short, fromIndex?: int): int;
     join(separator?: string): string;
     reverse(): Int16Array;
-    set_(array: IEnumerable__System_Collections_Generic<System_Internal.Int16>, offset?: int): void;
+    set(array: IEnumerable__System_Collections_Generic<System_Internal.Int16>, offset?: int): void;
     slice(begin?: int, end?: Nullable<System_Internal.Int32>): Int16Array;
     sort(compareFn?: Comparison<System_Internal.Int16>): Int16Array;
     subarray(begin?: int, end?: Nullable<System_Internal.Int32>): Int16Array;
@@ -163,7 +163,7 @@ export interface Uint16Array {
     indexOf(value: ushort, fromIndex?: int): int;
     join(separator?: string): string;
     reverse(): Uint16Array;
-    set_(array: IEnumerable__System_Collections_Generic<System_Internal.UInt16>, offset?: int): void;
+    set(array: IEnumerable__System_Collections_Generic<System_Internal.UInt16>, offset?: int): void;
     slice(begin?: int, end?: Nullable<System_Internal.Int32>): Uint16Array;
     sort(compareFn?: Comparison<System_Internal.UInt16>): Uint16Array;
     subarray(begin?: int, end?: Nullable<System_Internal.Int32>): Uint16Array;
@@ -191,7 +191,7 @@ export interface Int32Array {
     indexOf(value: int, fromIndex?: int): int;
     join(separator?: string): string;
     reverse(): Int32Array;
-    set_(array: IEnumerable__System_Collections_Generic<System_Internal.Int32>, offset?: int): void;
+    set(array: IEnumerable__System_Collections_Generic<System_Internal.Int32>, offset?: int): void;
     slice(begin?: int, end?: Nullable<System_Internal.Int32>): Int32Array;
     sort(compareFn?: Comparison<System_Internal.Int32>): Int32Array;
     subarray(begin?: int, end?: Nullable<System_Internal.Int32>): Int32Array;
@@ -219,7 +219,7 @@ export interface Uint32Array {
     indexOf(value: uint, fromIndex?: int): int;
     join(separator?: string): string;
     reverse(): Uint32Array;
-    set_(array: IEnumerable__System_Collections_Generic<System_Internal.UInt32>, offset?: int): void;
+    set(array: IEnumerable__System_Collections_Generic<System_Internal.UInt32>, offset?: int): void;
     slice(begin?: int, end?: Nullable<System_Internal.Int32>): Uint32Array;
     sort(compareFn?: Comparison<System_Internal.UInt32>): Uint32Array;
     subarray(begin?: int, end?: Nullable<System_Internal.Int32>): Uint32Array;
@@ -247,7 +247,7 @@ export interface Float32Array {
     indexOf(value: float, fromIndex?: int): int;
     join(separator?: string): string;
     reverse(): Float32Array;
-    set_(array: IEnumerable__System_Collections_Generic<System_Internal.Single>, offset?: int): void;
+    set(array: IEnumerable__System_Collections_Generic<System_Internal.Single>, offset?: int): void;
     slice(begin?: int, end?: Nullable<System_Internal.Int32>): Float32Array;
     sort(compareFn?: Comparison<System_Internal.Single>): Float32Array;
     subarray(begin?: int, end?: Nullable<System_Internal.Int32>): Float32Array;
@@ -275,7 +275,7 @@ export interface Float64Array {
     indexOf(value: double, fromIndex?: int): int;
     join(separator?: string): string;
     reverse(): Float64Array;
-    set_(array: IEnumerable__System_Collections_Generic<System_Internal.Double>, offset?: int): void;
+    set(array: IEnumerable__System_Collections_Generic<System_Internal.Double>, offset?: int): void;
     slice(begin?: int, end?: Nullable<System_Internal.Int32>): Float64Array;
     sort(compareFn?: Comparison<System_Internal.Double>): Float64Array;
     subarray(begin?: int, end?: Nullable<System_Internal.Int32>): Float64Array;

@@ -93,7 +93,7 @@ export interface JSArray<T> {
     unshift(item: T): int;
     unshift(...items: T[]): int;
     values(): IEnumerable__System_Collections_Generic<T>;
-    with_(index: int, value: T): JSArray<T>;
+    with(index: int, value: T): JSArray<T>;
 }
 
 export const JSArray: {
@@ -102,10 +102,10 @@ export const JSArray: {
     new<T>(source: T[]): JSArray<T>;
     new<T>(source: List<T>): JSArray<T>;
     new<T>(source: IEnumerable__System_Collections_Generic<T>): JSArray<T>;
-    from_<T, TSource, TResult>(iterable: IEnumerable__System_Collections_Generic<TSource>, mapFunc: Func<TSource, System_Internal.Int32, TResult>): JSArray<TResult>;
-    from_<T>(iterable: IEnumerable__System_Collections_Generic<T>): JSArray<T>;
+    from<T, TSource, TResult>(iterable: IEnumerable__System_Collections_Generic<TSource>, mapFunc: Func<TSource, System_Internal.Int32, TResult>): JSArray<TResult>;
+    from<T>(iterable: IEnumerable__System_Collections_Generic<T>): JSArray<T>;
     isArray<T>(value: unknown): boolean;
-    of_<T>(...items: T[]): JSArray<T>;
+    of<T>(...items: T[]): JSArray<T>;
 };
 ```
 <!-- API:END -->
