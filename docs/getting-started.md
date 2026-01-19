@@ -5,7 +5,7 @@
 ### New project
 
 ```bash
-tsonic project init --js
+tsonic init --js
 ```
 
 ### Existing project
@@ -16,9 +16,9 @@ tsonic add js
 
 That will:
 
-- Add the `@tsonic/js` bindings package to your `package.json` (for `tsc` typechecking)
-- Copy the `Tsonic.JSRuntime.dll` runtime library into your project (so the generated C# can reference it)
-- Update your `tsonic.json` as needed
+- Install the `@tsonic/js` bindings package in your workspace (`package.json`) for `tsc` typechecking
+- Copy `libs/Tsonic.JSRuntime.dll` into your workspace
+- Add `libs/Tsonic.JSRuntime.dll` to `tsonic.workspace.json` under `dotnet.libraries`
 
 ## Minimal Example
 
@@ -30,4 +30,3 @@ export function main(): void {
   console.log(obj.ok);
 }
 ```
-
