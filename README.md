@@ -27,7 +27,7 @@ Install and enable the bindings package:
 
 ```bash
 # new project
-tsonic project init --js
+tsonic init --js
 
 # existing project
 tsonic add js
