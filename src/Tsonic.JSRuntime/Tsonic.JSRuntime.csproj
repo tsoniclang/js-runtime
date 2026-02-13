@@ -5,6 +5,7 @@
     <PackageId>Tsonic.JSRuntime</PackageId>
     <Authors>Tsonic Project</Authors>
     <Description>JavaScript/TypeScript runtime implementation for Tsonic compiler - provides exact JavaScript semantics in C#</Description>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/tsoniclang/js-runtime</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tsoniclang/js-runtime.git</RepositoryUrl>
@@ -19,6 +20,10 @@
     <!-- CS8981: lowercase type names (e.g., 'console' matches JS) - required for JS semantics -->
     <NoWarn>$(NoWarn);CS8981</NoWarn>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\runtime\src\Tsonic.Runtime\Tsonic.Runtime.csproj" />
