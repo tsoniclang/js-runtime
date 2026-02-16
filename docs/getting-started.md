@@ -5,20 +5,26 @@
 ### New project
 
 ```bash
-tsonic init --js
+npx --yes tsonic@latest init
+npx --yes tsonic@latest add npm @tsonic/js
 ```
 
 ### Existing project
 
 ```bash
-tsonic add js
+npx --yes tsonic@latest add npm @tsonic/js
 ```
+
+If you have `tsonic` installed globally, you can drop the `npx --yes tsonic@latest` prefix.
 
 That will:
 
 - Install the `@tsonic/js` bindings package in your workspace (`package.json`) for `tsc` typechecking
-- Copy `libs/Tsonic.JSRuntime.dll` into your workspace
-- Add `libs/Tsonic.JSRuntime.dll` to `tsonic.workspace.json` under `dotnet.libraries`
+- Apply the package’s `.NET` dependency manifest (`tsonic.bindings.json`) to `tsonic.workspace.json`
+  - Adds the required `dotnet.frameworkReferences` / `dotnet.packageReferences`
+  - Installs any additional `types` packages referenced by the manifest
+
+Then run `tsonic restore` (or just `tsonic build`, which will restore via `dotnet`) to materialize the .NET dependencies.
 
 ## Minimal Example
 
