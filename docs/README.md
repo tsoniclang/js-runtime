@@ -8,8 +8,8 @@ This is **not** Node.js. It’s a JS-semantics runtime implemented in .NET so Ty
 
 ### Getting Started
 
-1. [Getting Started](getting-started.md) - enable `@tsonic/js` in a Tsonic project
-2. [Importing APIs](imports.md) - importing from `@tsonic/js/index.js`
+1. [Getting Started](getting-started.md) - enable `@tsonic/js` in a Tsonic project (`--surface js`)
+2. [Importing APIs](imports.md) - natural surface usage + optional direct imports
 
 ### APIs
 
@@ -28,16 +28,16 @@ This is **not** Node.js. It’s a JS-semantics runtime implemented in .NET so Ty
 
 ## Overview
 
-In Tsonic projects you import JS runtime APIs from `@tsonic/js/index.js`:
+In JS surface projects you can write natural JS with no explicit runtime imports:
 
 ```ts
-import { console, JSON } from "@tsonic/js/index.js";
-
 export function main(): void {
   const value = JSON.parse<{ x: number }>('{"x": 1}');
   console.log(JSON.stringify(value));
 }
 ```
+
+Direct imports from `@tsonic/js/index.js` are still supported.
 
 ## Relationship to `@tsonic/nodejs`
 
