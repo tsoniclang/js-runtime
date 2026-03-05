@@ -27,22 +27,23 @@ Install and enable the bindings package:
 
 ```bash
 # new project
-tsonic init --js
+npx --yes tsonic@latest init --surface js
+npx --yes tsonic@latest add npm @tsonic/js
 
 # existing project
-tsonic add js
+npx --yes tsonic@latest add npm @tsonic/js
 ```
 
-Then import JS runtime APIs from `@tsonic/js/index.js`:
+Then write natural JS (no explicit `@tsonic/js` imports required in surface mode):
 
 ```ts
-import { console, JSON } from "@tsonic/js/index.js";
-
 export function main(): void {
   const value = JSON.parse<{ x: number }>('{"x": 1}');
   console.log(JSON.stringify(value));
 }
 ```
+
+Direct imports from `@tsonic/js/index.js` remain supported when you want explicit symbols like `JSArray` or `Timers`.
 
 Documentation:
 

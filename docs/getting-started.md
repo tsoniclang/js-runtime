@@ -5,7 +5,7 @@
 ### New project
 
 ```bash
-npx --yes tsonic@latest init
+npx --yes tsonic@latest init --surface js
 npx --yes tsonic@latest add npm @tsonic/js
 ```
 
@@ -24,15 +24,15 @@ That will:
   - Adds the required `dotnet.frameworkReferences` / `dotnet.packageReferences`
   - Installs any additional `types` packages referenced by the manifest
 
-Then run `tsonic restore` (or just `tsonic build`, which will restore via `dotnet`) to materialize the .NET dependencies.
+Then run `npx --yes tsonic@latest restore` (or `npx --yes tsonic@latest build`) to materialize .NET dependencies.
 
 ## Minimal Example
 
 ```ts
-import { console, JSON } from "@tsonic/js/index.js";
-
 export function main(): void {
   const obj = JSON.parse<{ ok: boolean }>('{"ok": true}');
   console.log(obj.ok);
 }
 ```
+
+Direct imports from `@tsonic/js/index.js` remain supported when you want explicit symbols.
