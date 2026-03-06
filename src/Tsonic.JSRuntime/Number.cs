@@ -1,3 +1,5 @@
+using System.Globalization;
+
 /**
  * JavaScript Number static methods
  * Provides Number.parseInt, Number.parseFloat, Number.isNaN, Number.isFinite, Number.isInteger
@@ -80,6 +82,22 @@ namespace Tsonic.JSRuntime
                 return false;
             }
             return value >= MIN_SAFE_INTEGER && value <= MAX_SAFE_INTEGER;
+        }
+
+        /// <summary>
+        /// Convert a number to its JavaScript string form.
+        /// </summary>
+        public static string toString(this double value)
+        {
+            return value.ToString(CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Return the primitive numeric value.
+        /// </summary>
+        public static double valueOf(this double value)
+        {
+            return value;
         }
     }
 }
