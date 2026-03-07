@@ -1099,6 +1099,19 @@ namespace Tsonic.JSRuntime
         }
 
         /// <summary>
+        /// Create array from iterable with single-parameter map function.
+        /// </summary>
+        public static JSArray<TResult> from<TSource, TResult>(IEnumerable<TSource> iterable, Func<TSource, TResult> mapFunc)
+        {
+            var result = new JSArray<TResult>();
+            foreach (var item in iterable)
+            {
+                result.push(mapFunc(item));
+            }
+            return result;
+        }
+
+        /// <summary>
         /// Create array from arguments
         /// </summary>
         public static JSArray<T> of(params T[] items)

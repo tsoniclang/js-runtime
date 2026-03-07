@@ -283,10 +283,10 @@ namespace Tsonic.JSRuntime.Tests
             var map = new Map<string, int>();
             map.set("a", 1).set("b", 2);
             var count = 0;
-            foreach (var kvp in map)
+            foreach (var (key, _) in map)
             {
                 count++;
-                Assert.True(kvp.Key == "a" || kvp.Key == "b");
+                Assert.True(key == "a" || key == "b");
             }
             Assert.Equal(2, count);
         }

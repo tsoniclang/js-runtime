@@ -17,12 +17,12 @@ namespace Tsonic.JSRuntime
                    type.GetGenericTypeDefinition() == typeof(JSArray<>);
         }
 
-        public static JSArray<T> from<T>(IEnumerable<T> iterable)
+        public static T[] from<T>(IEnumerable<T> iterable)
         {
-            return JSArray<T>.from(iterable);
+            return JSArray<T>.from(iterable).toArray();
         }
 
-        public static JSArray<string> from(string source)
+        public static string[] from(string source)
         {
             var chars = new string[source.Length];
             for (var i = 0; i < source.Length; i++)
@@ -30,18 +30,26 @@ namespace Tsonic.JSRuntime
                 chars[i] = source[i].ToString();
             }
 
-            return new JSArray<string>(chars);
+            return chars;
         }
 
-        public static JSArray<TResult> from<TSource, TResult>(
+        public static TResult[] from<TSource, TResult>(
             IEnumerable<TSource> iterable,
             System.Func<TSource, int, TResult> mapFunc
         )
         {
-            return JSArray<TResult>.from(iterable, mapFunc);
+            return JSArray<TResult>.from(iterable, mapFunc).toArray();
         }
 
-        public static JSArray<TResult> from<TResult>(
+        public static TResult[] from<TSource, TResult>(
+            IEnumerable<TSource> iterable,
+            System.Func<TSource, TResult> mapFunc
+        )
+        {
+            return JSArray<TResult>.from(iterable, mapFunc).toArray();
+        }
+
+        public static TResult[] from<TResult>(
             string source,
             System.Func<string, int, TResult> mapFunc
         )
@@ -52,12 +60,26 @@ namespace Tsonic.JSRuntime
                 result[i] = mapFunc(source[i].ToString(), i);
             }
 
-            return new JSArray<TResult>(result);
+            return result;
         }
 
-        public static JSArray<T> of<T>(params T[] items)
+        public static TResult[] from<TResult>(
+            string source,
+            System.Func<string, TResult> mapFunc
+        )
         {
-            return JSArray<T>.of(items);
+            var result = new TResult[source.Length];
+            for (var i = 0; i < source.Length; i++)
+            {
+                result[i] = mapFunc(source[i].ToString());
+            }
+
+            return result;
+        }
+
+        public static T[] of<T>(params T[] items)
+        {
+            return JSArray<T>.of(items).toArray();
         }
     }
 }

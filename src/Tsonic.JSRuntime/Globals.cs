@@ -20,31 +20,86 @@ namespace Tsonic.JSRuntime
 
         /// <summary>
         /// Parse string to integer with optional radix.
-        /// Returns null if parsing fails.
+        /// Mirrors JavaScript semantics: trims leading whitespace, supports optional sign,
+        /// consumes valid digits until the first invalid character, and returns NaN when
+        /// no valid integer prefix exists.
         /// </summary>
-        public static long? parseInt(string str, int? radix = null)
+        public static double parseInt(string str, int? radix = null)
         {
-            if (string.IsNullOrWhiteSpace(str))
+            if (string.IsNullOrEmpty(str))
             {
-                return null;
+                return double.NaN;
             }
 
-            str = str.Trim();
-            int actualRadix = radix ?? 10;
-
-            if (actualRadix < 2 || actualRadix > 36)
+            var span = str.AsSpan().TrimStart();
+            if (span.Length == 0)
             {
-                return null;
+                return double.NaN;
             }
 
-            try
+            var sign = 1.0;
+            if (span[0] == '+' || span[0] == '-')
             {
-                return Convert.ToInt64(str, actualRadix);
+                if (span[0] == '-')
+                {
+                    sign = -1.0;
+                }
+
+                span = span[1..];
+                if (span.Length == 0)
+                {
+                    return double.NaN;
+                }
             }
-            catch
+
+            var actualRadix = radix ?? 0;
+            if (actualRadix != 0 && (actualRadix < 2 || actualRadix > 36))
             {
-                return null;
+                return double.NaN;
             }
+
+            if (actualRadix == 0)
+            {
+                actualRadix = 10;
+                if (span.Length >= 2 && span[0] == '0' && (span[1] == 'x' || span[1] == 'X'))
+                {
+                    actualRadix = 16;
+                    span = span[2..];
+                }
+            }
+            else if (actualRadix == 16 && span.Length >= 2 && span[0] == '0' && (span[1] == 'x' || span[1] == 'X'))
+            {
+                span = span[2..];
+            }
+
+            var value = 0.0;
+            var sawDigit = false;
+
+            foreach (var ch in span)
+            {
+                var digit = ch switch
+                {
+                    >= '0' and <= '9' => ch - '0',
+                    >= 'a' and <= 'z' => ch - 'a' + 10,
+                    >= 'A' and <= 'Z' => ch - 'A' + 10,
+                    _ => -1
+                };
+
+                if (digit < 0 || digit >= actualRadix)
+                {
+                    break;
+                }
+
+                value = (value * actualRadix) + digit;
+                sawDigit = true;
+            }
+
+            if (!sawDigit)
+            {
+                return double.NaN;
+            }
+
+            return sign * value;
         }
 
         /// <summary>

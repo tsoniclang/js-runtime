@@ -13,7 +13,7 @@ namespace Tsonic.JSRuntime
     /// <summary>
     /// JavaScript Map - key-value collection with insertion order preservation
     /// </summary>
-    public class Map<K, V> : IEnumerable<KeyValuePair<K, V>> where K : notnull
+    public class Map<K, V> : IEnumerable<(K key, V value)> where K : notnull
     {
         private readonly Dictionary<K, V> _dict = new();
 
@@ -163,9 +163,12 @@ namespace Tsonic.JSRuntime
         /// <summary>
         /// Get enumerator for iterating key-value pairs
         /// </summary>
-        public IEnumerator<KeyValuePair<K, V>> GetEnumerator()
+        public IEnumerator<(K key, V value)> GetEnumerator()
         {
-            return _dict.GetEnumerator();
+            foreach (var kvp in _dict)
+            {
+                yield return (kvp.Key, kvp.Value);
+            }
         }
 
         IEnumerator IEnumerable.GetEnumerator()

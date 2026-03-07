@@ -15,40 +15,107 @@ namespace Tsonic.JSRuntime
     public static class Timers
     {
         private static int _nextId = 1;
-        private static readonly ConcurrentDictionary<int, Timer> _timers = new();
-        private static readonly ConcurrentDictionary<int, CancellationTokenSource> _timeouts = new();
+        private static readonly ConcurrentDictionary<int, TimerHandle> _timers = new();
+
+        private sealed class TimerHandle : IDisposable
+        {
+            private int _disposed;
+            private Timer? _timer;
+
+            public TimerHandle()
+            {
+                ProcessKeepAlive.Acquire();
+            }
+
+            public bool IsDisposed => Volatile.Read(ref _disposed) != 0;
+
+            public void SetTimer(Timer timer)
+            {
+                _timer = timer;
+            }
+
+            public void Dispose()
+            {
+                if (Interlocked.Exchange(ref _disposed, 1) != 0)
+                {
+                    return;
+                }
+
+                var timer = Interlocked.Exchange(ref _timer, null);
+                timer?.Dispose();
+                ProcessKeepAlive.Release();
+            }
+        }
+
+        private static int NormalizeDelay(double delayMs)
+        {
+            if (double.IsNaN(delayMs) || double.IsInfinity(delayMs) || delayMs < 0)
+            {
+                return 0;
+            }
+
+            if (delayMs > int.MaxValue)
+            {
+                return int.MaxValue;
+            }
+
+            return (int)System.Math.Truncate(delayMs);
+        }
+
+        private static bool TryNormalizeTimerId(double id, out int timerId)
+        {
+            if (double.IsNaN(id) || double.IsInfinity(id))
+            {
+                timerId = 0;
+                return false;
+            }
+
+            var truncated = System.Math.Truncate(id);
+            if (truncated != id || truncated < int.MinValue || truncated > int.MaxValue)
+            {
+                timerId = 0;
+                return false;
+            }
+
+            timerId = (int)truncated;
+            return true;
+        }
 
         /// <summary>
         /// Schedule a callback to run after a delay (one-shot timer)
         /// </summary>
-        public static int setTimeout(Action callback, int delayMs = 0)
+        public static double setTimeout(Action callback, double delayMs = 0)
         {
             var id = Interlocked.Increment(ref _nextId);
-            var cts = new CancellationTokenSource();
-            _timeouts[id] = cts;
+            var handle = new TimerHandle();
 
             var timer = new Timer(_ =>
             {
-                if (!cts.Token.IsCancellationRequested)
+                if (handle.IsDisposed)
+                {
+                    return;
+                }
+
+                try
                 {
                     callback();
                 }
-                // Clean up after execution
-                _timeouts.TryRemove(id, out CancellationTokenSource? _);
-                if (_timers.TryRemove(id, out Timer? t))
+                finally
                 {
-                    t.Dispose();
+                    _timers.TryRemove(id, out TimerHandle? _);
+                    handle.Dispose();
                 }
-            }, null, delayMs, Timeout.Infinite);
+            }, null, NormalizeDelay(delayMs), Timeout.Infinite);
 
-            _timers[id] = timer;
+            handle.SetTimer(timer);
+            _timers[id] = handle;
             return id;
         }
 
         /// <summary>
         /// Schedule a callback to run after a delay with arguments
         /// </summary>
-        public static int setTimeout<T>(Action<T> callback, int delayMs, T arg)
+        public static double setTimeout<T>(Action<T> callback, double delayMs, T arg)
         {
             return setTimeout(() => callback(arg), delayMs);
         }
@@ -56,14 +123,14 @@ namespace Tsonic.JSRuntime
         /// <summary>
         /// Cancel a timeout
         /// </summary>
-        public static void clearTimeout(int id)
+        public static void clearTimeout(double id)
         {
-            if (_timeouts.TryRemove(id, out var cts))
+            if (!TryNormalizeTimerId(id, out var timerId))
             {
-                cts.Cancel();
-                cts.Dispose();
+                return;
             }
-            if (_timers.TryRemove(id, out var timer))
+
+            if (_timers.TryRemove(timerId, out var timer))
             {
                 timer.Dispose();
             }
@@ -72,28 +139,29 @@ namespace Tsonic.JSRuntime
         /// <summary>
         /// Schedule a callback to run repeatedly at an interval
         /// </summary>
-        public static int setInterval(Action callback, int intervalMs)
+        public static double setInterval(Action callback, double intervalMs)
         {
             var id = Interlocked.Increment(ref _nextId);
-            var cts = new CancellationTokenSource();
-            _timeouts[id] = cts;
+            var handle = new TimerHandle();
+            var normalizedInterval = NormalizeDelay(intervalMs);
 
             var timer = new Timer(_ =>
             {
-                if (!cts.Token.IsCancellationRequested)
+                if (!handle.IsDisposed)
                 {
                     callback();
                 }
-            }, null, intervalMs, intervalMs);
+            }, null, normalizedInterval, normalizedInterval);
 
-            _timers[id] = timer;
+            handle.SetTimer(timer);
+            _timers[id] = handle;
             return id;
         }
 
         /// <summary>
         /// Schedule a callback to run repeatedly with arguments
         /// </summary>
-        public static int setInterval<T>(Action<T> callback, int intervalMs, T arg)
+        public static double setInterval<T>(Action<T> callback, double intervalMs, T arg)
         {
             return setInterval(() => callback(arg), intervalMs);
         }
@@ -101,7 +169,7 @@ namespace Tsonic.JSRuntime
         /// <summary>
         /// Cancel an interval
         /// </summary>
-        public static void clearInterval(int id)
+        public static void clearInterval(double id)
         {
             // Same implementation as clearTimeout
             clearTimeout(id);

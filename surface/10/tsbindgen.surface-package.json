@@ -1,0 +1,6061 @@
+{
+  "schemaVersion": 1,
+  "prependReferences": [
+    {
+      "kind": "path",
+      "target": "./core-globals.d.ts"
+    },
+    {
+      "kind": "path",
+      "target": "./globals.d.ts"
+    }
+  ],
+  "declarationFiles": [
+    {
+      "path": "core-globals.d.ts",
+      "imports": [],
+      "global": {
+        "interfaces": [
+          {
+            "name": "Function",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "prototype",
+                "type": "any",
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "CallableFunction",
+            "typeParameters": [],
+            "extends": [
+              "Function"
+            ],
+            "members": []
+          },
+          {
+            "name": "NewableFunction",
+            "typeParameters": [],
+            "extends": [
+              "Function"
+            ],
+            "members": []
+          },
+          {
+            "name": "IArguments",
+            "typeParameters": [],
+            "extends": [],
+            "members": []
+          },
+          {
+            "name": "RegExp",
+            "typeParameters": [],
+            "extends": [],
+            "members": []
+          },
+          {
+            "name": "ImportMeta",
+            "typeParameters": [],
+            "extends": [],
+            "members": []
+          },
+          {
+            "name": "String",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "index",
+                "name": null,
+                "type": "string",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": "n",
+                "indexParameterType": "number"
+              }
+            ]
+          },
+          {
+            "name": "Number",
+            "typeParameters": [],
+            "extends": [],
+            "members": []
+          },
+          {
+            "name": "Boolean",
+            "typeParameters": [],
+            "extends": [],
+            "members": []
+          },
+          {
+            "name": "Object",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "constructor",
+                "type": "Function",
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "SymbolConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "iterator",
+                "type": "symbol",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "asyncIterator",
+                "type": "symbol",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "hasInstance",
+                "type": "symbol",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "isConcatSpreadable",
+                "type": "symbol",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "species",
+                "type": "symbol",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "toPrimitive",
+                "type": "symbol",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "toStringTag",
+                "type": "symbol",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Array",
+            "typeParameters": [
+              "T"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "index",
+                "name": null,
+                "type": "T",
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": "n",
+                "indexParameterType": "number"
+              },
+              {
+                "kind": "property",
+                "name": "length",
+                "type": "number",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "[Symbol.iterator]",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "IterableIterator<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "ReadonlyArray",
+            "typeParameters": [
+              "T"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "index",
+                "name": null,
+                "type": "T",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": "n",
+                "indexParameterType": "number"
+              },
+              {
+                "kind": "property",
+                "name": "length",
+                "type": "number",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "[Symbol.iterator]",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "IterableIterator<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "ArrayConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "constructSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "size",
+                    "type": "number",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "T"
+                ],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Promise",
+            "typeParameters": [
+              "T"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "then",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "onfulfilled",
+                    "type": "| ((value: T) => TResult1 | PromiseLike<TResult1>)\n        | undefined\n        | null",
+                    "optional": true,
+                    "rest": false
+                  },
+                  {
+                    "name": "onrejected",
+                    "type": "| ((reason: any) => TResult2 | PromiseLike<TResult2>)\n        | undefined\n        | null",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult1 = T",
+                  "TResult2 = never"
+                ],
+                "returnType": "Promise<TResult1 | TResult2>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "catch",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "onrejected",
+                    "type": "| ((reason: any) => TResult | PromiseLike<TResult>)\n        | undefined\n        | null",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult = never"
+                ],
+                "returnType": "Promise<T | TResult>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "finally",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "onfinally",
+                    "type": "(() => void) | undefined | null",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "Promise<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "PromiseLike",
+            "typeParameters": [
+              "T"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "then",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "onfulfilled",
+                    "type": "| ((value: T) => TResult1 | PromiseLike<TResult1>)\n        | undefined\n        | null",
+                    "optional": true,
+                    "rest": false
+                  },
+                  {
+                    "name": "onrejected",
+                    "type": "| ((reason: any) => TResult2 | PromiseLike<TResult2>)\n        | undefined\n        | null",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult1 = T",
+                  "TResult2 = never"
+                ],
+                "returnType": "PromiseLike<TResult1 | TResult2>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "PromiseConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "constructSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "executor",
+                    "type": "(\n        resolve: (value: T | PromiseLike<T>) => void,\n        reject: (reason?: any) => void\n      ) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "T"
+                ],
+                "returnType": "Promise<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "resolve",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Promise<void>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "resolve",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "T | PromiseLike<T>",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "T"
+                ],
+                "returnType": "Promise<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reject",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "reason",
+                    "type": "any",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "T = never"
+                ],
+                "returnType": "Promise<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "all",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "values",
+                    "type": "readonly (T | PromiseLike<T>)[]",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "T"
+                ],
+                "returnType": "Promise<T[]>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "race",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "values",
+                    "type": "readonly (T | PromiseLike<T>)[]",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "T"
+                ],
+                "returnType": "Promise<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Iterator",
+            "typeParameters": [
+              "T",
+              "TReturn = any",
+              "TNext = undefined"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "next",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "args",
+                    "type": "[] | [TNext]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "IteratorResult<T, TReturn>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "return",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "TReturn",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "IteratorResult<T, TReturn>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "throw",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "e",
+                    "type": "any",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "IteratorResult<T, TReturn>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "IteratorResult",
+            "typeParameters": [
+              "T",
+              "TReturn = any"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "done",
+                "type": "boolean",
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "value",
+                "type": "T | TReturn",
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "IteratorYieldResult",
+            "typeParameters": [
+              "T"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "done",
+                "type": "false",
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "value",
+                "type": "T",
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "IteratorReturnResult",
+            "typeParameters": [
+              "TReturn"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "done",
+                "type": "true",
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "value",
+                "type": "TReturn",
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Iterable",
+            "typeParameters": [
+              "T",
+              "TReturn = any",
+              "TNext = undefined"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "[Symbol.iterator]",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterator<T, TReturn, TNext>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "IterableIterator",
+            "typeParameters": [
+              "T",
+              "TReturn = any",
+              "TNext = undefined"
+            ],
+            "extends": [
+              "Iterator<T, TReturn, TNext>"
+            ],
+            "members": [
+              {
+                "kind": "method",
+                "name": "[Symbol.iterator]",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "IterableIterator<T, TReturn, TNext>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "AsyncIterator",
+            "typeParameters": [
+              "T",
+              "TReturn = any",
+              "TNext = undefined"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "next",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "args",
+                    "type": "[] | [TNext]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "Promise<IteratorResult<T, TReturn>>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "return",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "TReturn | PromiseLike<TReturn>",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "Promise<IteratorResult<T, TReturn>>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "throw",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "e",
+                    "type": "any",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "Promise<IteratorResult<T, TReturn>>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "AsyncIterable",
+            "typeParameters": [
+              "T",
+              "TReturn = any",
+              "TNext = undefined"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "[Symbol.asyncIterator]",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "AsyncIterator<T, TReturn, TNext>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "AsyncIterableIterator",
+            "typeParameters": [
+              "T",
+              "TReturn = any",
+              "TNext = undefined"
+            ],
+            "extends": [
+              "AsyncIterator<T, TReturn, TNext>"
+            ],
+            "members": [
+              {
+                "kind": "method",
+                "name": "[Symbol.asyncIterator]",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "AsyncIterableIterator<T, TReturn, TNext>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Generator",
+            "typeParameters": [
+              "T = unknown",
+              "TReturn = any",
+              "TNext = unknown"
+            ],
+            "extends": [
+              "Iterator<T, TReturn, TNext>"
+            ],
+            "members": [
+              {
+                "kind": "method",
+                "name": "next",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "args",
+                    "type": "[] | [TNext]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "IteratorResult<T, TReturn>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "return",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "TReturn",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "IteratorResult<T, TReturn>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "throw",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "e",
+                    "type": "any",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "IteratorResult<T, TReturn>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "[Symbol.iterator]",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Generator<T, TReturn, TNext>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "AsyncGenerator",
+            "typeParameters": [
+              "T = unknown",
+              "TReturn = any",
+              "TNext = unknown"
+            ],
+            "extends": [
+              "AsyncIterator<T, TReturn, TNext>"
+            ],
+            "members": [
+              {
+                "kind": "method",
+                "name": "next",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "args",
+                    "type": "[] | [TNext]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "Promise<IteratorResult<T, TReturn>>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "return",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "TReturn | PromiseLike<TReturn>",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "Promise<IteratorResult<T, TReturn>>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "throw",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "e",
+                    "type": "any",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "Promise<IteratorResult<T, TReturn>>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "[Symbol.asyncIterator]",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "AsyncGenerator<T, TReturn, TNext>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "TemplateStringsArray",
+            "typeParameters": [],
+            "extends": [
+              "ReadonlyArray<string>"
+            ],
+            "members": [
+              {
+                "kind": "property",
+                "name": "raw",
+                "type": "readonly string[]",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          }
+        ],
+        "typeAliases": [
+          {
+            "name": "PropertyKey",
+            "typeParameters": [],
+            "type": "string | number | symbol"
+          },
+          {
+            "name": "Partial",
+            "typeParameters": [
+              "T"
+            ],
+            "type": "{ [P in keyof T]?: T[P] }"
+          },
+          {
+            "name": "Required",
+            "typeParameters": [
+              "T"
+            ],
+            "type": "{ [P in keyof T]-?: T[P] }"
+          },
+          {
+            "name": "Readonly",
+            "typeParameters": [
+              "T"
+            ],
+            "type": "{ readonly [P in keyof T]: T[P] }"
+          },
+          {
+            "name": "Pick",
+            "typeParameters": [
+              "T",
+              "K extends keyof T"
+            ],
+            "type": "{ [P in K]: T[P] }"
+          },
+          {
+            "name": "Record",
+            "typeParameters": [
+              "K extends keyof any",
+              "T"
+            ],
+            "type": "{ [P in K]: T }"
+          },
+          {
+            "name": "Exclude",
+            "typeParameters": [
+              "T",
+              "U"
+            ],
+            "type": "T extends U ? never : T"
+          },
+          {
+            "name": "Extract",
+            "typeParameters": [
+              "T",
+              "U"
+            ],
+            "type": "T extends U ? T : never"
+          },
+          {
+            "name": "Omit",
+            "typeParameters": [
+              "T",
+              "K extends keyof any"
+            ],
+            "type": "Pick<T, Exclude<keyof T, K>>"
+          },
+          {
+            "name": "NonNullable",
+            "typeParameters": [
+              "T"
+            ],
+            "type": "T extends null | undefined ? never : T"
+          },
+          {
+            "name": "Parameters",
+            "typeParameters": [
+              "T extends (...args: any) => any"
+            ],
+            "type": "T extends (...args: infer P) => any ? P : never"
+          },
+          {
+            "name": "ConstructorParameters",
+            "typeParameters": [
+              "T extends new (...args: any) => any"
+            ],
+            "type": "T extends new (...args: infer P) => any ? P : never"
+          },
+          {
+            "name": "ReturnType",
+            "typeParameters": [
+              "T extends (...args: any) => any"
+            ],
+            "type": "T extends (...args: any) => infer R ? R : any"
+          },
+          {
+            "name": "InstanceType",
+            "typeParameters": [
+              "T extends new (...args: any) => any"
+            ],
+            "type": "T extends new (...args: any) => infer R ? R : any"
+          },
+          {
+            "name": "Awaited",
+            "typeParameters": [
+              "T"
+            ],
+            "type": "T extends PromiseLike<infer U> ? Awaited<U> : T"
+          },
+          {
+            "name": "Uppercase",
+            "typeParameters": [
+              "S extends string"
+            ],
+            "type": "intrinsic"
+          },
+          {
+            "name": "Lowercase",
+            "typeParameters": [
+              "S extends string"
+            ],
+            "type": "intrinsic"
+          },
+          {
+            "name": "Capitalize",
+            "typeParameters": [
+              "S extends string"
+            ],
+            "type": "intrinsic"
+          },
+          {
+            "name": "Uncapitalize",
+            "typeParameters": [
+              "S extends string"
+            ],
+            "type": "intrinsic"
+          }
+        ],
+        "consts": [
+          {
+            "name": "Symbol",
+            "type": "SymbolConstructor"
+          },
+          {
+            "name": "Array",
+            "type": "ArrayConstructor"
+          },
+          {
+            "name": "Promise",
+            "type": "PromiseConstructor"
+          }
+        ],
+        "classes": [
+          {
+            "name": "Error",
+            "typeParameters": [],
+            "extends": null,
+            "members": [
+              {
+                "kind": "property",
+                "name": "name",
+                "type": "string",
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "message",
+                "type": "string",
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "stack",
+                "type": "string",
+                "readonly": false,
+                "optional": true,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "constructor",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "message",
+                    "type": "string",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          }
+        ]
+      },
+      "modules": [],
+      "statements": [],
+      "exportEmpty": true
+    },
+    {
+      "path": "globals.d.ts",
+      "imports": [
+        {
+          "from": "@tsonic/core/types.js",
+          "typeOnly": true,
+          "namespace": null,
+          "named": [
+            {
+              "name": "int",
+              "alias": null
+            },
+            {
+              "name": "long",
+              "alias": null
+            }
+          ]
+        },
+        {
+          "from": "./index/internal/index.js",
+          "typeOnly": true,
+          "namespace": null,
+          "named": [
+            {
+              "name": "Date",
+              "alias": "JSRuntimeDate"
+            }
+          ]
+        }
+      ],
+      "global": {
+        "interfaces": [
+          {
+            "name": "ArrayLike",
+            "typeParameters": [
+              "T"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "length",
+                "type": "int",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "index",
+                "name": null,
+                "type": "T",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": "n",
+                "indexParameterType": "number"
+              }
+            ]
+          },
+          {
+            "name": "String",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "length",
+                "type": "int",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "at",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "index",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "charAt",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "index",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "charCodeAt",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "index",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "codePointAt",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "index",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "concat",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "strings",
+                    "type": "string[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "endsWith",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchString",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "includes",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchString",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "indexOf",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchString",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "position",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "isWellFormed",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "lastIndexOf",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchString",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "position",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "localeCompare",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "compareString",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "match",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "pattern",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string[] | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "matchAll",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "pattern",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string[][]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "normalize",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "form",
+                    "type": "string",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "padEnd",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "targetLength",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "padString",
+                    "type": "string",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "padStart",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "targetLength",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "padString",
+                    "type": "string",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "repeat",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "count",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "replace",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchValue",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "replaceValue",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "replaceAll",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchValue",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "replaceValue",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "search",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "pattern",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "slice",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "start",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  },
+                  {
+                    "name": "end",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "split",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "separator",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "limit",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "startsWith",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchString",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "substr",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "start",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "length",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "substring",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "start",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "end",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toLocaleLowerCase",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toLocaleUpperCase",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toLowerCase",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toString",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "trim",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "trimLeft",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "trimRight",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "trimStart",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "trimEnd",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toUpperCase",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toWellFormed",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "valueOf",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "StringConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "fromCharCode",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "codes",
+                    "type": "int[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "fromCodePoint",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "codePoints",
+                    "type": "int[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Number",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "toString",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "valueOf",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "number",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "NumberConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "EPSILON",
+                "type": "number",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "MAX_SAFE_INTEGER",
+                "type": "number",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "MAX_VALUE",
+                "type": "number",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "MIN_SAFE_INTEGER",
+                "type": "number",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "MIN_VALUE",
+                "type": "number",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "NEGATIVE_INFINITY",
+                "type": "number",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "POSITIVE_INFINITY",
+                "type": "number",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "NaN",
+                "type": "number",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "isFinite",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "number",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "isInteger",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "number",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "isNaN",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "number",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "isSafeInteger",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "number",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "parseFloat",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "str",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "number",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "parseInt",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "str",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "radix",
+                    "type": "number",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "number",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Array",
+            "typeParameters": [
+              "T"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "length",
+                "type": "int",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "at",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "index",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "concat",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "items",
+                    "type": "unknown[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "copyWithin",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "target",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "start",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  },
+                  {
+                    "name": "end",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "entries",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<[int, T]>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "every",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "every",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "fill",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "start",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  },
+                  {
+                    "name": "end",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "filter",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "filter",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "filter",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "find",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "find",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "find",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLast",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLast",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLast",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLastIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLastIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLastIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "flat",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "depth",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "unknown[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "flatMap",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: T[]) => unknown",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: T[]) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "includes",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchElement",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "indexOf",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchElement",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "fromIndex",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "join",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "separator",
+                    "type": "string",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "keys",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<int>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "lastIndexOf",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchElement",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "fromIndex",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "map",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "map",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "map",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: T[]) => TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "pop",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "T",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "push",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "items",
+                    "type": "T[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduce",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(previousValue: T, currentValue: T) => T",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduce",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(previousValue: TResult, currentValue: T) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduce",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(previousValue: TResult, currentValue: T, index: int) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduce",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(\n        previousValue: TResult,\n        currentValue: T,\n        index: int,\n        array: T[]\n      ) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduceRight",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(previousValue: TResult, currentValue: T) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduceRight",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(previousValue: TResult, currentValue: T, index: int) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduceRight",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(\n        previousValue: TResult,\n        currentValue: T,\n        index: int,\n        array: T[]\n      ) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reverse",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "shift",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "T",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "slice",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "start",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  },
+                  {
+                    "name": "end",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "some",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "some",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "sort",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "compareFunc",
+                    "type": "(left: T, right: T) => double",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "splice",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "start",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "deleteCount",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  },
+                  {
+                    "name": "items",
+                    "type": "T[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toLocaleString",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toReversed",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toSorted",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "compareFunc",
+                    "type": "(left: T, right: T) => double",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toSpliced",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "start",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "deleteCount",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  },
+                  {
+                    "name": "items",
+                    "type": "T[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toString",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "unshift",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "items",
+                    "type": "T[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "values",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "with",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "index",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "value",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "ReadonlyArray",
+            "typeParameters": [
+              "T"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "length",
+                "type": "int",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "at",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "index",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "concat",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "items",
+                    "type": "unknown[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "entries",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<[int, T]>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "every",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "every",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: readonly T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "filter",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "filter",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "filter",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: readonly T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "find",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "find",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "find",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: readonly T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: readonly T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLast",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLast",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLast",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: readonly T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLastIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLastIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "findLastIndex",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: readonly T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "flat",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "depth",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "unknown[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "flatMap",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: readonly T[]) => unknown",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: readonly T[]) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "includes",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchElement",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "indexOf",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchElement",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "fromIndex",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "join",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "separator",
+                    "type": "string",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "keys",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<int>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "lastIndexOf",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "searchElement",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "fromIndex",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "int",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "map",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "map",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int) => TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "map",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: readonly T[]) => TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduce",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(previousValue: T, currentValue: T) => T",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduce",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(previousValue: TResult, currentValue: T) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduce",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(previousValue: TResult, currentValue: T, index: int) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduce",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(\n        previousValue: TResult,\n        currentValue: T,\n        index: int,\n        array: readonly T[]\n      ) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduceRight",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(previousValue: TResult, currentValue: T) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduceRight",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(previousValue: TResult, currentValue: T, index: int) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "reduceRight",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(\n        previousValue: TResult,\n        currentValue: T,\n        index: int,\n        array: readonly T[]\n      ) => TResult",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "initialValue",
+                    "type": "TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "slice",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "start",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  },
+                  {
+                    "name": "end",
+                    "type": "int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "some",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "some",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, index: int, array: readonly T[]) => boolean",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toLocaleString",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toReversed",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toSorted",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "compareFunc",
+                    "type": "(left: T, right: T) => double",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "toString",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "values",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "with",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "index",
+                    "type": "int",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "value",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Console",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "log",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "data",
+                    "type": "unknown[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "error",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "data",
+                    "type": "unknown[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "warn",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "data",
+                    "type": "unknown[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "info",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "data",
+                    "type": "unknown[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "debug",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "data",
+                    "type": "unknown[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "ArrayConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "isArray",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "unknown",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "from",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "source",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "from",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "source",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "mapfn",
+                    "type": "(value: string, index: int) => TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "TResult"
+                ],
+                "returnType": "TResult[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "from",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "source",
+                    "type": "Iterable<T> | ArrayLike<T>",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "T"
+                ],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "from",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "source",
+                    "type": "Iterable<T> | ArrayLike<T>",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "mapfn",
+                    "type": "(value: T, index: int) => TResult",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "T",
+                  "TResult"
+                ],
+                "returnType": "TResult[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "of",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "items",
+                    "type": "T[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [
+                  "T"
+                ],
+                "returnType": "T[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Date",
+            "typeParameters": [],
+            "extends": [
+              "JSRuntimeDate"
+            ],
+            "members": []
+          },
+          {
+            "name": "DateConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "constructSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Date",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "constructSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "string | number | long",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "Date",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "now",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "long",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "parse",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "s",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "long",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "JSON",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "parse",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "text",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "T = unknown"
+                ],
+                "returnType": "T",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "stringify",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "unknown",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "replacer",
+                    "type": "unknown",
+                    "optional": true,
+                    "rest": false
+                  },
+                  {
+                    "name": "space",
+                    "type": "string | number | int",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Math",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "round",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "x",
+                    "type": "number",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "number",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "max",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "values",
+                    "type": "double[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "number",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "min",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "values",
+                    "type": "double[]",
+                    "optional": false,
+                    "rest": true
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "number",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "random",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "number",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "RegExpMatchArray",
+            "typeParameters": [],
+            "extends": [
+              "Array<string>"
+            ],
+            "members": [
+              {
+                "kind": "property",
+                "name": "index",
+                "type": "int",
+                "readonly": false,
+                "optional": true,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "input",
+                "type": "string",
+                "readonly": false,
+                "optional": true,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "RegExp",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "exec",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "string",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "RegExpMatchArray | null",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "test",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "string",
+                    "type": "string",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "RegExpConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "constructSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "pattern",
+                    "type": "string | RegExp",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "flags",
+                    "type": "string",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "RegExp",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "callSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "pattern",
+                    "type": "string | RegExp",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "flags",
+                    "type": "string",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "RegExp",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Map",
+            "typeParameters": [
+              "K",
+              "V"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "size",
+                "type": "int",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "clear",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "delete",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "key",
+                    "type": "K",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "get",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "key",
+                    "type": "K",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "V | undefined",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "entries",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<[K, V]>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: V) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: V, key: K) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: V, key: K, map: Map<K, V>) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "has",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "key",
+                    "type": "K",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "keys",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<K>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "set",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "key",
+                    "type": "K",
+                    "optional": false,
+                    "rest": false
+                  },
+                  {
+                    "name": "value",
+                    "type": "V",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "this",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "values",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<V>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "[Symbol.iterator]",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "IterableIterator<[K, V]>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "MapConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "constructSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "entries",
+                    "type": "readonly (readonly [K, V])[] | null",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "K",
+                  "V"
+                ],
+                "returnType": "Map<K, V>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Set",
+            "typeParameters": [
+              "T"
+            ],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "size",
+                "type": "int",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "add",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "this",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "clear",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "delete",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "entries",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<[T, T]>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, key: T) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "forEach",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "callback",
+                    "type": "(value: T, key: T, set: Set<T>) => void",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "void",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "has",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "T",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "keys",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "values",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "Iterable<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "[Symbol.iterator]",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "IterableIterator<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "SetConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "constructSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "values",
+                    "type": "readonly T[] | null",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [
+                  "T = unknown"
+                ],
+                "returnType": "Set<T>",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "ObjectConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "entries",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "obj",
+                    "type": "unknown",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "[string, unknown][]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "keys",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "obj",
+                    "type": "unknown",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "values",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "obj",
+                    "type": "unknown",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "unknown[]",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          }
+        ],
+        "typeAliases": [],
+        "consts": [
+          {
+            "name": "String",
+            "type": "StringConstructor"
+          },
+          {
+            "name": "Number",
+            "type": "NumberConstructor"
+          },
+          {
+            "name": "console",
+            "type": "Console"
+          },
+          {
+            "name": "Date",
+            "type": "DateConstructor"
+          },
+          {
+            "name": "JSON",
+            "type": "JSON"
+          },
+          {
+            "name": "Math",
+            "type": "Math"
+          },
+          {
+            "name": "RegExp",
+            "type": "RegExpConstructor"
+          },
+          {
+            "name": "Map",
+            "type": "MapConstructor"
+          },
+          {
+            "name": "Set",
+            "type": "SetConstructor"
+          },
+          {
+            "name": "Object",
+            "type": "ObjectConstructor"
+          }
+        ],
+        "functions": [
+          {
+            "name": "parseInt",
+            "typeParameters": [],
+            "parameters": [
+              {
+                "name": "str",
+                "type": "string",
+                "optional": false,
+                "rest": false
+              },
+              {
+                "name": "radix",
+                "type": "number",
+                "optional": true,
+                "rest": false
+              }
+            ],
+            "returnType": "number"
+          },
+          {
+            "name": "parseFloat",
+            "typeParameters": [],
+            "parameters": [
+              {
+                "name": "str",
+                "type": "string",
+                "optional": false,
+                "rest": false
+              }
+            ],
+            "returnType": "number"
+          },
+          {
+            "name": "isFinite",
+            "typeParameters": [],
+            "parameters": [
+              {
+                "name": "value",
+                "type": "number",
+                "optional": false,
+                "rest": false
+              }
+            ],
+            "returnType": "boolean"
+          },
+          {
+            "name": "isNaN",
+            "typeParameters": [],
+            "parameters": [
+              {
+                "name": "value",
+                "type": "number",
+                "optional": false,
+                "rest": false
+              }
+            ],
+            "returnType": "boolean"
+          },
+          {
+            "name": "setTimeout",
+            "typeParameters": [],
+            "parameters": [
+              {
+                "name": "handler",
+                "type": "(...args: unknown[]) => void",
+                "optional": false,
+                "rest": false
+              },
+              {
+                "name": "timeout",
+                "type": "number",
+                "optional": true,
+                "rest": false
+              },
+              {
+                "name": "args",
+                "type": "unknown[]",
+                "optional": false,
+                "rest": true
+              }
+            ],
+            "returnType": "number"
+          },
+          {
+            "name": "clearTimeout",
+            "typeParameters": [],
+            "parameters": [
+              {
+                "name": "id",
+                "type": "number",
+                "optional": false,
+                "rest": false
+              }
+            ],
+            "returnType": "void"
+          },
+          {
+            "name": "setInterval",
+            "typeParameters": [],
+            "parameters": [
+              {
+                "name": "handler",
+                "type": "(...args: unknown[]) => void",
+                "optional": false,
+                "rest": false
+              },
+              {
+                "name": "timeout",
+                "type": "number",
+                "optional": true,
+                "rest": false
+              },
+              {
+                "name": "args",
+                "type": "unknown[]",
+                "optional": false,
+                "rest": true
+              }
+            ],
+            "returnType": "number"
+          },
+          {
+            "name": "clearInterval",
+            "typeParameters": [],
+            "parameters": [
+              {
+                "name": "id",
+                "type": "number",
+                "optional": false,
+                "rest": false
+              }
+            ],
+            "returnType": "void"
+          }
+        ],
+        "classes": [
+          {
+            "name": "RangeError",
+            "typeParameters": [],
+            "extends": "Error",
+            "members": [
+              {
+                "kind": "constructor",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "message",
+                    "type": "string",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          }
+        ]
+      },
+      "modules": [],
+      "statements": [],
+      "exportEmpty": true
+    }
+  ],
+  "simpleBindings": {
+    "console": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.console"
+    },
+    "Date": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Date",
+      "staticType": "Tsonic.JSRuntime.Date"
+    },
+    "JSON": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.JSON",
+      "staticType": "Tsonic.JSRuntime.JSON"
+    },
+    "Math": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Math",
+      "staticType": "Tsonic.JSRuntime.Math"
+    },
+    "Number": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Number",
+      "staticType": "Tsonic.JSRuntime.Number"
+    },
+    "RegExp": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.RegExp",
+      "staticType": "Tsonic.JSRuntime.RegExp"
+    },
+    "Map": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Map`2",
+      "csharpName": "Map"
+    },
+    "Set": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Set`1",
+      "csharpName": "Set"
+    },
+    "Object": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Object",
+      "staticType": "Tsonic.JSRuntime.Object"
+    },
+    "String": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.String",
+      "staticType": "Tsonic.JSRuntime.String"
+    },
+    "Array": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.JSArray`1",
+      "staticType": "Tsonic.JSRuntime.JSArrayStatics",
+      "csharpName": "JSArray"
+    },
+    "ReadonlyArray": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.JSArray`1",
+      "csharpName": "JSArray"
+    },
+    "parseInt": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Globals",
+      "csharpName": "Globals.parseInt"
+    },
+    "parseFloat": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Globals",
+      "csharpName": "Globals.parseFloat"
+    },
+    "isFinite": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Globals",
+      "csharpName": "Globals.isFinite"
+    },
+    "isNaN": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Globals",
+      "csharpName": "Globals.isNaN"
+    },
+    "setTimeout": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Timers",
+      "csharpName": "Timers.setTimeout"
+    },
+    "clearTimeout": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Timers",
+      "csharpName": "Timers.clearTimeout"
+    },
+    "setInterval": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Timers",
+      "csharpName": "Timers.setInterval"
+    },
+    "clearInterval": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Timers",
+      "csharpName": "Timers.clearInterval"
+    },
+    "RangeError": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.RangeError"
+    },
+    "Error": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Error"
+    }
+  },
+  "surfaceManifest": {
+    "schemaVersion": 1,
+    "id": "@tsonic/js",
+    "extends": [],
+    "requiredTypeRoots": [
+      "."
+    ],
+    "useStandardLib": false
+  },
+  "bindingsManifest": {
+    "bindingVersion": 1,
+    "packageName": "@tsonic/js",
+    "surfaceMode": "@tsonic/js",
+    "assemblyName": "Tsonic.JSRuntime",
+    "runtimePackages": [
+      "@tsonic/js"
+    ],
+    "dotnet": {
+      "packageReferences": [
+        {
+          "id": "Tsonic.JSRuntime",
+        "version": "0.0.4",
+          "types": "@tsonic/js"
+        }
+      ]
+    }
+  }
+}

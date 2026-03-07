@@ -122,5 +122,30 @@ namespace Tsonic.JSRuntime.Tests
             Assert.Equal(original.Value, restored.Value);
             Assert.Equal(original.IsActive, restored.IsActive);
         }
+
+        [Fact]
+        public void Object_Keys_Values_Entries_WorkWithParsedJson()
+        {
+            object value = JSON.parse<object>("{\"name\":\"tsumo\",\"count\":2}");
+
+            Assert.Equal(new[] { "name", "count" }, Object.keys(value));
+            Assert.Equal(new object?[] { "tsumo", 2d }, Object.values(value));
+
+            var entries = Object.entries(value);
+            Assert.Equal(("name", (object?)"tsumo"), entries[0]);
+            Assert.Equal(("count", (object?)2d), entries[1]);
+        }
+
+        [Fact]
+        public void Parse_Object_PreservesJsonArraysAsArrays()
+        {
+            object value = JSON.parse<object>("{\"mounts\":[{\"name\":\"docs\"}]}");
+            var entries = Object.entries(value);
+            var mounts = Assert.IsType<object?[]>(entries[0].value);
+
+            Assert.True(JSArrayStatics.isArray(mounts));
+            var firstMount = Assert.IsType<Tsonic.Runtime.DynamicObject>(mounts[0]);
+            Assert.Equal("docs", firstMount["name"]);
+        }
     }
 }

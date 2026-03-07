@@ -77,7 +77,7 @@ namespace Tsonic.JSRuntime
             {
                 items.Add(ConvertJsonElement(item));
             }
-            return items;
+            return items.ToArray();
         }
 
         /// <summary>

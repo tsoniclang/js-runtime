@@ -6,11 +6,12 @@ namespace Tsonic.JSRuntime.Tests
     public class ArrayStaticsTests
     {
         [Fact]
-        public void from_WithEnumerable_ReturnsJSArray()
+        public void from_WithEnumerable_ReturnsArray()
         {
             var result = JSArrayStatics.from(new List<int> { 1, 2, 3 });
 
-            Assert.Equal(3, result.length);
+            Assert.IsType<int[]>(result);
+            Assert.Equal(3, result.Length);
             Assert.Equal(1, result[0]);
             Assert.Equal(2, result[1]);
             Assert.Equal(3, result[2]);
@@ -24,7 +25,8 @@ namespace Tsonic.JSRuntime.Tests
                 (value, index) => $"{index}:{value}"
             );
 
-            Assert.Equal(3, result.length);
+            Assert.IsType<string[]>(result);
+            Assert.Equal(3, result.Length);
             Assert.Equal("0:a", result[0]);
             Assert.Equal("1:b", result[1]);
             Assert.Equal("2:c", result[2]);
@@ -35,7 +37,8 @@ namespace Tsonic.JSRuntime.Tests
         {
             var result = JSArrayStatics.from("abc");
 
-            Assert.Equal(3, result.length);
+            Assert.IsType<string[]>(result);
+            Assert.Equal(3, result.Length);
             Assert.Equal("a", result[0]);
             Assert.Equal("b", result[1]);
             Assert.Equal("c", result[2]);
@@ -49,18 +52,20 @@ namespace Tsonic.JSRuntime.Tests
                 (value, index) => $"{index}:{value}"
             );
 
-            Assert.Equal(3, result.length);
+            Assert.IsType<string[]>(result);
+            Assert.Equal(3, result.Length);
             Assert.Equal("0:a", result[0]);
             Assert.Equal("1:b", result[1]);
             Assert.Equal("2:c", result[2]);
         }
 
         [Fact]
-        public void of_ReturnsJSArray()
+        public void of_ReturnsArray()
         {
             var result = JSArrayStatics.of(4, 5, 6);
 
-            Assert.Equal(3, result.length);
+            Assert.IsType<int[]>(result);
+            Assert.Equal(3, result.Length);
             Assert.Equal(4, result[0]);
             Assert.Equal(5, result[1]);
             Assert.Equal(6, result[2]);
