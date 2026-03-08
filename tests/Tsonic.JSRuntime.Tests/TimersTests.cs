@@ -43,6 +43,16 @@ namespace Tsonic.JSRuntime.Tests
         }
 
         [Fact]
+        public void setTimeout_TruncatesFractionalDelay()
+        {
+            var executed = false;
+            Timers.setTimeout(() => executed = true, 10.9);
+
+            Thread.Sleep(50);
+            Assert.True(executed);
+        }
+
+        [Fact]
         public void setTimeout_DefaultDelay_IsZero()
         {
             var executed = false;
@@ -90,6 +100,13 @@ namespace Tsonic.JSRuntime.Tests
         {
             // Should not throw for non-existent ID
             var exception = Record.Exception(() => Timers.clearTimeout(99999));
+            Assert.Null(exception);
+        }
+
+        [Fact]
+        public void clearTimeout_WithNonIntegralId_DoesNotThrow()
+        {
+            var exception = Record.Exception(() => Timers.clearTimeout(99999.5));
             Assert.Null(exception);
         }
 
@@ -184,6 +201,20 @@ namespace Tsonic.JSRuntime.Tests
             Timers.clearInterval(id);
             var exception = Record.Exception(() => Timers.clearInterval(id));
             Assert.Null(exception);
+        }
+
+        [Fact]
+        public void clearInterval_DoesNotRaceWithActiveCallbacks()
+        {
+            for (var iteration = 0; iteration < 200; iteration++)
+            {
+                var sawTick = new ManualResetEventSlim(false);
+                var id = Timers.setInterval(() => sawTick.Set(), 1);
+
+                Assert.True(sawTick.Wait(1000));
+                Timers.clearInterval(id);
+                Thread.Sleep(5);
+            }
         }
 
         // ==================== Mixed Usage Tests ====================

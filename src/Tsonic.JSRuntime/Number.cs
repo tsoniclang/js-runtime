@@ -27,7 +27,7 @@ namespace Tsonic.JSRuntime
         /// Parse string to integer with optional radix.
         /// Alias for the global parseInt function.
         /// </summary>
-        public static long? parseInt(string str, int? radix = null)
+        public static double parseInt(string str, int? radix = null)
         {
             return Globals.parseInt(str, radix);
         }
