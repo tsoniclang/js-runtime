@@ -6179,7 +6179,7 @@
       "packageReferences": [
         {
           "id": "Tsonic.JSRuntime",
-        "version": "0.0.5",
+          "version": "0.0.6",
           "types": "@tsonic/js"
         }
       ]
