@@ -76,6 +76,15 @@ namespace Tsonic.JSRuntime.Tests
             Assert.False(Globals.isNaN(value));
         }
 
+        [Fact]
+        public void isNaN_WithIntegralValues_ReturnsFalse()
+        {
+            Assert.False(Globals.isNaN(0));
+            Assert.False(Globals.isNaN((int?)42));
+            Assert.False(Globals.isNaN(7L));
+            Assert.False(Globals.isNaN((long?)9));
+        }
+
         [Theory]
         [InlineData(0)]
         [InlineData(42)]
@@ -84,6 +93,17 @@ namespace Tsonic.JSRuntime.Tests
         public void isFinite_WithFiniteNumbers_ReturnsTrue(double value)
         {
             Assert.True(Globals.isFinite(value));
+        }
+
+        [Fact]
+        public void isFinite_WithIntegralValues_ReturnsTrue()
+        {
+            Assert.True(Globals.isFinite(0));
+            Assert.True(Globals.isFinite((int?)42));
+            Assert.True(Globals.isFinite(7L));
+            Assert.True(Globals.isFinite((long?)9));
+            Assert.False(Globals.isFinite((int?)null));
+            Assert.False(Globals.isFinite((long?)null));
         }
 
         [Fact]

@@ -148,7 +148,7 @@ namespace Tsonic.JSRuntime.Tests
         public void split_SplitsString()
         {
             var result = "a,b,c".split(",");
-            Assert.Equal(3, result.Count);
+            Assert.Equal(3, result.Length);
             Assert.Equal("a", result[0]);
             Assert.Equal("b", result[1]);
             Assert.Equal("c", result[2]);
@@ -158,7 +158,7 @@ namespace Tsonic.JSRuntime.Tests
         public void split_WithLimit_LimitsResults()
         {
             var result = "a,b,c,d".split(",", 2);
-            Assert.Equal(2, result.Count);
+            Assert.Equal(2, result.Length);
             Assert.Equal("a", result[0]);
             Assert.Equal("b", result[1]);
         }
@@ -227,7 +227,7 @@ namespace Tsonic.JSRuntime.Tests
         public void matchAll_FindsAllMatches()
         {
             var result = "test test test".matchAll("test");
-            Assert.Equal(3, result.Count);
+            Assert.Equal(3, result.Length);
         }
 
         [Fact]
