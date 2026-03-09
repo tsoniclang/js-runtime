@@ -64,12 +64,6 @@
             "members": []
           },
           {
-            "name": "ImportMeta",
-            "typeParameters": [],
-            "extends": [],
-            "members": []
-          },
-          {
             "name": "String",
             "typeParameters": [],
             "extends": [],
@@ -90,12 +84,6 @@
           },
           {
             "name": "Number",
-            "typeParameters": [],
-            "extends": [],
-            "members": []
-          },
-          {
-            "name": "Boolean",
             "typeParameters": [],
             "extends": [],
             "members": []
@@ -2136,6 +2124,106 @@
                 "parameters": [],
                 "typeParameters": [],
                 "returnType": "number",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Boolean",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "method",
+                "name": "toString",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "method",
+                "name": "valueOf",
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "BooleanConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "callSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "unknown",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "boolean",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "ImportMeta",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "property",
+                "name": "url",
+                "type": "string",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "filename",
+                "type": "string",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "property",
+                "name": "dirname",
+                "type": "string",
+                "readonly": true,
+                "optional": false,
+                "parameters": [],
+                "typeParameters": [],
+                "returnType": null,
                 "indexParameterName": null,
                 "indexParameterType": null
               }
@@ -5754,6 +5842,10 @@
             "type": "NumberConstructor"
           },
           {
+            "name": "Boolean",
+            "type": "BooleanConstructor"
+          },
+          {
             "name": "console",
             "type": "Console"
           },
@@ -6011,6 +6103,15 @@
         "contributesTypeIdentity": true
       }
     },
+    "Boolean": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.BooleanOps",
+      "csharpName": "Globals.Boolean",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
+    },
     "RegExp": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
@@ -6152,6 +6253,14 @@
     {
       "binding": {
         "type": "Tsonic.JSRuntime.String"
+      },
+      "emitSemantics": {
+        "callStyle": "receiver"
+      }
+    },
+    {
+      "binding": {
+        "type": "Tsonic.JSRuntime.BooleanOps"
       },
       "emitSemantics": {
         "callStyle": "receiver"
