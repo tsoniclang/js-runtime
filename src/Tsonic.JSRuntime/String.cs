@@ -176,15 +176,15 @@ namespace Tsonic.JSRuntime
         /// <summary>
         /// Split string into array
         /// </summary>
-        public static List<string> split(this string str, string separator, int? limit = null)
+        public static string[] split(this string str, string separator, int? limit = null)
         {
             // Handle empty separator - split into individual characters (JS behavior)
             if (separator == "")
             {
-                var chars = str.ToCharArray().Select(c => c.ToString()).ToList();
-                if (limit.HasValue && chars.Count > limit.Value)
+                var chars = str.ToCharArray().Select(c => c.ToString()).ToArray();
+                if (limit.HasValue && chars.Length > limit.Value)
                 {
-                    return chars.Take(limit.Value).ToList();
+                    return chars.Take(limit.Value).ToArray();
                 }
                 return chars;
             }
@@ -195,10 +195,10 @@ namespace Tsonic.JSRuntime
             {
                 string[] limited = new string[limit.Value];
                 System.Array.Copy(parts, limited, limit.Value);
-                return new List<string>(limited);
+                return limited;
             }
 
-            return new List<string>(parts);
+            return parts;
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace Tsonic.JSRuntime
         /// <summary>
         /// Match string against regex pattern
         /// </summary>
-        public static List<string>? match(this string str, string pattern)
+        public static string[]? match(this string str, string pattern)
         {
             var regex = new System.Text.RegularExpressions.Regex(pattern);
             var match = regex.Match(str);
@@ -271,15 +271,15 @@ namespace Tsonic.JSRuntime
                 result.Add(match.Groups[i].Value);
             }
 
-            return result;
+            return result.ToArray();
         }
 
         /// <summary>
         /// Match all occurrences against regex pattern
         /// </summary>
-        public static List<List<string>> matchAll(this string str, string pattern)
+        public static string[][] matchAll(this string str, string pattern)
         {
-            var result = new List<List<string>>();
+            var result = new List<string[]>();
             var regex = new System.Text.RegularExpressions.Regex(pattern);
             var matches = regex.Matches(str);
 
@@ -293,10 +293,10 @@ namespace Tsonic.JSRuntime
                     matchArray.Add(match.Groups[i].Value);
                 }
 
-                result.Add(matchArray);
+                result.Add(matchArray.ToArray());
             }
 
-            return result;
+            return result.ToArray();
         }
 
         /// <summary>

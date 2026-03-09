@@ -1331,6 +1331,10 @@
             {
               "name": "Date",
               "alias": "JSRuntimeDate"
+            },
+            {
+              "name": "Uint8Array",
+              "alias": "JSRuntimeUint8Array"
             }
           ]
         }
@@ -4810,6 +4814,14 @@
             "members": []
           },
           {
+            "name": "Uint8Array",
+            "typeParameters": [],
+            "extends": [
+              "JSRuntimeUint8Array"
+            ],
+            "members": []
+          },
+          {
             "name": "DateConstructor",
             "typeParameters": [],
             "extends": [],
@@ -4873,6 +4885,51 @@
                 ],
                 "typeParameters": [],
                 "returnType": "long",
+                "indexParameterName": null,
+                "indexParameterType": null
+              }
+            ]
+          },
+          {
+            "name": "Uint8ArrayConstructor",
+            "typeParameters": [],
+            "extends": [],
+            "members": [
+              {
+                "kind": "constructSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "length",
+                    "type": "number",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "Uint8Array",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
+                "kind": "constructSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "values",
+                    "type": "Iterable<number> | ArrayLike<number>",
+                    "optional": false,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "Uint8Array",
                 "indexParameterName": null,
                 "indexParameterType": null
               }
@@ -5705,6 +5762,10 @@
             "type": "DateConstructor"
           },
           {
+            "name": "Uint8Array",
+            "type": "Uint8ArrayConstructor"
+          },
+          {
             "name": "JSON",
             "type": "JSON"
           },
@@ -5910,6 +5971,12 @@
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.Date",
       "staticType": "Tsonic.JSRuntime.Date"
+    },
+    "Uint8Array": {
+      "kind": "global",
+      "assembly": "Tsonic.JSRuntime",
+      "type": "Tsonic.JSRuntime.Uint8Array",
+      "staticType": "Tsonic.JSRuntime.Uint8Array"
     },
     "JSON": {
       "kind": "global",

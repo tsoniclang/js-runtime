@@ -130,12 +130,52 @@ namespace Tsonic.JSRuntime
             return double.IsNaN(value);
         }
 
+        public static bool isNaN(int value)
+        {
+            return false;
+        }
+
+        public static bool isNaN(int? value)
+        {
+            return value.HasValue && isNaN(value.Value);
+        }
+
+        public static bool isNaN(long value)
+        {
+            return false;
+        }
+
+        public static bool isNaN(long? value)
+        {
+            return value.HasValue && isNaN(value.Value);
+        }
+
         /// <summary>
         /// Check if value is finite (not infinite or NaN)
         /// </summary>
         public static bool isFinite(double value)
         {
             return !double.IsInfinity(value) && !double.IsNaN(value);
+        }
+
+        public static bool isFinite(int value)
+        {
+            return true;
+        }
+
+        public static bool isFinite(int? value)
+        {
+            return value.HasValue;
+        }
+
+        public static bool isFinite(long value)
+        {
+            return true;
+        }
+
+        public static bool isFinite(long? value)
+        {
+            return value.HasValue;
         }
 
         /// <summary>

@@ -50,6 +50,26 @@ namespace Tsonic.JSRuntime
             return double.IsNaN(value);
         }
 
+        public static bool isNaN(int value)
+        {
+            return false;
+        }
+
+        public static bool isNaN(int? value)
+        {
+            return value.HasValue && isNaN(value.Value);
+        }
+
+        public static bool isNaN(long value)
+        {
+            return false;
+        }
+
+        public static bool isNaN(long? value)
+        {
+            return value.HasValue && isNaN(value.Value);
+        }
+
         /// <summary>
         /// Check if value is finite (not infinite or NaN).
         /// Unlike global isFinite, this does NOT convert the argument.
@@ -57,6 +77,26 @@ namespace Tsonic.JSRuntime
         public static bool isFinite(double value)
         {
             return !double.IsInfinity(value) && !double.IsNaN(value);
+        }
+
+        public static bool isFinite(int value)
+        {
+            return true;
+        }
+
+        public static bool isFinite(int? value)
+        {
+            return value.HasValue;
+        }
+
+        public static bool isFinite(long value)
+        {
+            return true;
+        }
+
+        public static bool isFinite(long? value)
+        {
+            return value.HasValue;
         }
 
         /// <summary>
@@ -69,6 +109,26 @@ namespace Tsonic.JSRuntime
                 return false;
             }
             return System.Math.Floor(value) == value;
+        }
+
+        public static bool isInteger(int value)
+        {
+            return true;
+        }
+
+        public static bool isInteger(int? value)
+        {
+            return value.HasValue;
+        }
+
+        public static bool isInteger(long value)
+        {
+            return true;
+        }
+
+        public static bool isInteger(long? value)
+        {
+            return value.HasValue;
         }
 
         /// <summary>
@@ -84,6 +144,26 @@ namespace Tsonic.JSRuntime
             return value >= MIN_SAFE_INTEGER && value <= MAX_SAFE_INTEGER;
         }
 
+        public static bool isSafeInteger(int value)
+        {
+            return true;
+        }
+
+        public static bool isSafeInteger(int? value)
+        {
+            return value.HasValue;
+        }
+
+        public static bool isSafeInteger(long value)
+        {
+            return value >= MIN_SAFE_INTEGER && value <= MAX_SAFE_INTEGER;
+        }
+
+        public static bool isSafeInteger(long? value)
+        {
+            return value.HasValue && isSafeInteger(value.Value);
+        }
+
         /// <summary>
         /// Convert a number to its JavaScript string form.
         /// </summary>
@@ -92,10 +172,60 @@ namespace Tsonic.JSRuntime
             return value.ToString(CultureInfo.InvariantCulture);
         }
 
+        public static string toString(this double? value)
+        {
+            return value?.ToString(CultureInfo.InvariantCulture) ?? string.Empty;
+        }
+
+        public static string toString(this int value)
+        {
+            return value.ToString(CultureInfo.InvariantCulture);
+        }
+
+        public static string toString(this int? value)
+        {
+            return value?.ToString(CultureInfo.InvariantCulture) ?? string.Empty;
+        }
+
+        public static string toString(this long value)
+        {
+            return value.ToString(CultureInfo.InvariantCulture);
+        }
+
+        public static string toString(this long? value)
+        {
+            return value?.ToString(CultureInfo.InvariantCulture) ?? string.Empty;
+        }
+
         /// <summary>
         /// Return the primitive numeric value.
         /// </summary>
         public static double valueOf(this double value)
+        {
+            return value;
+        }
+
+        public static double? valueOf(this double? value)
+        {
+            return value;
+        }
+
+        public static int valueOf(this int value)
+        {
+            return value;
+        }
+
+        public static int? valueOf(this int? value)
+        {
+            return value;
+        }
+
+        public static long valueOf(this long value)
+        {
+            return value;
+        }
+
+        public static long? valueOf(this long? value)
         {
             return value;
         }
