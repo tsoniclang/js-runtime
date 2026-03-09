@@ -5970,74 +5970,110 @@
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.Date",
-      "staticType": "Tsonic.JSRuntime.Date"
+      "staticType": "Tsonic.JSRuntime.Date",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     },
     "Uint8Array": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.Uint8Array",
-      "staticType": "Tsonic.JSRuntime.Uint8Array"
+      "staticType": "Tsonic.JSRuntime.Uint8Array",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     },
     "JSON": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.JSON",
-      "staticType": "Tsonic.JSRuntime.JSON"
+      "staticType": "Tsonic.JSRuntime.JSON",
+      "typeSemantics": {
+        "contributesTypeIdentity": false
+      }
     },
     "Math": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.Math",
-      "staticType": "Tsonic.JSRuntime.Math"
+      "staticType": "Tsonic.JSRuntime.Math",
+      "typeSemantics": {
+        "contributesTypeIdentity": false
+      }
     },
     "Number": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.Number",
-      "staticType": "Tsonic.JSRuntime.Number"
+      "staticType": "Tsonic.JSRuntime.Number",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     },
     "RegExp": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.RegExp",
-      "staticType": "Tsonic.JSRuntime.RegExp"
+      "staticType": "Tsonic.JSRuntime.RegExp",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     },
     "Map": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.Map`2",
-      "csharpName": "Map"
+      "csharpName": "Map",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     },
     "Set": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.Set`1",
-      "csharpName": "Set"
+      "csharpName": "Set",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     },
     "Object": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.Object",
-      "staticType": "Tsonic.JSRuntime.Object"
+      "staticType": "Tsonic.JSRuntime.Object",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     },
     "String": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.String",
-      "staticType": "Tsonic.JSRuntime.String"
+      "staticType": "Tsonic.JSRuntime.String",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     },
     "Array": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.JSArray`1",
       "staticType": "Tsonic.JSRuntime.JSArrayStatics",
-      "csharpName": "JSArray"
+      "csharpName": "JSArray",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     },
     "ReadonlyArray": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.JSArray`1",
-      "csharpName": "JSArray"
+      "csharpName": "JSArray",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     },
     "parseInt": {
       "kind": "global",
@@ -6090,14 +6126,38 @@
     "RangeError": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
-      "type": "Tsonic.JSRuntime.RangeError"
+      "type": "Tsonic.JSRuntime.RangeError",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     },
     "Error": {
       "kind": "global",
       "assembly": "Tsonic.JSRuntime",
-      "type": "Tsonic.JSRuntime.Error"
+      "type": "Tsonic.JSRuntime.Error",
+      "typeSemantics": {
+        "contributesTypeIdentity": true
+      }
     }
   },
+  "memberSemantics": [
+    {
+      "binding": {
+        "type": "Tsonic.JSRuntime.Number"
+      },
+      "emitSemantics": {
+        "callStyle": "receiver"
+      }
+    },
+    {
+      "binding": {
+        "type": "Tsonic.JSRuntime.String"
+      },
+      "emitSemantics": {
+        "callStyle": "receiver"
+      }
+    }
+  ],
   "surfaceManifest": {
     "schemaVersion": 1,
     "id": "@tsonic/js",
