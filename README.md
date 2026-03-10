@@ -27,14 +27,14 @@ Install and enable the bindings package:
 
 ```bash
 # new project
-npx --yes tsonic@latest init --surface js
-npx --yes tsonic@latest add npm @tsonic/js
+npx --yes tsonic@latest init --surface @tsonic/js
 
 # existing project
 npx --yes tsonic@latest add npm @tsonic/js
 ```
 
-Then write natural JS (no explicit `@tsonic/js` imports required in surface mode):
+Then write natural JS (no explicit `@tsonic/js` imports required when the
+workspace surface is `@tsonic/js`):
 
 ```ts
 export function main(): void {

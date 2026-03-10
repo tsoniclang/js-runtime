@@ -1,6 +1,6 @@
 # Importing APIs
 
-In `--surface js`, you can use JS builtins directly:
+In a workspace using `--surface @tsonic/js`, you can use JS builtins directly:
 
 ```ts
 export function main(): void {

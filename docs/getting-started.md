@@ -5,8 +5,7 @@
 ### New project
 
 ```bash
-npx --yes tsonic@latest init --surface js
-npx --yes tsonic@latest add npm @tsonic/js
+npx --yes tsonic@latest init --surface @tsonic/js
 ```
 
 ### Existing project
@@ -17,7 +16,8 @@ npx --yes tsonic@latest add npm @tsonic/js
 
 If you have `tsonic` installed globally, you can drop the `npx --yes tsonic@latest` prefix.
 
-That will:
+For a new project, `init --surface @tsonic/js` already installs and wires the
+JS package. For an existing project, `add npm @tsonic/js` will:
 
 - Install the `@tsonic/js` bindings package in your workspace (`package.json`) for `tsc` typechecking
 - Apply the package’s `.NET` dependency manifest (`tsonic.bindings.json`) to `tsonic.workspace.json`

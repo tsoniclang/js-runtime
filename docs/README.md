@@ -8,7 +8,7 @@ This is **not** Node.js. It’s a JS-semantics runtime implemented in .NET so Ty
 
 ### Getting Started
 
-1. [Getting Started](getting-started.md) - enable `@tsonic/js` in a Tsonic project (`--surface js`)
+1. [Getting Started](getting-started.md) - enable `@tsonic/js` in a Tsonic project (`--surface @tsonic/js`)
 2. [Importing APIs](imports.md) - natural surface usage + optional direct imports
 
 ### APIs
