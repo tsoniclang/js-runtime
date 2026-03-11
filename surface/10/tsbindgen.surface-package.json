@@ -2059,6 +2059,25 @@
             "extends": [],
             "members": [
               {
+                "kind": "callSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "unknown",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "string",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
+              {
                 "kind": "method",
                 "name": "fromCharCode",
                 "type": null,
@@ -2234,6 +2253,25 @@
             "typeParameters": [],
             "extends": [],
             "members": [
+              {
+                "kind": "callSignature",
+                "name": null,
+                "type": null,
+                "readonly": false,
+                "optional": false,
+                "parameters": [
+                  {
+                    "name": "value",
+                    "type": "unknown",
+                    "optional": true,
+                    "rest": false
+                  }
+                ],
+                "typeParameters": [],
+                "returnType": "number",
+                "indexParameterName": null,
+                "indexParameterType": null
+              },
               {
                 "kind": "property",
                 "name": "EPSILON",
@@ -6099,6 +6137,7 @@
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.Number",
       "staticType": "Tsonic.JSRuntime.Number",
+      "csharpName": "Globals.Number",
       "typeSemantics": {
         "contributesTypeIdentity": true
       }
@@ -6153,6 +6192,7 @@
       "assembly": "Tsonic.JSRuntime",
       "type": "Tsonic.JSRuntime.String",
       "staticType": "Tsonic.JSRuntime.String",
+      "csharpName": "Globals.String",
       "typeSemantics": {
         "contributesTypeIdentity": true
       }
