@@ -1,77 +1,16 @@
 # Tsonic.JSRuntime
 
-JavaScript/TypeScript runtime implementation for the Tsonic compiler - provides exact JavaScript semantics in C#.
+This repo is retired.
 
-## Overview
+`@tsonic/js` is now the first-party source-of-truth package for JavaScript semantics in Tsonic. The compiler and emitted projects no longer depend on `Tsonic.JSRuntime`, and no new releases are planned for this package.
 
-Tsonic.JSRuntime is a C# library that implements JavaScript semantics, enabling TypeScript code compiled by Tsonic to behave exactly like it would in a JavaScript runtime. This includes:
+## Status
 
-- **JavaScript Arrays** - Sparse arrays with JS semantics (length, holes, etc.)
-- **String manipulation** - JS string methods and behavior
-- **Type coercion** - Automatic type conversions matching JS rules
-- **Structural typing** - Duck typing and object shape compatibility
-- **Console API** - `console.log`, `console.error`, etc.
-- **JSON support** - `JSON.stringify`, `JSON.parse`
-- **Math** - JavaScript Math object (abs, floor, ceil, round, random, etc.)
-- **Global functions** - `parseInt`, `parseFloat`, `encodeURIComponent`, etc.
-- **Map/Set** - ES6 Map and Set collections
-- **WeakMap/WeakSet** - Weak reference collections
-- **ArrayBuffer** - Fixed-length binary data buffer
-- **Typed Arrays** - Int8Array, Uint8Array, Uint8ClampedArray, Int16Array, Uint16Array, Int32Array, Uint32Array, Float32Array, Float64Array
-- **Date** - Date object with timezone support
-- **RegExp** - Regular expression support with JavaScript flags
+- Not part of the active Tsonic architecture
+- Removed from the wave publish path
+- Kept only as an archival reference
 
-## For Tsonic Users
+## Use instead
 
-Install and enable the bindings package:
-
-```bash
-# new project
-npx --yes tsonic@latest init --surface @tsonic/js
-
-# existing project
-npx --yes tsonic@latest add npm @tsonic/js
-```
-
-Then write natural JS (no explicit `@tsonic/js` imports required when the
-workspace surface is `@tsonic/js`):
-
-```ts
-export function main(): void {
-  const value = JSON.parse<{ x: number }>('{"x": 1}');
-  console.log(JSON.stringify(value));
-}
-```
-
-Direct imports from `@tsonic/js/index.js` remain supported when you want explicit symbols like `JSArray` or `Timers`.
-
-Documentation:
-
-- `docs/README.md`
+- `@tsonic/js`
 - https://tsonic.org/js/
-
-## Building
-
-```bash
-dotnet build
-```
-
-## Testing
-
-```bash
-dotnet test
-```
-
-All 500+ tests verify that the runtime matches JavaScript behavior exactly.
-
-## NativeAOT Compatibility
-
-This library is fully compatible with .NET NativeAOT, enabling TypeScript code to be compiled to native executables with zero runtime dependencies and fast startup times.
-
-## Package
-
-Published as `Tsonic.JSRuntime` on NuGet.
-
-## License
-
-MIT License - see LICENSE file for details.
