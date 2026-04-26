@@ -45,3 +45,16 @@ Direct imports from `@tsonic/js/index.js` are still supported.
 - `@tsonic/nodejs` provides Node-style APIs (fs/path/http/crypto/process, etc.) implemented on .NET.
 
 You can enable either or both in a project.
+
+## Runtime contracts
+
+The CLR runtime package preserves the TypeScript surface contracts that
+`@tsonic/js` exposes:
+
+- integer-returning helpers stay integer-backed where the public type says
+  `int` or `long`
+- floating-point helpers stay `double`-backed where JavaScript number semantics
+  require it
+- callable `String(...)` and `Number(...)` globals are available through the JS
+  surface
+- timer handles release cleanly when cleared or completed
